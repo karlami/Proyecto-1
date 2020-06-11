@@ -19,7 +19,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 var listaPersonas = db.Database.SqlQuery<Persona>("SELECT cedula, nombre, " +
-                    "primerApellido, segundoApellido, fechaNacimiento, idUbicacion " +
+                    "primerApellido, segundoApellido, nacionalidad, fechaNacimiento, idUbicacion " +
                     "FROM Persona").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaPersonas);
@@ -34,7 +34,8 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 var persona = db.Database.SqlQuery<Persona>("UPDATE Persona" +
-                    "SET cedula, nombre, primerApellido, segundoApellido, fechaNacimiento, idUbicacion " +
+                    "SET cedula, nombre, primerApellido, segundoApellido, nacionalidad," +
+                    " fechaNacimiento, idUbicacion " +
                     "FROM Persona" +
                     "WHERE cedula = @id");
 
@@ -50,9 +51,9 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Persona>("INSERT INTO Persona" +
-                   "cedula, nombre, primerApellido, segundoApellido, fechaNacimiento, idUbicacion" +
+                   "cedula, nombre, primerApellido, segundoApellido, nacionalidad, fechaNacimiento, idUbicacion" +
                     "VALUES (" + value.cedula + "," + value.nombre + "," + value.primerApellido + "," +
-                    value.segundoApellido + "," + value.fechaNacimiento + "," + value.idUbicacion + ")");
+                    value.segundoApellido + "," + value.nacionalidad + "," + value.fechaNacimiento + "," + value.idUbicacion + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -69,6 +70,7 @@ namespace CoTEC_2020.Controllers
                     ", nombre = " value.nombre +
                     ", primerApellido = " value.primerApellido +
                     ", segundoApellido = " value.segundoApellido +
+                    ", nacionalidad = " value.nacionalidad +
                     ", fechaNacimiento = " value.fechaNacimiento +
                     ", idUbicacion = " value.idUbicacion +
                     "WHERE cedula = " value.cedula);
