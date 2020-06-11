@@ -14,12 +14,13 @@ namespace CoTEC_2020.Controllers
     {
         [HttpGet]
         [Route("api/GetPersonas")]
-        public HttpResponseMessage GetPersonas()
+        public HttpResponseMessage Get()
         {
             using (var db = new CoTECEntities())
             {
                 var listaPersonas = db.Database.SqlQuery<Persona>("SELECT cedula, nombre, " +
-                    "primerApellido, segundoApellido, fechaNacimiento, idUbicacion FROM Persona").ToList();
+                    "primerApellido, segundoApellido, fechaNacimiento, idUbicacion " +
+                    "FROM Persona").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaPersonas);
             }
@@ -27,19 +28,67 @@ namespace CoTEC_2020.Controllers
 
         [HttpGet]
         [Route("api/GetPersona/{id}")]
-        public HttpResponseMessage GetPersonas(int id)
+        public HttpResponseMessage Get(int id)
         {
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                var persona = db.Database.SqlQuery<Persona>("SELECT cedula, nombre, " +
-                    "primerApellido, segundoApellido, fechaNacimiento, idUbicacion " +
+                var persona = db.Database.SqlQuery<Persona>("UPDATE Persona" +
+                    "SET cedula primerApellido, segundoApellido, fechaNacimiento, idUbicacion " +
                     "FROM Persona" +
                     "WHERE cedula = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, persona);
             }
         }
+
+        [HttpPost]
+        [Route("api/PostPersonas")]
+        public HttpResponseMessage Post([FromBody] Persona value)
+        {
+
+            using (var db = new CoTECEntities())
+            {
+                db.Database.SqlQuery<Persona>("INSERT INTO Persona" +
+                   "cedula, nombre, primerApellido, segundoApellido, fechaNacimiento, idUbicacion" +
+                    "VALUES (" + value.cedula + "," + value.nombre + "," + value.primerApellido + "," + 
+                    value.segundoApellido + "," + value.fechaNacimiento + "," + value.idUbicacion + ")" );
+
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+        }
+
+        [HttpPut]
+        [Route("api/PutPersonas")]
+        public HttpResponseMessage Put([FromBody] Persona value)
+        {
+            using (var db = new CoTECEntities())
+            {
+                db.Database.SqlQuery<Persona>("UPDATE Persona" +
+                    "SET cedula = " value.cedula +
+                    ", primerApellido= " value.primerApellido +
+                    ", segundoApellido= " value.segundoApellido +
+                    ", fechaNacimiento= " value.fechaNacimiento +
+                    ", idUbicacion= " value.idUbicacion +
+                    "WHERE cedula = " value.cedula);
+
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/DeletePersonas/{id}")]
+        public HttpResponseMessage Delete(string id)
+        {
+            using (var db = new CoTECEntities())
+            {
+                SqlParameter parametro = new SqlParameter("@id", id);
+                db.Database.SqlQuery<Persona>("DELETE" +
+                    "FROM Persona " +
+                    "WHERE cedula = @id");
+
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
 
 
     }
