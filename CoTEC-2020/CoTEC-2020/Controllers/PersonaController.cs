@@ -34,7 +34,7 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 var persona = db.Database.SqlQuery<Persona>("UPDATE Persona" +
-                    "SET cedula primerApellido, segundoApellido, fechaNacimiento, idUbicacion " +
+                    "SET cedula, nombre, primerApellido, segundoApellido, fechaNacimiento, idUbicacion " +
                     "FROM Persona" +
                     "WHERE cedula = @id");
 
@@ -51,8 +51,8 @@ namespace CoTEC_2020.Controllers
             {
                 db.Database.SqlQuery<Persona>("INSERT INTO Persona" +
                    "cedula, nombre, primerApellido, segundoApellido, fechaNacimiento, idUbicacion" +
-                    "VALUES (" + value.cedula + "," + value.nombre + "," + value.primerApellido + "," + 
-                    value.segundoApellido + "," + value.fechaNacimiento + "," + value.idUbicacion + ")" );
+                    "VALUES (" + value.cedula + "," + value.nombre + "," + value.primerApellido + "," +
+                    value.segundoApellido + "," + value.fechaNacimiento + "," + value.idUbicacion + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -66,10 +66,11 @@ namespace CoTEC_2020.Controllers
             {
                 db.Database.SqlQuery<Persona>("UPDATE Persona" +
                     "SET cedula = " value.cedula +
-                    ", primerApellido= " value.primerApellido +
-                    ", segundoApellido= " value.segundoApellido +
-                    ", fechaNacimiento= " value.fechaNacimiento +
-                    ", idUbicacion= " value.idUbicacion +
+                    ", nombre = " value.nombre +
+                    ", primerApellido = " value.primerApellido +
+                    ", segundoApellido = " value.segundoApellido +
+                    ", fechaNacimiento = " value.fechaNacimiento +
+                    ", idUbicacion = " value.idUbicacion +
                     "WHERE cedula = " value.cedula);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
@@ -91,5 +92,6 @@ namespace CoTEC_2020.Controllers
             }
 
 
+        }
     }
 }
