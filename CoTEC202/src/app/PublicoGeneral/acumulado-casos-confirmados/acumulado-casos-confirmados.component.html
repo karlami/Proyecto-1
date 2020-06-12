@@ -1,0 +1,180 @@
+<app-nav-bar-publico></app-nav-bar-publico>
+<br><br><br><br><br><br>
+
+<div class="container">
+  <h1 style="color:#54CA8F">Acumulado de casos confirmados </h1>
+</div>
+
+<br><br>
+
+<!-- Formulario-->
+<!--
+<div class="container">
+  
+    <div class="starter-template">
+
+      <div class="row">       
+
+        <div class="col-md-12 mt-5">
+      
+        <form #acumuladoForm = "ngForm" (ngSubmit)="onSubmit(acumuladoForm)">
+
+            <div class="form-group">
+                <label for="estado"> Pais</label>
+                <select name="estado"  #Estado="ngModel" [(ngModel)]="paquetee.estado" [ngModelOptions]="{standalone: true}" class="form-control" required>
+                  <option value="">Seleccionar</option>
+                    <option value="En transito">Costa Rica</option>
+                    <option value="En Aduanas">Panama</option>
+                    <option value="Listo para entrega">Guatemala</option>
+                    <option value="En ruta de entrega">Honduras</option>
+                    <option value="En sucursal">El Salvador</option>
+                    <option value="Entregado al cliente">Colombia</option>
+                    <option value="Intento de entrega fallido">Argentina</option>
+                  
+                </select>
+            </div>
+
+        </form>
+
+    </div>
+
+
+</div>
+-->
+
+
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row justify-content-end">
+      <div class="col-lg-11">
+        <div class="row justify-content-end">
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box py-5">
+              <i class="icofont-simple-smile"></i>
+              <span data-toggle="counter-up">65</span>
+              <p>Personas Contagiadas</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box py-5">
+              <i class="icofont-document-folder"></i>
+              <span data-toggle="counter-up">85</span>
+              <p>Personas recuperadas</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box pb-5 pt-0 pt-lg-5">
+              <i class="icofont-clock-time"></i>
+              <span data-toggle="counter-up">12</span>
+              <p>Personas Fallecidas</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box pb-5 pt-0 pt-lg-5">
+              <i class="icofont-award"></i>
+              <span data-toggle="counter-up">15</span>
+              <p>Personas Activas</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box pb-5 pt-0 pt-lg-5">
+              <i class="icofont-clock-time"></i>
+              <span data-toggle="counter-up">12</span>
+              <p>Incremento diario</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<iframe width="600" height="450" frameborder="0" style="border:0"
+src= "https://www.google.com/maps/embed/v1/place?q=<?php echo $_POST['direccion']; ?>&key=MI_API_KEY" allowfullscreen></iframe>
+
+<!--
+<div class="container">
+  
+    <div class="starter-template">
+
+      <div class="row">       
+
+        <div class="col-md-12 mt-5">
+      
+        <form #paqueteForm = "ngForm" (ngSubmit)="onSubmit(paqueteForm)">
+
+              <div class="form-group">
+                <label>Tracking ID</label>
+                <input name="trackingId"  #TrackingId="ngModel" [(ngModel)]="paquetee.trackingId" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+              </div>  
+
+              <div class="form-group">
+                <label>Id Cliente</label>
+                <input name="idCliente"  #IdCliente="ngModel" [(ngModel)]="paquetee.idCliente" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label>Id Producto</label>
+                <input name="idProducto"  #IdProducto="ngModel" [(ngModel)]="paquetee.idProducto" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label>Descripcion del Paquete</label>
+                <input name="descripcion"  #Descripcion="ngModel" [(ngModel)]="paquetee.descripcion" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="fechaEstimada">Fecha Estimada : dd/mm/aaaa </label>
+                <input name="fechaEstimada"  #FechaEstimada="ngModel" [(ngModel)]="paquetee.fechaEstimada" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="estado"> Estado</label>
+                  <select name="estado"  #Estado="ngModel" [(ngModel)]="paquetee.estado" [ngModelOptions]="{standalone: true}" class="form-control" required>
+                    <option value="">Seleccionar</option>
+                      <option value="En transito">En transito</option>
+                      <option value="En Aduanas">En Aduanas</option>
+                      <option value="Listo para entrega">Listo para entrega</option>
+                      <option value="En ruta de entrega">En ruta de entrega</option>
+                      <option value="En sucursal">En sucursal</option>
+                      <option value="Entregado al cliente">Entregado al cliente</option>
+                      <option value="Intento de entrega fallido">Intento de entrega fallido</option>
+                    
+                  </select>
+              </div>
+              
+              <div class = "form-group">
+                <div class = "col-md-4 col-md-offset-3">
+                  <input class = "btn btn-primary" type = "submit" value = "Agregar" />
+                </div>
+              </div>
+            
+                
+
+            </form>
+
+      </div>
+
+
+  </div>
+
+</div>
+
+
+</div>-->
+
+
+
+<br><br><br>
+
+
