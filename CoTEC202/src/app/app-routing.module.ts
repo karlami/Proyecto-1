@@ -17,6 +17,11 @@ import { ReportesComponent } from './CentroHospitalario/reportes/reportes.compon
 import { ReportePacienteEstadoComponent } from './CentroHospitalario/reportes/reporte-paciente-estado/reporte-paciente-estado.component';
 import { ReporteNuevosCasosMuertesComponent } from './CentroHospitalario/reportes/reporte-nuevos-casos-muertes/reporte-nuevos-casos-muertes.component';
 import { WelcomePublicoComponent } from './Miscellanious/welcome-publico/welcome-publico.component';
+import { WelcomeLoginComponent } from './Miscellanious/welcome-login/welcome-login.component';
+import { WelcomeCentroComponent } from './Miscellanious/welcome-centro/welcome-centro.component';
+import { WelcomeAdministradorComponent } from './Miscellanious/welcome-administrador/welcome-administrador.component';
+import { IngresarComponent } from './Login/ingresar/ingresar.component';
+import { RegistrarseComponent } from './Login/registrarse/registrarse.component';
 
 
 const routes: Routes = [
@@ -31,7 +36,7 @@ const routes: Routes = [
 
 { path: 'Administrador', pathMatch: 'prefix',
     children: [
-      { path: 'Inicio', component: WelcomePublicoComponent},
+      { path: 'Inicio', component: WelcomeAdministradorComponent},
       { path: 'GestionRegiones', component: GestionRegionesComponent},
       { path: 'GestionPatologias', component: GestionPatologiasComponent},
       { path: 'GestionEstadoPacientes', component: GestionEstadoPacientesComponent},
@@ -39,19 +44,28 @@ const routes: Routes = [
       { path: 'GestionMedidasSanitarias', component: GestionMedidasSanitariasComponent},
       { path: 'GestionMedidasSanitariasPais', component: GestionMedidasSanitariasPaisComponent},
       { path: 'GestionMedicaciones', component: GestionMedicacionesComponent},
-      { path: '**', component: WelcomePublicoComponent}
+      { path: '**', component: WelcomeAdministradorComponent}
     ]
 },
 
 { path: 'CentroHospitalario', pathMatch: 'prefix',
     children: [
-      { path: 'Inicio', component: WelcomePublicoComponent},
+      { path: 'Inicio', component: WelcomeCentroComponent},
       { path: 'GestionPacientes', component: GestionPacientesComponent},
       { path: 'GestionContactosPaciente', component: GestionContactosPacienteComponent},
       { path: 'Reportes', component: ReportesComponent},
       { path: 'Reportes/ReportePacienteEstado', component: ReportePacienteEstadoComponent},
       { path: 'Reportes/ReporteNuevosCasosMuertes', component: ReporteNuevosCasosMuertesComponent},
-      { path: '**', component: WelcomePublicoComponent}
+      { path: '**', component: WelcomeCentroComponent}
+    ]
+},
+
+{ path: 'CoTEC2020', pathMatch: 'prefix',
+    children: [
+      { path: 'Login', component: WelcomeLoginComponent},
+      { path: 'Ingresar', component: IngresarComponent},
+      { path: 'Registrarse', component: RegistrarseComponent},
+      { path: '**', component: WelcomeLoginComponent}
     ]
 }
 ];
