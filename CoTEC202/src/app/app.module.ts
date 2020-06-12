@@ -22,6 +22,12 @@ import { RegistrarseComponent } from './Login/registrarse/registrarse.component'
 import { IngresarComponent } from './Login/ingresar/ingresar.component';
 import { NavBarPublicoComponent } from './Miscellanious/nav-bar-publico/nav-bar-publico.component';
 import { WelcomePublicoComponent } from './Miscellanious/welcome-publico/welcome-publico.component';
+import { NavBarAdministradorComponent } from './Miscellanious/nav-bar-administrador/nav-bar-administrador.component';
+import { NavBarCentroComponent } from './Miscellanious/nav-bar-centro/nav-bar-centro.component';
+import { NavBarLoginComponent } from './Miscellanious/nav-bar-login/nav-bar-login.component';
+import { WelcomeAdministradorComponent } from './Miscellanious/welcome-administrador/welcome-administrador.component';
+import { WelcomeCentroComponent } from './Miscellanious/welcome-centro/welcome-centro.component';
+import { WelcomeLoginComponent } from './Miscellanious/welcome-login/welcome-login.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +49,13 @@ import { WelcomePublicoComponent } from './Miscellanious/welcome-publico/welcome
     RegistrarseComponent,
     IngresarComponent,
     NavBarPublicoComponent,
-    WelcomePublicoComponent
+    WelcomePublicoComponent,
+    NavBarAdministradorComponent,
+    NavBarCentroComponent,
+    NavBarLoginComponent,
+    WelcomeAdministradorComponent,
+    WelcomeCentroComponent,
+    WelcomeLoginComponent
   ],
   imports: [
     BrowserModule,
