@@ -66,7 +66,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Paciente>("UPDATE Paciente" +
-                    "SET idPaciente = " value.cedula +
+                    "SET idPaciente = " value.idPaciente +
                     ", estado= " value.estado +
                     ", internado= " value.internado +
                     ", uci= " value.uci +

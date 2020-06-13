@@ -19,7 +19,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 var listaContactos = db.Database.SqlQuery<Contacto>("SELECT idContacto, correo, " +
-                    "idPaciente, idContacto " +
+                    "idPaciente, cedula " +
                     "FROM Contacto").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaContactos);
@@ -34,7 +34,7 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 var contacto = db.Database.SqlQuery<Contacto>("UPDATE Contacto" +
-                    "SET idContacto, correo, idPaciente, idContacto" +
+                    "SET idContacto, correo, idPaciente, cedula" +
                     "FROM Contacto" +
                     "WHERE idContacto = @id");
 
