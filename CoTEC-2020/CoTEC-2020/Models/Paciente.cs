@@ -14,23 +14,14 @@ namespace CoTEC_2020.Models
     
     public partial class Paciente
     {
-        public Paciente()
-        {
-            this.Contactoes = new HashSet<Contacto>();
-            this.Paciente_Medicamento = new HashSet<Paciente_Medicamento>();
-        }
+
+        public int idPaciente { get; set; }
+        public string estado { get; set; }
+        public string internado { get; set; }
+        public string uci { get; set; }
+        public System.DateTime fechaIngreso { get; set; }
+        public int idCentroHospitalario { get; set; }
+        public string cedula { get; set; }
     
-        public int Id_Paciente { get; set; }
-        public string Estado { get; set; }
-        public string Internado { get; set; }
-        public string UCI { get; set; }
-        public Nullable<System.DateTime> Fecha_Ingreso { get; set; }
-        public int Id_Centro_Hospitalario { get; set; }
-        public string Cedula { get; set; }
-    
-        public virtual Centro_Hospitalario Centro_Hospitalario { get; set; }
-        public virtual ICollection<Contacto> Contactoes { get; set; }
-        public virtual ICollection<Paciente_Medicamento> Paciente_Medicamento { get; set; }
-        public virtual Persona Persona { get; set; }
     }
 }

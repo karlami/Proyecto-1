@@ -64,11 +64,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Contacto>("UPDATE Contacto" +
-                    "SET idContacto = " value.idContacto +
-                    ", correo = " value.correo +
-                    ", idPaciente = " value.idPaciente +
-                    ", cedula = " value.cedula +
-                    "WHERE idContacto = " value.idContacto);
+                    "SET idContacto = " + value.idContacto +
+                    ", correo = " + value.correo +
+                    ", idPaciente = " + value.idPaciente +
+                    ", cedula = " + value.cedula +
+                    "WHERE idContacto = " + value.idContacto);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }

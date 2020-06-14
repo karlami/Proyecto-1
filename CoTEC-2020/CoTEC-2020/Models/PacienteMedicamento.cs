@@ -12,13 +12,11 @@ namespace CoTEC_2020.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ubicacion_Medida_Sanitaria
+    public partial class PacienteMedicamento
     {
-        public int Id_Ubicacion_Medida_Sanitaria { get; set; }
-        public int Id_Ubicacion { get; set; }
-        public int Id_Medida_Sanitaria { get; set; }
+        public int idPacienteMedicamento { get; set; }
+        public int idMedicamento { get; set; }
+        public int idPaciente { get; set; }
     
-        public virtual Medida_Sanitaria Medida_Sanitaria { get; set; }
-        public virtual Ubicacion Ubicacion { get; set; }
     }
 }

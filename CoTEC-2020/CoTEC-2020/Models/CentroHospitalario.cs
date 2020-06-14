@@ -12,12 +12,15 @@ namespace CoTEC_2020.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Contacto
+    public partial class CentroHospitalario
     {
-        public int idContacto { get; set; }
-        public string correo { get; set; }
-        public int idPaciente { get; set; }
-        public string cedula { get; set; }
+        public int idCentroHospitalario { get; set; }
+        public string nombre { get; set; }
+        public int capacidad { get; set; }
+        public int capacidadUci { get; set; }
+        public string director { get; set; }
+        public string contacto { get; set; }
+        public int idUbicacion { get; set; }
     
     }
 }

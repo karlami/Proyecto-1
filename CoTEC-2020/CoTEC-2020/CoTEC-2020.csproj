@@ -173,7 +173,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Centro_Hospitalario.cs">
+    <Compile Include="Models\CentroHospitalario.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Contacto.cs">
@@ -182,7 +182,7 @@
     <Compile Include="Models\Medicamento.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Medida_Sanitaria.cs">
+    <Compile Include="Models\MedidaSanitaria.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model.Context.cs">
@@ -203,7 +203,7 @@
     <Compile Include="Models\Paciente.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Paciente_Medicamento.cs">
+    <Compile Include="Models\PacienteMedicamento.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Patologia.cs">
@@ -212,13 +212,13 @@
     <Compile Include="Models\Persona.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Persona_Patologia.cs">
+    <Compile Include="Models\PersonaPatologia.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ubicacion.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ubicacion_Medida_Sanitaria.cs">
+    <Compile Include="Models\UbicacionMedidaSanitaria.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -234,8 +234,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

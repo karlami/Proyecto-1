@@ -64,11 +64,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Ubicacion>("UPDATE Ubicacion" +
-                    "SET idUbicacion = " value.idUbicacion +
-                    ", continente = " value.continente +
-                    ", pais = " value.pais +
-                    ", region = " value.region +
-                    "WHERE idUbicacion = " value.idUbicacion);
+                    "SET idUbicacion = " + value.idUbicacion +
+                    ", continente = " + value.continente +
+                    ", pais = " + value.pais +
+                    ", region = " + value.region +
+                    "WHERE idUbicacion = " + value.idUbicacion);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }

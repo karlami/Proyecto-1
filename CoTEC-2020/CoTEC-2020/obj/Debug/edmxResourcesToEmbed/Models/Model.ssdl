@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CentroHospitalario">
+    <Key>
+      <PropertyRef Name="idCentroHospitalario" />
+    </Key>
+    <Property Name="idCentroHospitalario" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="capacidad" Type="int" Nullable="false" />
+    <Property Name="capacidadUci" Type="int" Nullable="false" />
+    <Property Name="director" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="contacto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idUbicacion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contacto">
+    <Key>
+      <PropertyRef Name="idContacto" />
+    </Key>
+    <Property Name="idContacto" Type="int" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="idPaciente" Type="int" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Medicamento">
+    <Key>
+      <PropertyRef Name="idMedicamento" />
+    </Key>
+    <Property Name="idMedicamento" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="casaFarmaceutica" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MedidaSanitaria">
+    <Key>
+      <PropertyRef Name="idMedidaSanitaria" />
+    </Key>
+    <Property Name="idMedidaSanitaria" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fechaInicio" Type="date" Nullable="false" />
+    <Property Name="fechaFinal" Type="date" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="idPaciente" />
+    </Key>
+    <Property Name="idPaciente" Type="int" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="internado" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="uci" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="fechaIngreso" Type="date" Nullable="false" />
+    <Property Name="idCentroHospitalario" Type="int" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PacienteMedicamento">
+    <Key>
+      <PropertyRef Name="idPacienteMedicamento" />
+    </Key>
+    <Property Name="idPacienteMedicamento" Type="int" Nullable="false" />
+    <Property Name="idMedicamento" Type="int" Nullable="false" />
+    <Property Name="idPaciente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patologia">
+    <Key>
+      <PropertyRef Name="idPatologia" />
+    </Key>
+    <Property Name="idPatologia" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="sintomas" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="tratamiento" Type="varchar" MaxLength="300" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="cedula" />
+    </Key>
+    <Property Name="cedula" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="primerApellido" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="segundoApellido" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="nacionalidad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="idUbicacion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonaPatologia">
+    <Key>
+      <PropertyRef Name="idPersonaPatologia" />
+    </Key>
+    <Property Name="idPersonaPatologia" Type="int" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="idPatologia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ubicacion">
+    <Key>
+      <PropertyRef Name="idUbicacion" />
+    </Key>
+    <Property Name="idUbicacion" Type="int" Nullable="false" />
+    <Property Name="continente" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="pais" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="region" Type="varchar" MaxLength="75" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UbicacionMedidaSanitaria">
+    <Key>
+      <PropertyRef Name="idUbicacionMedidaSanitaria" />
+    </Key>
+    <Property Name="idUbicacionMedidaSanitaria" Type="int" Nullable="false" />
+    <Property Name="idUbicacion" Type="int" Nullable="false" />
+    <Property Name="idMedidaSanitaria" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__CentroHos__idUbi__2F10007B">
+    <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+    <End Role="CentroHospitalario" Type="Self.CentroHospitalario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ubicacion">
+        <PropertyRef Name="idUbicacion" />
+      </Principal>
+      <Dependent Role="CentroHospitalario">
+        <PropertyRef Name="idUbicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Contacto__cedula__31EC6D26">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="cedula" />
+      </Principal>
+      <Dependent Role="Contacto">
+        <PropertyRef Name="cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Paciente__cedula__35BCFE0A">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="cedula" />
+      </Principal>
+      <Dependent Role="Paciente">
+        <PropertyRef Name="cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Paciente__idCent__34C8D9D1">
+    <End Role="CentroHospitalario" Type="Self.CentroHospitalario" Multiplicity="1" />
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CentroHospitalario">
+        <PropertyRef Name="idCentroHospitalario" />
+      </Principal>
+      <Dependent Role="Paciente">
+        <PropertyRef Name="idCentroHospitalario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PacienteM__idMed__3C69FB99">
+    <End Role="Medicamento" Type="Self.Medicamento" Multiplicity="1" />
+    <End Role="PacienteMedicamento" Type="Self.PacienteMedicamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicamento">
+        <PropertyRef Name="idMedicamento" />
+      </Principal>
+      <Dependent Role="PacienteMedicamento">
+        <PropertyRef Name="idMedicamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PacienteM__idPac__3D5E1FD2">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="PacienteMedicamento" Type="Self.PacienteMedicamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="idPaciente" />
+      </Principal>
+      <Dependent Role="PacienteMedicamento">
+        <PropertyRef Name="idPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Persona__idUbica__2C3393D0">
+    <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ubicacion">
+        <PropertyRef Name="idUbicacion" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="idUbicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PersonaPa__cedul__38996AB5">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="PersonaPatologia" Type="Self.PersonaPatologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="cedula" />
+      </Principal>
+      <Dependent Role="PersonaPatologia">
+        <PropertyRef Name="cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PersonaPa__idPat__398D8EEE">
+    <End Role="Patologia" Type="Self.Patologia" Multiplicity="1" />
+    <End Role="PersonaPatologia" Type="Self.PersonaPatologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patologia">
+        <PropertyRef Name="idPatologia" />
+      </Principal>
+      <Dependent Role="PersonaPatologia">
+        <PropertyRef Name="idPatologia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ubicacion__idMed__412EB0B6">
+    <End Role="MedidaSanitaria" Type="Self.MedidaSanitaria" Multiplicity="1" />
+    <End Role="UbicacionMedidaSanitaria" Type="Self.UbicacionMedidaSanitaria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedidaSanitaria">
+        <PropertyRef Name="idMedidaSanitaria" />
+      </Principal>
+      <Dependent Role="UbicacionMedidaSanitaria">
+        <PropertyRef Name="idMedidaSanitaria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ubicacion__idUbi__403A8C7D">
+    <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+    <End Role="UbicacionMedidaSanitaria" Type="Self.UbicacionMedidaSanitaria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ubicacion">
+        <PropertyRef Name="idUbicacion" />
+      </Principal>
+      <Dependent Role="UbicacionMedidaSanitaria">
+        <PropertyRef Name="idUbicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="CentroHospitalario" EntityType="Self.CentroHospitalario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medicamento" EntityType="Self.Medicamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MedidaSanitaria" EntityType="Self.MedidaSanitaria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PacienteMedicamento" EntityType="Self.PacienteMedicamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patologia" EntityType="Self.Patologia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonaPatologia" EntityType="Self.PersonaPatologia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UbicacionMedidaSanitaria" EntityType="Self.UbicacionMedidaSanitaria" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CentroHos__idUbi__2F10007B" Association="Self.FK__CentroHos__idUbi__2F10007B">
+      <End Role="Ubicacion" EntitySet="Ubicacion" />
+      <End Role="CentroHospitalario" EntitySet="CentroHospitalario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Contacto__cedula__31EC6D26" Association="Self.FK__Contacto__cedula__31EC6D26">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Contacto" EntitySet="Contacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Paciente__cedula__35BCFE0A" Association="Self.FK__Paciente__cedula__35BCFE0A">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Paciente" EntitySet="Paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Paciente__idCent__34C8D9D1" Association="Self.FK__Paciente__idCent__34C8D9D1">
+      <End Role="CentroHospitalario" EntitySet="CentroHospitalario" />
+      <End Role="Paciente" EntitySet="Paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PacienteM__idMed__3C69FB99" Association="Self.FK__PacienteM__idMed__3C69FB99">
+      <End Role="Medicamento" EntitySet="Medicamento" />
+      <End Role="PacienteMedicamento" EntitySet="PacienteMedicamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PacienteM__idPac__3D5E1FD2" Association="Self.FK__PacienteM__idPac__3D5E1FD2">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="PacienteMedicamento" EntitySet="PacienteMedicamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Persona__idUbica__2C3393D0" Association="Self.FK__Persona__idUbica__2C3393D0">
+      <End Role="Ubicacion" EntitySet="Ubicacion" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PersonaPa__cedul__38996AB5" Association="Self.FK__PersonaPa__cedul__38996AB5">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="PersonaPatologia" EntitySet="PersonaPatologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PersonaPa__idPat__398D8EEE" Association="Self.FK__PersonaPa__idPat__398D8EEE">
+      <End Role="Patologia" EntitySet="Patologia" />
+      <End Role="PersonaPatologia" EntitySet="PersonaPatologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ubicacion__idMed__412EB0B6" Association="Self.FK__Ubicacion__idMed__412EB0B6">
+      <End Role="MedidaSanitaria" EntitySet="MedidaSanitaria" />
+      <End Role="UbicacionMedidaSanitaria" EntitySet="UbicacionMedidaSanitaria" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ubicacion__idUbi__403A8C7D" Association="Self.FK__Ubicacion__idUbi__403A8C7D">
+      <End Role="Ubicacion" EntitySet="Ubicacion" />
+      <End Role="UbicacionMedidaSanitaria" EntitySet="UbicacionMedidaSanitaria" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

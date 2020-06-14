@@ -25,16 +25,16 @@ namespace CoTEC_2020.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Centro_Hospitalario> Centro_Hospitalario { get; set; }
+        public DbSet<CentroHospitalario> CentroHospitalarios { get; set; }
         public DbSet<Contacto> Contactoes { get; set; }
         public DbSet<Medicamento> Medicamentoes { get; set; }
-        public DbSet<Medida_Sanitaria> Medida_Sanitaria { get; set; }
+        public DbSet<MedidaSanitaria> MedidaSanitarias { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
-        public DbSet<Paciente_Medicamento> Paciente_Medicamento { get; set; }
+        public DbSet<PacienteMedicamento> PacienteMedicamentoes { get; set; }
         public DbSet<Patologia> Patologias { get; set; }
         public DbSet<Persona> Personas { get; set; }
-        public DbSet<Persona_Patologia> Persona_Patologia { get; set; }
+        public DbSet<PersonaPatologia> PersonaPatologias { get; set; }
         public DbSet<Ubicacion> Ubicacions { get; set; }
-        public DbSet<Ubicacion_Medida_Sanitaria> Ubicacion_Medida_Sanitaria { get; set; }
+        public DbSet<UbicacionMedidaSanitaria> UbicacionMedidaSanitarias { get; set; }
     }
 }

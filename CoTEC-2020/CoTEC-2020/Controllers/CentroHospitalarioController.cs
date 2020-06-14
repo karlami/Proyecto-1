@@ -66,14 +66,14 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<CentroHospitalario>("UPDATE CentroHospitalario" +
-                    "SET idCentroHospitalario = " value.idCentroHospitalario +
-                    ", nombre= " value.nombre +
-                    ", capacidad= " value.capacidad +
-                    ", capacidadUci= " value.capacidadUci +
-                    ", director= " value.director +
-                    ", contacto= " value.contacto +
-                    ", idUbicacion= " value.idUbicacion +
-                    "WHERE idCentroHospitalario = " value.idCentroHospitalario);
+                    "SET idCentroHospitalario = " + value.idCentroHospitalario +
+                    ", nombre= " + value.nombre +
+                    ", capacidad= " + value.capacidad +
+                    ", capacidadUci= " + value.capacidadUci +
+                    ", director= " + value.director +
+                    ", contacto= " + value.contacto +
+                    ", idUbicacion= " + value.idUbicacion +
+                    "WHERE idCentroHospitalario = " + value.idCentroHospitalario);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }

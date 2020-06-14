@@ -4,30 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dcea5e1c9aca4345a504f05b06547226" Name="Diagram1" ZoomLevel="62">
-        <EntityTypeShape EntityType="CoTECModel.Centro_Hospitalario" Width="1.5" PointX="2.875" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Contacto" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Medicamento" Width="1.5" PointX="6.625" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Medida_Sanitaria" Width="1.5" PointX="2.625" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Paciente" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Paciente_Medicamento" Width="1.5" PointX="8.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Patologia" Width="1.5" PointX="10.375" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Persona" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Persona_Patologia" Width="1.5" PointX="6" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Ubicacion" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoTECModel.Ubicacion_Medida_Sanitaria" Width="1.5" PointX="4.75" PointY="4.875" IsExpanded="true" />
-        <AssociationConnector Association="CoTECModel.FK_Centro_Hospitalario_Ubicacion" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Paciente_Centro_Hospitalario" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Contacto_Paciente" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Contacto_Persona" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Medicamento_Paciente_Medicamento" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Ubicacion_Medida_Sanitaria_Medida_Sanitaria" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Medicamento_Paciente_Paciente" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Paciente_Persona" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Persona_Patologia_Patologia" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Persona_Patologia_Persona" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Persona_Ubicacion" ManuallyRouted="false" />
-        <AssociationConnector Association="CoTECModel.FK_Ubicacion_Medida_Sanitaria_Ubicacion" ManuallyRouted="false" />
+      <Diagram DiagramId="a4cf17abb76a41bd8b00d5ce667f81fe" Name="Diagram1" ZoomLevel="42">
+        <EntityTypeShape EntityType="Model.CentroHospitalario" Width="1.5" PointX="5.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Contacto" Width="1.5" PointX="5.375" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Medicamento" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MedidaSanitaria" Width="1.5" PointX="9.625" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Paciente" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PacienteMedicamento" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Patologia" Width="1.5" PointX="9.625" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Persona" Width="1.5" PointX="2.875" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PersonaPatologia" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Ubicacion" Width="1.5" PointX="2.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UbicacionMedidaSanitaria" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__CentroHos__idUbi__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Paciente__idCent__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Contacto__cedula__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PacienteM__idMed__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Ubicacion__idMed__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Paciente__cedula__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PacienteM__idPac__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PersonaPa__idPat__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Persona__idUbica__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PersonaPa__cedul__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Ubicacion__idUbi__403A8C7D" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
