@@ -32,11 +32,12 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                SqlParameter parametro = new SqlParameter("@id", id);
-                var contacto = db.Database.SqlQuery<Medicamento>("UPDATE Medicamento" +
-                    "SET idMedicamento, nombre, descripcion, casaFarmaceutica" +
-                    "FROM Medicamento" +
-                    "WHERE idMedicamento = @id");
+                //SqlParameter parametro = new SqlParameter("@id", id);
+                var contacto = db.Database.SqlQuery<Medicamento>("SELECT idMedicamento, nombre, descripcion," +
+                    " casaFarmaceutica " +
+                    "FROM Medicamento " +
+                    "WHERE idMedicamento = " + id).FirstOrDefault();
+
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, contacto);
             }
