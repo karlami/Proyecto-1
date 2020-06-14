@@ -1,9 +1,9 @@
 export class Paciente {
     cedula: number;
-    fechaNacimiento: Date;
-    direccion: string;
-    medicacion: number;
-    patologia: string[];
+    edad: number;
+    region: string;
+    medicacion: number[];
+    patologias: string[];
     nacionalidad: string;
     nombre: string;
     primerApellido: string;

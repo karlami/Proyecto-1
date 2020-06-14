@@ -4,7 +4,8 @@ export class CentroHospitalario {
     director: string;
     capacidad: number;
     nombre: string;
-    ubicacion: string;
+    region: string;
+    pais: string;
     capacidadUCI: number;
 
 }

@@ -1,9 +1,8 @@
 export class Contacto {
     cedula: number;
-    fechaNacimiento: Date;
-    direccion: string;
-    medicacion: number;
-    patologia: string[];
+    edad: number;
+    region: string;
+    patologias: string[];
     nacionalidad: string;
     nombre: string;
     primerApellido: string;
