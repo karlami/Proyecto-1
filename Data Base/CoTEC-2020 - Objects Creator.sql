@@ -118,9 +118,9 @@ CREATE TABLE Paciente(
 GO
 
 
-/****** Object:  Table EstadoPaciente ******/
-CREATE TABLE EstadoPaciente(
-	idEstadoPaciente					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+/****** Object:  Table PacienteEstado ******/
+CREATE TABLE PacienteEstado(
+	idPacienteEstado					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idPaciente							INT										NOT NULL,
 	estado								VARCHAR(30)								NOT NULL,
 	FOREIGN KEY(idPaciente)				REFERENCES Paciente(idPaciente),
