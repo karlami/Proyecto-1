@@ -1,4 +1,4 @@
-package com.example.cotechospitalario.ui.slideshow;
+package com.example.cotechospitalario.ui.Gestion_Pacientes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.cotechospitalario.R;
 
-public class SlideshowFragment extends Fragment {
+public class GestionPacientesFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private GestionPacientesViewModel gestionPacientesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        gestionPacientesViewModel =
+                ViewModelProviders.of(this).get(GestionPacientesViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_gestion_pacientes, container, false);
+        final TextView textView = root.findViewById(R.id.text_home);
+        gestionPacientesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
