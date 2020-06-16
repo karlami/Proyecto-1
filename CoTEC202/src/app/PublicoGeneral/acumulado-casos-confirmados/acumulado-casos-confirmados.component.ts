@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MouseEvent, MapsAPILoader } from '@agm/core';
+import { ViewChild, ElementRef, NgZone, } from '@angular/core';
 
 @Component({
   selector: 'app-acumulado-casos-confirmados',
@@ -7,7 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcumuladoCasosConfirmadosComponent implements OnInit {
 
-  constructor() { }
+  latitude: number;
+  longitude: number;
+  locationChosen = false;
+  public fillInAddress: '';
+  public f_addr: string;
+  public provincia: string;
+  public canton: string;
+  public distrito: string;
+  public postCode: string;
+  public calle: string;
+  public state: string;
+
+  constructor(public mapsAPILoader: MapsAPILoader, public ngZone: NgZone) { }
+
+  onChoseLocation(event) {
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+    this.locationChosen = true;
+    console.log('latitude :' + this.latitude);
+    console.log('longitude :' + this.longitude);
+  }
 
   ngOnInit(): void {
   }
