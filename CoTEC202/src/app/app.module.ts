@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -69,10 +69,13 @@ import { WelcomeLoginComponent } from './Miscellanious/welcome-login/welcome-log
     HttpClientModule,
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCw10LwBHdJs05w-18z9Vb2kFIW__Mhf9Q'
+      apiKey: 'AIzaSyCw10LwBHdJs05w-18z9Vb2kFIW__Mhf9Q',
+      libraries: ['places']
     })
   ],
-  providers: [],
+  providers: [
+    GoogleMapsAPIWrapper
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

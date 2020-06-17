@@ -99,9 +99,25 @@
 </section>
 
 
-  <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)='onChoseLocation($event)'>
-    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-  </agm-map>
+<agm-map [latitude]="latitude" [longitude]="longitude" [disableDefaultUI]="true" (mapReady)='setCurrentPosition()'>
+  <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="drag" (dragEnd)='markerDragEnd($event)'></agm-marker>
+</agm-map>
+
+
+<div class="container-fluid">
+  <div class='row'>
+    <div class="form-group">
+ 
+    <div class="form-group">
+      <label class='col-sm-2'>País</label>
+      <input class="form-control mr-sm-4" placeholder="{{pais}}" class="form-control" width="784px" disabled="true">
+    </div>
+ 
+  </div>
+</div>
+
+
+
 <!--
 <div class="container">
   
