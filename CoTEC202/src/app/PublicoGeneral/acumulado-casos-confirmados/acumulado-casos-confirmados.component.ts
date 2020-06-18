@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { GoogleMapsAPIWrapper, MapsAPILoader, AgmMap, MouseEvent } from '@agm/core';
 import { ViewChild, ElementRef, NgZone, } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 declare let google: any;
+
+interface Location {
+  lat: number; 
+  lng: number;
+}
 
 
 @Component({
@@ -12,9 +19,15 @@ declare let google: any;
 })
 export class AcumuladoCasosConfirmadosComponent implements OnInit {
 
+  address = 'Steinsel, Luxembourg, Europe';
+  location: Location;
+  loading: boolean;
+
   locationChosen = false;
   public latitude: number;
   public longitude: number;
+  public lat: number;
+  public lng: number;
 
   geocoder:any;
   zoom: 5
@@ -33,13 +46,58 @@ export class AcumuladoCasosConfirmadosComponent implements OnInit {
 
   constructor(public mapsApiLoader: MapsAPILoader,
               private zone: NgZone,
-              private wrapper: GoogleMapsAPIWrapper) {
+              private wrapper: GoogleMapsAPIWrapper,
+              private ref: ChangeDetectorRef) {
     this.mapsApiLoader = mapsApiLoader;
     this.zone = zone;
     this.wrapper = wrapper;
     this.mapsApiLoader.load().then(() => {
       this.geocoder = new google.maps.Geocoder();
   });
+}
+
+getLocation(): Observable<any> {
+  console.log('Getting address: ', this.address);
+  let geocoder = new google.maps.Geocoder();
+  console.log(1)
+  return Observable.create(observer => {
+      geocoder.geocode({
+          'address': this.address
+      }, (results, status) => {
+        console.log(2)
+          if (status == google.maps.GeocoderStatus.OK) {
+            console.log(3)
+              observer.next(results[0].geometry.location);
+              console.log(4)
+              console.log(results.latitude)
+              console.log(results.longitude)
+              observer.complete();
+          } else {
+              console.log('Error: ', results, ' & Status: ', status);
+              observer.error();
+          }
+      });
+  });
+}
+
+updateMapPosition(){
+  var geocoder = new google.maps.Geocoder(); //crashes here !!
+  console.log(1)
+  geocoder.geocode({'address': this.address}, (results, status) => {
+    console.log(2)
+    if (status == google.maps.GeocoderStatus.OK) {
+      if (results[0] != null) {
+          console.log(3)
+          this.lat = results[0].geometry.location.lat();
+          this.lng = results[0].geometry.location.lng();
+            console.log(5)
+              }
+              else{
+                  alert("hop")
+              }
+          }
+      }
+  )
 }
 
 public setCurrentPosition() {
