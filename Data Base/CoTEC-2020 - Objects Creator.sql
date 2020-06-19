@@ -35,10 +35,19 @@ GO
 CREATE TABLE MedidaSanitaria(
 	idMedidaSanitaria			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre						VARCHAR(100)							NOT NULL,
-	descripcion					VARCHAR(300)							NOT NULL,
+	descripcion					VARCHAR(500)							NOT NULL,
 	estado						VARCHAR(20)								NOT NULL,
 	fechaInicio					DATE									NOT NULL,
 	fechaFinal					DATE									NULL,
+)
+GO
+
+
+/****** Object:  Table MedidaContencion ******/
+CREATE TABLE MedidaContencion(
+	idMedidaContencion			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	medida						VARCHAR(500)							NOT NULL,
+	fechaInicio					DATE									NOT NULL,
 )
 GO
 
@@ -47,9 +56,9 @@ GO
 CREATE TABLE Patologia(
 	idPatologia					INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre						VARCHAR(100)							NOT NULL,
-	descripcion					VARCHAR(300)							NOT NULL,
-	sintomas					VARCHAR(300)							NOT NULL,
-	tratamiento					VARCHAR(300)							NOT NULL,
+	descripcion					VARCHAR(500)							NOT NULL,
+	sintomas					VARCHAR(500)							NOT NULL,
+	tratamiento					VARCHAR(500)							NOT NULL,
 )
 GO
 
@@ -58,7 +67,7 @@ GO
 CREATE TABLE Medicamento(
 	idMedicamento				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre						VARCHAR(100)							NOT NULL,
-	descripcion					VARCHAR(300)							NOT NULL,
+	descripcion					VARCHAR(500)							NOT NULL,
 	casaFarmaceutica			VARCHAR(100)							NOT NULL,
 )
 GO
@@ -146,6 +155,17 @@ CREATE TABLE PacienteMedicamento(
 	idPaciente					INT										NOT NULL,
 	FOREIGN KEY(idMedicamento)						REFERENCES Medicamento(idMedicamento),
 	FOREIGN KEY(idPaciente)							REFERENCES Paciente(idPaciente)
+)
+GO
+
+
+/****** Object:  Table UbicacionMedidaContencion ******/
+CREATE TABLE UbicacionMedidaContencion(
+	idUbicacionMedidaContencion	INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idUbicacion					INT										NOT NULL,
+	idMedidaContencion			INT										NOT NULL,
+	FOREIGN KEY(idUbicacion)						REFERENCES Ubicacion(idUbicacion),
+	FOREIGN KEY(idMedidaContencion)					REFERENCES MedidaContencion(idMedidaContencion)
 )
 GO
 

@@ -96,10 +96,10 @@ Obtiene la ubicacion completa al ingresar el idUbicacion con el formato: [Región
 param: idUbicacion INT
 return: Ubicación concatenada
 */
-CREATE FUNCTION getUbicacionCompleta(@idUbicacion INT) RETURNS VARCHAR(60)
+CREATE FUNCTION getUbicacionCompleta(@idUbicacion INT) RETURNS VARCHAR(225)
 AS
 BEGIN
-	DECLARE @UbicacionCompleta VARCHAR(50)
+	DECLARE @UbicacionCompleta VARCHAR(225)
 	SET @UbicacionCompleta=CONCAT((SELECT Ubicacion.Region FROM Ubicacion 
 		WHERE @idUbicacion=Ubicacion.idUbicacion),', ',(SELECT Ubicacion.Pais FROM Ubicacion 
 		WHERE @idUbicacion=Ubicacion.idUbicacion),', ',(SELECT Ubicacion.Continente FROM Ubicacion 
@@ -114,14 +114,60 @@ Obtiene solo la Región y el País al ingresar el idUbicacion con el formato: [Reg
 param: idUbicacion INT
 return: región y país concatenados
 */
-CREATE FUNCTION getRegionPais(@idUbicacion INT) RETURNS VARCHAR(50)
+CREATE FUNCTION getRegionPais(@idUbicacion INT) RETURNS VARCHAR(150)
 AS
 BEGIN
-	DECLARE @RegionPais VARCHAR(50)
+	DECLARE @RegionPais VARCHAR(150)
 	SET @RegionPais=CONCAT((SELECT Ubicacion.Region FROM Ubicacion 
 		WHERE @idUbicacion=Ubicacion.idUbicacion),', ',(SELECT Ubicacion.Pais FROM Ubicacion 
 		WHERE @idUbicacion=Ubicacion.idUbicacion))
 	RETURN @RegionPais
+END
+GO
+
+
+/*
+Funcion que le ingreso la region y devuelve el id de la ubicacion
+*/
+CREATE FUNCTION getIdUbicacion(@region VARCHAR(75)) RETURNS INT
+AS
+BEGIN
+	DECLARE @IdUbicacion INT
+	SET @IdUbicacion=(SELECT Ubicacion.idUbicacion FROM Ubicacion 
+		WHERE @region=Ubicacion.region)
+	RETURN @IdUbicacion
+END
+GO
+
+
+/*
+Funcion que le ingreso la patologia y devuelve el id de la patologia
+param: nombre de la patologia VARCHAR(100)
+return: idPatologia
+*/
+CREATE FUNCTION getIdPatologia(@nombre VARCHAR(100)) RETURNS INT
+AS
+BEGIN
+	DECLARE @IdPatologia INT
+	SET @IdPatologia=(SELECT Patologia.idPatologia FROM Patologia 
+		WHERE @nombre=Patologia.nombre)
+	RETURN @IdPatologia
+END
+GO
+
+
+/*
+Funcion que le ingreso la medicacion y devuelve el id de la patologia
+param: nombre del medicamento VARCHAR(100)
+return: idMedicamento
+*/
+CREATE FUNCTION getIdMedicamento(@nombre VARCHAR(100)) RETURNS INT
+AS
+BEGIN
+	DECLARE @IdMedicamento INT
+	SET @IdMedicamento=(SELECT Medicamento.idMedicamento FROM Medicamento 
+		WHERE @nombre=Medicamento.nombre)
+	RETURN @IdMedicamento
 END
 GO
 
