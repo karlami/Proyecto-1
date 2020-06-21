@@ -34,9 +34,9 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 var contacto = db.Database.SqlQuery<Contacto>("UPDATE Contacto" +
-                    "SET idContacto, correo, idPaciente, cedula" +
-                    "FROM Contacto" +
-                    "WHERE idContacto = @id");
+                    " SET idContacto, correo, idPaciente, cedula" +
+                    " FROM Contacto" +
+                    " WHERE idContacto = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, contacto);
             }
@@ -49,9 +49,9 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<Contacto>("INSERT INTO Contacto" +
-                   "idContacto, correo, idPaciente, cedula" +
-                    "VALUES (" + value.idContacto + "," + value.correo + "," + value.idPaciente + "," + value.cedula + ")");
+                db.Database.SqlQuery<Contacto>("INSERT INTO Contacto " +
+                   "(correo, idPaciente, cedula)" +
+                    " VALUES (" + value.correo + "," + value.idPaciente + "," + value.cedula + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -64,11 +64,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Contacto>("UPDATE Contacto" +
-                    "SET idContacto = " + value.idContacto +
+                    " SET idContacto = " + value.idContacto +
                     ", correo = " + value.correo +
                     ", idPaciente = " + value.idPaciente +
                     ", cedula = " + value.cedula +
-                    "WHERE idContacto = " + value.idContacto);
+                    " WHERE idContacto = " + value.idContacto);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -82,8 +82,8 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 db.Database.SqlQuery<Contacto>("DELETE" +
-                    "FROM Contacto " +
-                    "WHERE idContacto = @id");
+                    " FROM Contacto " +
+                    " WHERE idContacto = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }

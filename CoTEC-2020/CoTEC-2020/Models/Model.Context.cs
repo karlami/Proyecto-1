@@ -28,13 +28,16 @@ namespace CoTEC_2020.Models
         public DbSet<CentroHospitalario> CentroHospitalarios { get; set; }
         public DbSet<Contacto> Contactoes { get; set; }
         public DbSet<Medicamento> Medicamentoes { get; set; }
+        public DbSet<MedidaContencion> MedidaContencions { get; set; }
         public DbSet<MedidaSanitaria> MedidaSanitarias { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
+        public DbSet<PacienteEstado> PacienteEstadoes { get; set; }
         public DbSet<PacienteMedicamento> PacienteMedicamentoes { get; set; }
         public DbSet<Patologia> Patologias { get; set; }
         public DbSet<Persona> Personas { get; set; }
         public DbSet<PersonaPatologia> PersonaPatologias { get; set; }
         public DbSet<Ubicacion> Ubicacions { get; set; }
+        public DbSet<UbicacionMedidaContencion> UbicacionMedidaContencions { get; set; }
         public DbSet<UbicacionMedidaSanitaria> UbicacionMedidaSanitarias { get; set; }
     }
 }

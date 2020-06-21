@@ -4,29 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a4cf17abb76a41bd8b00d5ce667f81fe" Name="Diagram1" ZoomLevel="42">
-        <EntityTypeShape EntityType="Model.CentroHospitalario" Width="1.5" PointX="5.375" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Contacto" Width="1.5" PointX="5.375" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Medicamento" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MedidaSanitaria" Width="1.5" PointX="9.625" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Paciente" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PacienteMedicamento" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Patologia" Width="1.5" PointX="9.625" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Persona" Width="1.5" PointX="2.875" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PersonaPatologia" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Ubicacion" Width="1.5" PointX="2.875" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.UbicacionMedidaSanitaria" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK__CentroHos__idUbi__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Paciente__idCent__34C8D9D1" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Contacto__cedula__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__PacienteM__idMed__3C69FB99" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Ubicacion__idMed__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Paciente__cedula__35BCFE0A" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__PacienteM__idPac__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__PersonaPa__idPat__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Persona__idUbica__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__PersonaPa__cedul__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Ubicacion__idUbi__403A8C7D" ManuallyRouted="false" />
+      <Diagram DiagramId="17dc9ffd2a7246458b31070e8296483a" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.CentroHospitalario" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Contacto" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Medicamento" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MedidaContencion" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MedidaSanitaria" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Paciente" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PacienteEstado" Width="1.5" PointX="9.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PacienteMedicamento" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Patologia" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Persona" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PersonaPatologia" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Ubicacion" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UbicacionMedidaContencion" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UbicacionMedidaSanitaria" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__CentroHos__direc__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__CentroHos__idUbi__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Paciente__idCent__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Contacto__cedula__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PacienteM__idMed__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Ubicacion__idMed__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Ubicacion__idMed__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Paciente__cedula__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PacienteE__idPac__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PacienteM__idPac__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PersonaPa__idPat__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Persona__idUbica__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PersonaPa__cedul__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Ubicacion__idUbi__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Ubicacion__idUbi__49C3F6B7" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

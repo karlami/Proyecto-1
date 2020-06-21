@@ -51,8 +51,8 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Medicamento>("INSERT INTO Medicamento" +
-                   "idMedicamento, nombre, descripcion, casaFarmaceutica" +
-                    "VALUES (" + value.idMedicamento + "," + value.nombre + "," + value.descripcion + "," + value.casaFarmaceutica + ")");
+                   " (nombre, descripcion, casaFarmaceutica)" +
+                    " VALUES (" + value.nombre + "," + value.descripcion + "," + value.casaFarmaceutica + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -65,11 +65,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Medicamento>("UPDATE Medicamento" +
-                    "SET idMedicamento = " + value.idMedicamento +
+                    " SET idMedicamento = " + value.idMedicamento +
                     ", nombre = " + value.nombre +
                     ", descripcion = " + value.descripcion +
                     ", casaFarmaceutica = " + value.casaFarmaceutica +
-                    "WHERE idMedicamento = " + value.idMedicamento);
+                    " WHERE idMedicamento = " + value.idMedicamento);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -83,8 +83,8 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 db.Database.SqlQuery<Medicamento>("DELETE" +
-                    "FROM Medicamento " +
-                    "WHERE idMedicamento = @id");
+                    " FROM Medicamento " +
+                    " WHERE idMedicamento = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }

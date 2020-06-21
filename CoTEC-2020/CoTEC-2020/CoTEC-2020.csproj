@@ -182,6 +182,9 @@
     <Compile Include="Models\Medicamento.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MedidaContencion.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MedidaSanitaria.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -203,6 +206,9 @@
     <Compile Include="Models\Paciente.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PacienteEstado.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PacienteMedicamento.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -216,6 +222,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ubicacion.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UbicacionMedidaContencion.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UbicacionMedidaSanitaria.cs">

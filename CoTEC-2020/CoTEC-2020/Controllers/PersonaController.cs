@@ -34,10 +34,10 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 var persona = db.Database.SqlQuery<Persona>("UPDATE Persona" +
-                    "SET cedula, nombre, primerApellido, segundoApellido, nacionalidad," +
+                    " SET cedula, nombre, primerApellido, segundoApellido, nacionalidad," +
                     " fechaNacimiento, idUbicacion " +
                     "FROM Persona" +
-                    "WHERE cedula = @id");
+                    " WHERE cedula = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, persona);
             }
@@ -51,8 +51,8 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Persona>("INSERT INTO Persona" +
-                   "cedula, nombre, primerApellido, segundoApellido, nacionalidad, fechaNacimiento, idUbicacion" +
-                    "VALUES (" + value.cedula + "," + value.nombre + "," + value.primerApellido + "," +
+                   " (cedula, nombre, primerApellido, segundoApellido, nacionalidad, fechaNacimiento, idUbicacion)" +
+                    " VALUES (" + value.cedula + "," + value.nombre + "," + value.primerApellido + "," +
                     value.segundoApellido + "," + value.nacionalidad + "," + value.fechaNacimiento + "," + value.idUbicacion + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
@@ -66,14 +66,14 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Persona>("UPDATE Persona" +
-                    "SET cedula = " + value.cedula +
+                    " SET cedula = " + value.cedula +
                     ", nombre = " + value.nombre +
                     ", primerApellido = " + value.primerApellido +
                     ", segundoApellido = " + value.segundoApellido +
                     ", nacionalidad = " + value.nacionalidad +
                     ", fechaNacimiento = " + value.fechaNacimiento +
                     ", idUbicacion = " + value.idUbicacion +
-                    "WHERE cedula = " + value.cedula);
+                    " WHERE cedula = " + value.cedula);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -87,8 +87,8 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 db.Database.SqlQuery<Persona>("DELETE" +
-                    "FROM Persona " +
-                    "WHERE cedula = @id");
+                    " FROM Persona " +
+                    " WHERE cedula = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }

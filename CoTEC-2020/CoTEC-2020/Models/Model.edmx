@@ -9,19 +9,19 @@
           <Key>
             <PropertyRef Name="idCentroHospitalario" />
           </Key>
-          <Property Name="idCentroHospitalario" Type="int" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="idCentroHospitalario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="capacidad" Type="int" Nullable="false" />
           <Property Name="capacidadUci" Type="int" Nullable="false" />
-          <Property Name="director" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="contacto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="director" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="idUbicacion" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Contacto">
           <Key>
             <PropertyRef Name="idContacto" />
           </Key>
-          <Property Name="idContacto" Type="int" Nullable="false" />
+          <Property Name="idContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="correo" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="idPaciente" Type="int" Nullable="false" />
           <Property Name="cedula" Type="varchar" MaxLength="30" Nullable="false" />
@@ -30,18 +30,26 @@
           <Key>
             <PropertyRef Name="idMedicamento" />
           </Key>
-          <Property Name="idMedicamento" Type="int" Nullable="false" />
+          <Property Name="idMedicamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="casaFarmaceutica" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MedidaContencion">
+          <Key>
+            <PropertyRef Name="idMedidaContencion" />
+          </Key>
+          <Property Name="idMedidaContencion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="medida" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="fechaInicio" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="MedidaSanitaria">
           <Key>
             <PropertyRef Name="idMedidaSanitaria" />
           </Key>
-          <Property Name="idMedidaSanitaria" Type="int" Nullable="false" />
+          <Property Name="idMedidaSanitaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="fechaInicio" Type="date" Nullable="false" />
           <Property Name="fechaFinal" Type="date" />
@@ -50,19 +58,26 @@
           <Key>
             <PropertyRef Name="idPaciente" />
           </Key>
-          <Property Name="idPaciente" Type="int" Nullable="false" />
-          <Property Name="estado" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="idPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="internado" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="uci" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="fechaIngreso" Type="date" Nullable="false" />
           <Property Name="idCentroHospitalario" Type="int" Nullable="false" />
           <Property Name="cedula" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <EntityType Name="PacienteEstado">
+          <Key>
+            <PropertyRef Name="idPacienteEstado" />
+          </Key>
+          <Property Name="idPacienteEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPaciente" Type="int" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
         <EntityType Name="PacienteMedicamento">
           <Key>
             <PropertyRef Name="idPacienteMedicamento" />
           </Key>
-          <Property Name="idPacienteMedicamento" Type="int" Nullable="false" />
+          <Property Name="idPacienteMedicamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idMedicamento" Type="int" Nullable="false" />
           <Property Name="idPaciente" Type="int" Nullable="false" />
         </EntityType>
@@ -70,11 +85,11 @@
           <Key>
             <PropertyRef Name="idPatologia" />
           </Key>
-          <Property Name="idPatologia" Type="int" Nullable="false" />
+          <Property Name="idPatologia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
-          <Property Name="sintomas" Type="varchar" MaxLength="300" Nullable="false" />
-          <Property Name="tratamiento" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="sintomas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="tratamiento" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -92,7 +107,7 @@
           <Key>
             <PropertyRef Name="idPersonaPatologia" />
           </Key>
-          <Property Name="idPersonaPatologia" Type="int" Nullable="false" />
+          <Property Name="idPersonaPatologia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cedula" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="idPatologia" Type="int" Nullable="false" />
         </EntityType>
@@ -100,20 +115,40 @@
           <Key>
             <PropertyRef Name="idUbicacion" />
           </Key>
-          <Property Name="idUbicacion" Type="int" Nullable="false" />
+          <Property Name="idUbicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="continente" Type="varchar" MaxLength="75" Nullable="false" />
           <Property Name="pais" Type="varchar" MaxLength="75" Nullable="false" />
           <Property Name="region" Type="varchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UbicacionMedidaContencion">
+          <Key>
+            <PropertyRef Name="idUbicacionMedidaContencion" />
+          </Key>
+          <Property Name="idUbicacionMedidaContencion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUbicacion" Type="int" Nullable="false" />
+          <Property Name="idMedidaContencion" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UbicacionMedidaSanitaria">
           <Key>
             <PropertyRef Name="idUbicacionMedidaSanitaria" />
           </Key>
-          <Property Name="idUbicacionMedidaSanitaria" Type="int" Nullable="false" />
+          <Property Name="idUbicacionMedidaSanitaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idUbicacion" Type="int" Nullable="false" />
           <Property Name="idMedidaSanitaria" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__CentroHos__idUbi__2F10007B">
+        <Association Name="FK__CentroHos__direc__30F848ED">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="CentroHospitalario" Type="Self.CentroHospitalario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="CentroHospitalario">
+              <PropertyRef Name="director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CentroHos__idUbi__31EC6D26">
           <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
           <End Role="CentroHospitalario" Type="Self.CentroHospitalario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -125,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contacto__cedula__31EC6D26">
+        <Association Name="FK__Contacto__cedula__34C8D9D1">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -137,7 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Paciente__cedula__35BCFE0A">
+        <Association Name="FK__Paciente__cedula__38996AB5">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -149,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Paciente__idCent__34C8D9D1">
+        <Association Name="FK__Paciente__idCent__37A5467C">
           <End Role="CentroHospitalario" Type="Self.CentroHospitalario" Multiplicity="1" />
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -161,7 +196,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PacienteM__idMed__3C69FB99">
+        <Association Name="FK__PacienteE__idPac__3B75D760">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="PacienteEstado" Type="Self.PacienteEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="PacienteEstado">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PacienteM__idMed__4222D4EF">
           <End Role="Medicamento" Type="Self.Medicamento" Multiplicity="1" />
           <End Role="PacienteMedicamento" Type="Self.PacienteMedicamento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -173,7 +220,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PacienteM__idPac__3D5E1FD2">
+        <Association Name="FK__PacienteM__idPac__4316F928">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="PacienteMedicamento" Type="Self.PacienteMedicamento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -185,7 +232,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Persona__idUbica__2C3393D0">
+        <Association Name="FK__Persona__idUbica__2E1BDC42">
           <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
           <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
           <ReferentialConstraint>
@@ -197,7 +244,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PersonaPa__cedul__38996AB5">
+        <Association Name="FK__PersonaPa__cedul__3E52440B">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="PersonaPatologia" Type="Self.PersonaPatologia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -209,7 +256,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PersonaPa__idPat__398D8EEE">
+        <Association Name="FK__PersonaPa__idPat__3F466844">
           <End Role="Patologia" Type="Self.Patologia" Multiplicity="1" />
           <End Role="PersonaPatologia" Type="Self.PersonaPatologia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -221,7 +268,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ubicacion__idMed__412EB0B6">
+        <Association Name="FK__Ubicacion__idMed__46E78A0C">
+          <End Role="MedidaContencion" Type="Self.MedidaContencion" Multiplicity="1" />
+          <End Role="UbicacionMedidaContencion" Type="Self.UbicacionMedidaContencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedidaContencion">
+              <PropertyRef Name="idMedidaContencion" />
+            </Principal>
+            <Dependent Role="UbicacionMedidaContencion">
+              <PropertyRef Name="idMedidaContencion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__idMed__4AB81AF0">
           <End Role="MedidaSanitaria" Type="Self.MedidaSanitaria" Multiplicity="1" />
           <End Role="UbicacionMedidaSanitaria" Type="Self.UbicacionMedidaSanitaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -233,7 +292,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ubicacion__idUbi__403A8C7D">
+        <Association Name="FK__Ubicacion__idUbi__45F365D3">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="UbicacionMedidaContencion" Type="Self.UbicacionMedidaContencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="UbicacionMedidaContencion">
+              <PropertyRef Name="idUbicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__idUbi__49C3F6B7">
           <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
           <End Role="UbicacionMedidaSanitaria" Type="Self.UbicacionMedidaSanitaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -249,55 +320,74 @@
           <EntitySet Name="CentroHospitalario" EntityType="Self.CentroHospitalario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicamento" EntityType="Self.Medicamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedidaContencion" EntityType="Self.MedidaContencion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedidaSanitaria" EntityType="Self.MedidaSanitaria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PacienteEstado" EntityType="Self.PacienteEstado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PacienteMedicamento" EntityType="Self.PacienteMedicamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patologia" EntityType="Self.Patologia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonaPatologia" EntityType="Self.PersonaPatologia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UbicacionMedidaContencion" EntityType="Self.UbicacionMedidaContencion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UbicacionMedidaSanitaria" EntityType="Self.UbicacionMedidaSanitaria" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CentroHos__idUbi__2F10007B" Association="Self.FK__CentroHos__idUbi__2F10007B">
+          <AssociationSet Name="FK__CentroHos__direc__30F848ED" Association="Self.FK__CentroHos__direc__30F848ED">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="CentroHospitalario" EntitySet="CentroHospitalario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CentroHos__idUbi__31EC6D26" Association="Self.FK__CentroHos__idUbi__31EC6D26">
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="CentroHospitalario" EntitySet="CentroHospitalario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contacto__cedula__31EC6D26" Association="Self.FK__Contacto__cedula__31EC6D26">
+          <AssociationSet Name="FK__Contacto__cedula__34C8D9D1" Association="Self.FK__Contacto__cedula__34C8D9D1">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="Contacto" EntitySet="Contacto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Paciente__cedula__35BCFE0A" Association="Self.FK__Paciente__cedula__35BCFE0A">
+          <AssociationSet Name="FK__Paciente__cedula__38996AB5" Association="Self.FK__Paciente__cedula__38996AB5">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="Paciente" EntitySet="Paciente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Paciente__idCent__34C8D9D1" Association="Self.FK__Paciente__idCent__34C8D9D1">
+          <AssociationSet Name="FK__Paciente__idCent__37A5467C" Association="Self.FK__Paciente__idCent__37A5467C">
             <End Role="CentroHospitalario" EntitySet="CentroHospitalario" />
             <End Role="Paciente" EntitySet="Paciente" />
           </AssociationSet>
-          <AssociationSet Name="FK__PacienteM__idMed__3C69FB99" Association="Self.FK__PacienteM__idMed__3C69FB99">
+          <AssociationSet Name="FK__PacienteE__idPac__3B75D760" Association="Self.FK__PacienteE__idPac__3B75D760">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="PacienteEstado" EntitySet="PacienteEstado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PacienteM__idMed__4222D4EF" Association="Self.FK__PacienteM__idMed__4222D4EF">
             <End Role="Medicamento" EntitySet="Medicamento" />
             <End Role="PacienteMedicamento" EntitySet="PacienteMedicamento" />
           </AssociationSet>
-          <AssociationSet Name="FK__PacienteM__idPac__3D5E1FD2" Association="Self.FK__PacienteM__idPac__3D5E1FD2">
+          <AssociationSet Name="FK__PacienteM__idPac__4316F928" Association="Self.FK__PacienteM__idPac__4316F928">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="PacienteMedicamento" EntitySet="PacienteMedicamento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Persona__idUbica__2C3393D0" Association="Self.FK__Persona__idUbica__2C3393D0">
+          <AssociationSet Name="FK__Persona__idUbica__2E1BDC42" Association="Self.FK__Persona__idUbica__2E1BDC42">
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="Persona" EntitySet="Persona" />
           </AssociationSet>
-          <AssociationSet Name="FK__PersonaPa__cedul__38996AB5" Association="Self.FK__PersonaPa__cedul__38996AB5">
+          <AssociationSet Name="FK__PersonaPa__cedul__3E52440B" Association="Self.FK__PersonaPa__cedul__3E52440B">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="PersonaPatologia" EntitySet="PersonaPatologia" />
           </AssociationSet>
-          <AssociationSet Name="FK__PersonaPa__idPat__398D8EEE" Association="Self.FK__PersonaPa__idPat__398D8EEE">
+          <AssociationSet Name="FK__PersonaPa__idPat__3F466844" Association="Self.FK__PersonaPa__idPat__3F466844">
             <End Role="Patologia" EntitySet="Patologia" />
             <End Role="PersonaPatologia" EntitySet="PersonaPatologia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__idMed__412EB0B6" Association="Self.FK__Ubicacion__idMed__412EB0B6">
+          <AssociationSet Name="FK__Ubicacion__idMed__46E78A0C" Association="Self.FK__Ubicacion__idMed__46E78A0C">
+            <End Role="MedidaContencion" EntitySet="MedidaContencion" />
+            <End Role="UbicacionMedidaContencion" EntitySet="UbicacionMedidaContencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__idMed__4AB81AF0" Association="Self.FK__Ubicacion__idMed__4AB81AF0">
             <End Role="MedidaSanitaria" EntitySet="MedidaSanitaria" />
             <End Role="UbicacionMedidaSanitaria" EntitySet="UbicacionMedidaSanitaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__idUbi__403A8C7D" Association="Self.FK__Ubicacion__idUbi__403A8C7D">
+          <AssociationSet Name="FK__Ubicacion__idUbi__45F365D3" Association="Self.FK__Ubicacion__idUbi__45F365D3">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="UbicacionMedidaContencion" EntitySet="UbicacionMedidaContencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__idUbi__49C3F6B7" Association="Self.FK__Ubicacion__idUbi__49C3F6B7">
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="UbicacionMedidaSanitaria" EntitySet="UbicacionMedidaSanitaria" />
           </AssociationSet>
@@ -311,83 +401,102 @@
           <Key>
             <PropertyRef Name="idCentroHospitalario" />
           </Key>
-          <Property Name="idCentroHospitalario" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCentroHospitalario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="capacidad" Type="Int32" Nullable="false" />
           <Property Name="capacidadUci" Type="Int32" Nullable="false" />
-          <Property Name="director" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="director" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idUbicacion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Ubicacion" Relationship="Self.FK__CentroHos__idUbi__2F10007B" FromRole="CentroHospitalario" ToRole="Ubicacion" />
-          <NavigationProperty Name="Pacientes" Relationship="Self.FK__Paciente__idCent__34C8D9D1" FromRole="CentroHospitalario" ToRole="Paciente" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__CentroHos__direc__30F848ED" FromRole="CentroHospitalario" ToRole="Persona" />
+          <NavigationProperty Name="Ubicacion" Relationship="Self.FK__CentroHos__idUbi__31EC6D26" FromRole="CentroHospitalario" ToRole="Ubicacion" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK__Paciente__idCent__37A5467C" FromRole="CentroHospitalario" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="Contacto">
           <Key>
             <PropertyRef Name="idContacto" />
           </Key>
-          <Property Name="idContacto" Type="Int32" Nullable="false" />
+          <Property Name="idContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idPaciente" Type="Int32" Nullable="false" />
           <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Persona" Relationship="Self.FK__Contacto__cedula__31EC6D26" FromRole="Contacto" ToRole="Persona" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Contacto__cedula__34C8D9D1" FromRole="Contacto" ToRole="Persona" />
         </EntityType>
         <EntityType Name="Medicamento">
           <Key>
             <PropertyRef Name="idMedicamento" />
           </Key>
-          <Property Name="idMedicamento" Type="Int32" Nullable="false" />
+          <Property Name="idMedicamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="casaFarmaceutica" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="PacienteMedicamentoes" Relationship="Self.FK__PacienteM__idMed__3C69FB99" FromRole="Medicamento" ToRole="PacienteMedicamento" />
+          <NavigationProperty Name="PacienteMedicamentoes" Relationship="Self.FK__PacienteM__idMed__4222D4EF" FromRole="Medicamento" ToRole="PacienteMedicamento" />
+        </EntityType>
+        <EntityType Name="MedidaContencion">
+          <Key>
+            <PropertyRef Name="idMedidaContencion" />
+          </Key>
+          <Property Name="idMedidaContencion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="medida" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="UbicacionMedidaContencions" Relationship="Self.FK__Ubicacion__idMed__46E78A0C" FromRole="MedidaContencion" ToRole="UbicacionMedidaContencion" />
         </EntityType>
         <EntityType Name="MedidaSanitaria">
           <Key>
             <PropertyRef Name="idMedidaSanitaria" />
           </Key>
-          <Property Name="idMedidaSanitaria" Type="Int32" Nullable="false" />
+          <Property Name="idMedidaSanitaria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fechaFinal" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="UbicacionMedidaSanitarias" Relationship="Self.FK__Ubicacion__idMed__412EB0B6" FromRole="MedidaSanitaria" ToRole="UbicacionMedidaSanitaria" />
+          <NavigationProperty Name="UbicacionMedidaSanitarias" Relationship="Self.FK__Ubicacion__idMed__4AB81AF0" FromRole="MedidaSanitaria" ToRole="UbicacionMedidaSanitaria" />
         </EntityType>
         <EntityType Name="Paciente">
           <Key>
             <PropertyRef Name="idPaciente" />
           </Key>
-          <Property Name="idPaciente" Type="Int32" Nullable="false" />
-          <Property Name="estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="internado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="uci" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="idCentroHospitalario" Type="Int32" Nullable="false" />
           <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CentroHospitalario" Relationship="Self.FK__Paciente__idCent__34C8D9D1" FromRole="Paciente" ToRole="CentroHospitalario" />
-          <NavigationProperty Name="Persona" Relationship="Self.FK__Paciente__cedula__35BCFE0A" FromRole="Paciente" ToRole="Persona" />
-          <NavigationProperty Name="PacienteMedicamentoes" Relationship="Self.FK__PacienteM__idPac__3D5E1FD2" FromRole="Paciente" ToRole="PacienteMedicamento" />
+          <NavigationProperty Name="CentroHospitalario" Relationship="Self.FK__Paciente__idCent__37A5467C" FromRole="Paciente" ToRole="CentroHospitalario" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Paciente__cedula__38996AB5" FromRole="Paciente" ToRole="Persona" />
+          <NavigationProperty Name="PacienteEstadoes" Relationship="Self.FK__PacienteE__idPac__3B75D760" FromRole="Paciente" ToRole="PacienteEstado" />
+          <NavigationProperty Name="PacienteMedicamentoes" Relationship="Self.FK__PacienteM__idPac__4316F928" FromRole="Paciente" ToRole="PacienteMedicamento" />
+        </EntityType>
+        <EntityType Name="PacienteEstado">
+          <Key>
+            <PropertyRef Name="idPacienteEstado" />
+          </Key>
+          <Property Name="idPacienteEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPaciente" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__PacienteE__idPac__3B75D760" FromRole="PacienteEstado" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="PacienteMedicamento">
           <Key>
             <PropertyRef Name="idPacienteMedicamento" />
           </Key>
-          <Property Name="idPacienteMedicamento" Type="Int32" Nullable="false" />
+          <Property Name="idPacienteMedicamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idMedicamento" Type="Int32" Nullable="false" />
           <Property Name="idPaciente" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Medicamento" Relationship="Self.FK__PacienteM__idMed__3C69FB99" FromRole="PacienteMedicamento" ToRole="Medicamento" />
-          <NavigationProperty Name="Paciente" Relationship="Self.FK__PacienteM__idPac__3D5E1FD2" FromRole="PacienteMedicamento" ToRole="Paciente" />
+          <NavigationProperty Name="Medicamento" Relationship="Self.FK__PacienteM__idMed__4222D4EF" FromRole="PacienteMedicamento" ToRole="Medicamento" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__PacienteM__idPac__4316F928" FromRole="PacienteMedicamento" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="Patologia">
           <Key>
             <PropertyRef Name="idPatologia" />
           </Key>
-          <Property Name="idPatologia" Type="Int32" Nullable="false" />
+          <Property Name="idPatologia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="sintomas" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tratamiento" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="PersonaPatologias" Relationship="Self.FK__PersonaPa__idPat__398D8EEE" FromRole="Patologia" ToRole="PersonaPatologia" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sintomas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tratamiento" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PersonaPatologias" Relationship="Self.FK__PersonaPa__idPat__3F466844" FromRole="Patologia" ToRole="PersonaPatologia" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -400,44 +509,68 @@
           <Property Name="nacionalidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="idUbicacion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Contactoes" Relationship="Self.FK__Contacto__cedula__31EC6D26" FromRole="Persona" ToRole="Contacto" />
-          <NavigationProperty Name="Pacientes" Relationship="Self.FK__Paciente__cedula__35BCFE0A" FromRole="Persona" ToRole="Paciente" />
-          <NavigationProperty Name="Ubicacion" Relationship="Self.FK__Persona__idUbica__2C3393D0" FromRole="Persona" ToRole="Ubicacion" />
-          <NavigationProperty Name="PersonaPatologias" Relationship="Self.FK__PersonaPa__cedul__38996AB5" FromRole="Persona" ToRole="PersonaPatologia" />
+          <NavigationProperty Name="CentroHospitalarios" Relationship="Self.FK__CentroHos__direc__30F848ED" FromRole="Persona" ToRole="CentroHospitalario" />
+          <NavigationProperty Name="Contactoes" Relationship="Self.FK__Contacto__cedula__34C8D9D1" FromRole="Persona" ToRole="Contacto" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK__Paciente__cedula__38996AB5" FromRole="Persona" ToRole="Paciente" />
+          <NavigationProperty Name="Ubicacion" Relationship="Self.FK__Persona__idUbica__2E1BDC42" FromRole="Persona" ToRole="Ubicacion" />
+          <NavigationProperty Name="PersonaPatologias" Relationship="Self.FK__PersonaPa__cedul__3E52440B" FromRole="Persona" ToRole="PersonaPatologia" />
         </EntityType>
         <EntityType Name="PersonaPatologia">
           <Key>
             <PropertyRef Name="idPersonaPatologia" />
           </Key>
-          <Property Name="idPersonaPatologia" Type="Int32" Nullable="false" />
+          <Property Name="idPersonaPatologia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idPatologia" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Patologia" Relationship="Self.FK__PersonaPa__idPat__398D8EEE" FromRole="PersonaPatologia" ToRole="Patologia" />
-          <NavigationProperty Name="Persona" Relationship="Self.FK__PersonaPa__cedul__38996AB5" FromRole="PersonaPatologia" ToRole="Persona" />
+          <NavigationProperty Name="Patologia" Relationship="Self.FK__PersonaPa__idPat__3F466844" FromRole="PersonaPatologia" ToRole="Patologia" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__PersonaPa__cedul__3E52440B" FromRole="PersonaPatologia" ToRole="Persona" />
         </EntityType>
         <EntityType Name="Ubicacion">
           <Key>
             <PropertyRef Name="idUbicacion" />
           </Key>
-          <Property Name="idUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="idUbicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="continente" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pais" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="region" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CentroHospitalarios" Relationship="Self.FK__CentroHos__idUbi__2F10007B" FromRole="Ubicacion" ToRole="CentroHospitalario" />
-          <NavigationProperty Name="Personas" Relationship="Self.FK__Persona__idUbica__2C3393D0" FromRole="Ubicacion" ToRole="Persona" />
-          <NavigationProperty Name="UbicacionMedidaSanitarias" Relationship="Self.FK__Ubicacion__idUbi__403A8C7D" FromRole="Ubicacion" ToRole="UbicacionMedidaSanitaria" />
+          <NavigationProperty Name="CentroHospitalarios" Relationship="Self.FK__CentroHos__idUbi__31EC6D26" FromRole="Ubicacion" ToRole="CentroHospitalario" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK__Persona__idUbica__2E1BDC42" FromRole="Ubicacion" ToRole="Persona" />
+          <NavigationProperty Name="UbicacionMedidaContencions" Relationship="Self.FK__Ubicacion__idUbi__45F365D3" FromRole="Ubicacion" ToRole="UbicacionMedidaContencion" />
+          <NavigationProperty Name="UbicacionMedidaSanitarias" Relationship="Self.FK__Ubicacion__idUbi__49C3F6B7" FromRole="Ubicacion" ToRole="UbicacionMedidaSanitaria" />
+        </EntityType>
+        <EntityType Name="UbicacionMedidaContencion">
+          <Key>
+            <PropertyRef Name="idUbicacionMedidaContencion" />
+          </Key>
+          <Property Name="idUbicacionMedidaContencion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="idMedidaContencion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MedidaContencion" Relationship="Self.FK__Ubicacion__idMed__46E78A0C" FromRole="UbicacionMedidaContencion" ToRole="MedidaContencion" />
+          <NavigationProperty Name="Ubicacion" Relationship="Self.FK__Ubicacion__idUbi__45F365D3" FromRole="UbicacionMedidaContencion" ToRole="Ubicacion" />
         </EntityType>
         <EntityType Name="UbicacionMedidaSanitaria">
           <Key>
             <PropertyRef Name="idUbicacionMedidaSanitaria" />
           </Key>
-          <Property Name="idUbicacionMedidaSanitaria" Type="Int32" Nullable="false" />
+          <Property Name="idUbicacionMedidaSanitaria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idUbicacion" Type="Int32" Nullable="false" />
           <Property Name="idMedidaSanitaria" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MedidaSanitaria" Relationship="Self.FK__Ubicacion__idMed__412EB0B6" FromRole="UbicacionMedidaSanitaria" ToRole="MedidaSanitaria" />
-          <NavigationProperty Name="Ubicacion" Relationship="Self.FK__Ubicacion__idUbi__403A8C7D" FromRole="UbicacionMedidaSanitaria" ToRole="Ubicacion" />
+          <NavigationProperty Name="MedidaSanitaria" Relationship="Self.FK__Ubicacion__idMed__4AB81AF0" FromRole="UbicacionMedidaSanitaria" ToRole="MedidaSanitaria" />
+          <NavigationProperty Name="Ubicacion" Relationship="Self.FK__Ubicacion__idUbi__49C3F6B7" FromRole="UbicacionMedidaSanitaria" ToRole="Ubicacion" />
         </EntityType>
-        <Association Name="FK__CentroHos__idUbi__2F10007B">
+        <Association Name="FK__CentroHos__direc__30F848ED">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="CentroHospitalario" Type="Self.CentroHospitalario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="CentroHospitalario">
+              <PropertyRef Name="director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CentroHos__idUbi__31EC6D26">
           <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
           <End Role="CentroHospitalario" Type="Self.CentroHospitalario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -449,7 +582,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Paciente__idCent__34C8D9D1">
+        <Association Name="FK__Paciente__idCent__37A5467C">
           <End Role="CentroHospitalario" Type="Self.CentroHospitalario" Multiplicity="1" />
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -461,7 +594,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contacto__cedula__31EC6D26">
+        <Association Name="FK__Contacto__cedula__34C8D9D1">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -473,7 +606,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PacienteM__idMed__3C69FB99">
+        <Association Name="FK__PacienteM__idMed__4222D4EF">
           <End Role="Medicamento" Type="Self.Medicamento" Multiplicity="1" />
           <End Role="PacienteMedicamento" Type="Self.PacienteMedicamento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -485,7 +618,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ubicacion__idMed__412EB0B6">
+        <Association Name="FK__Ubicacion__idMed__46E78A0C">
+          <End Role="MedidaContencion" Type="Self.MedidaContencion" Multiplicity="1" />
+          <End Role="UbicacionMedidaContencion" Type="Self.UbicacionMedidaContencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedidaContencion">
+              <PropertyRef Name="idMedidaContencion" />
+            </Principal>
+            <Dependent Role="UbicacionMedidaContencion">
+              <PropertyRef Name="idMedidaContencion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__idMed__4AB81AF0">
           <End Role="MedidaSanitaria" Type="Self.MedidaSanitaria" Multiplicity="1" />
           <End Role="UbicacionMedidaSanitaria" Type="Self.UbicacionMedidaSanitaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -497,7 +642,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Paciente__cedula__35BCFE0A">
+        <Association Name="FK__Paciente__cedula__38996AB5">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -509,7 +654,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PacienteM__idPac__3D5E1FD2">
+        <Association Name="FK__PacienteE__idPac__3B75D760">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="PacienteEstado" Type="Self.PacienteEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="PacienteEstado">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PacienteM__idPac__4316F928">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="PacienteMedicamento" Type="Self.PacienteMedicamento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -521,7 +678,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PersonaPa__idPat__398D8EEE">
+        <Association Name="FK__PersonaPa__idPat__3F466844">
           <End Role="Patologia" Type="Self.Patologia" Multiplicity="1" />
           <End Role="PersonaPatologia" Type="Self.PersonaPatologia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -533,7 +690,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Persona__idUbica__2C3393D0">
+        <Association Name="FK__Persona__idUbica__2E1BDC42">
           <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
           <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
           <ReferentialConstraint>
@@ -545,7 +702,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PersonaPa__cedul__38996AB5">
+        <Association Name="FK__PersonaPa__cedul__3E52440B">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="PersonaPatologia" Type="Self.PersonaPatologia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -557,7 +714,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ubicacion__idUbi__403A8C7D">
+        <Association Name="FK__Ubicacion__idUbi__45F365D3">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="UbicacionMedidaContencion" Type="Self.UbicacionMedidaContencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="UbicacionMedidaContencion">
+              <PropertyRef Name="idUbicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__idUbi__49C3F6B7">
           <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
           <End Role="UbicacionMedidaSanitaria" Type="Self.UbicacionMedidaSanitaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -573,55 +742,74 @@
           <EntitySet Name="CentroHospitalarios" EntityType="Self.CentroHospitalario" />
           <EntitySet Name="Contactoes" EntityType="Self.Contacto" />
           <EntitySet Name="Medicamentoes" EntityType="Self.Medicamento" />
+          <EntitySet Name="MedidaContencions" EntityType="Self.MedidaContencion" />
           <EntitySet Name="MedidaSanitarias" EntityType="Self.MedidaSanitaria" />
           <EntitySet Name="Pacientes" EntityType="Self.Paciente" />
+          <EntitySet Name="PacienteEstadoes" EntityType="Self.PacienteEstado" />
           <EntitySet Name="PacienteMedicamentoes" EntityType="Self.PacienteMedicamento" />
           <EntitySet Name="Patologias" EntityType="Self.Patologia" />
           <EntitySet Name="Personas" EntityType="Self.Persona" />
           <EntitySet Name="PersonaPatologias" EntityType="Self.PersonaPatologia" />
           <EntitySet Name="Ubicacions" EntityType="Self.Ubicacion" />
+          <EntitySet Name="UbicacionMedidaContencions" EntityType="Self.UbicacionMedidaContencion" />
           <EntitySet Name="UbicacionMedidaSanitarias" EntityType="Self.UbicacionMedidaSanitaria" />
-          <AssociationSet Name="FK__CentroHos__idUbi__2F10007B" Association="Self.FK__CentroHos__idUbi__2F10007B">
+          <AssociationSet Name="FK__CentroHos__direc__30F848ED" Association="Self.FK__CentroHos__direc__30F848ED">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="CentroHospitalario" EntitySet="CentroHospitalarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CentroHos__idUbi__31EC6D26" Association="Self.FK__CentroHos__idUbi__31EC6D26">
             <End Role="Ubicacion" EntitySet="Ubicacions" />
             <End Role="CentroHospitalario" EntitySet="CentroHospitalarios" />
           </AssociationSet>
-          <AssociationSet Name="FK__Paciente__idCent__34C8D9D1" Association="Self.FK__Paciente__idCent__34C8D9D1">
+          <AssociationSet Name="FK__Paciente__idCent__37A5467C" Association="Self.FK__Paciente__idCent__37A5467C">
             <End Role="CentroHospitalario" EntitySet="CentroHospitalarios" />
             <End Role="Paciente" EntitySet="Pacientes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contacto__cedula__31EC6D26" Association="Self.FK__Contacto__cedula__31EC6D26">
+          <AssociationSet Name="FK__Contacto__cedula__34C8D9D1" Association="Self.FK__Contacto__cedula__34C8D9D1">
             <End Role="Persona" EntitySet="Personas" />
             <End Role="Contacto" EntitySet="Contactoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__PacienteM__idMed__3C69FB99" Association="Self.FK__PacienteM__idMed__3C69FB99">
+          <AssociationSet Name="FK__PacienteM__idMed__4222D4EF" Association="Self.FK__PacienteM__idMed__4222D4EF">
             <End Role="Medicamento" EntitySet="Medicamentoes" />
             <End Role="PacienteMedicamento" EntitySet="PacienteMedicamentoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__idMed__412EB0B6" Association="Self.FK__Ubicacion__idMed__412EB0B6">
+          <AssociationSet Name="FK__Ubicacion__idMed__46E78A0C" Association="Self.FK__Ubicacion__idMed__46E78A0C">
+            <End Role="MedidaContencion" EntitySet="MedidaContencions" />
+            <End Role="UbicacionMedidaContencion" EntitySet="UbicacionMedidaContencions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__idMed__4AB81AF0" Association="Self.FK__Ubicacion__idMed__4AB81AF0">
             <End Role="MedidaSanitaria" EntitySet="MedidaSanitarias" />
             <End Role="UbicacionMedidaSanitaria" EntitySet="UbicacionMedidaSanitarias" />
           </AssociationSet>
-          <AssociationSet Name="FK__Paciente__cedula__35BCFE0A" Association="Self.FK__Paciente__cedula__35BCFE0A">
+          <AssociationSet Name="FK__Paciente__cedula__38996AB5" Association="Self.FK__Paciente__cedula__38996AB5">
             <End Role="Persona" EntitySet="Personas" />
             <End Role="Paciente" EntitySet="Pacientes" />
           </AssociationSet>
-          <AssociationSet Name="FK__PacienteM__idPac__3D5E1FD2" Association="Self.FK__PacienteM__idPac__3D5E1FD2">
+          <AssociationSet Name="FK__PacienteE__idPac__3B75D760" Association="Self.FK__PacienteE__idPac__3B75D760">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="PacienteEstado" EntitySet="PacienteEstadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PacienteM__idPac__4316F928" Association="Self.FK__PacienteM__idPac__4316F928">
             <End Role="Paciente" EntitySet="Pacientes" />
             <End Role="PacienteMedicamento" EntitySet="PacienteMedicamentoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__PersonaPa__idPat__398D8EEE" Association="Self.FK__PersonaPa__idPat__398D8EEE">
+          <AssociationSet Name="FK__PersonaPa__idPat__3F466844" Association="Self.FK__PersonaPa__idPat__3F466844">
             <End Role="Patologia" EntitySet="Patologias" />
             <End Role="PersonaPatologia" EntitySet="PersonaPatologias" />
           </AssociationSet>
-          <AssociationSet Name="FK__Persona__idUbica__2C3393D0" Association="Self.FK__Persona__idUbica__2C3393D0">
+          <AssociationSet Name="FK__Persona__idUbica__2E1BDC42" Association="Self.FK__Persona__idUbica__2E1BDC42">
             <End Role="Ubicacion" EntitySet="Ubicacions" />
             <End Role="Persona" EntitySet="Personas" />
           </AssociationSet>
-          <AssociationSet Name="FK__PersonaPa__cedul__38996AB5" Association="Self.FK__PersonaPa__cedul__38996AB5">
+          <AssociationSet Name="FK__PersonaPa__cedul__3E52440B" Association="Self.FK__PersonaPa__cedul__3E52440B">
             <End Role="Persona" EntitySet="Personas" />
             <End Role="PersonaPatologia" EntitySet="PersonaPatologias" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__idUbi__403A8C7D" Association="Self.FK__Ubicacion__idUbi__403A8C7D">
+          <AssociationSet Name="FK__Ubicacion__idUbi__45F365D3" Association="Self.FK__Ubicacion__idUbi__45F365D3">
+            <End Role="Ubicacion" EntitySet="Ubicacions" />
+            <End Role="UbicacionMedidaContencion" EntitySet="UbicacionMedidaContencions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__idUbi__49C3F6B7" Association="Self.FK__Ubicacion__idUbi__49C3F6B7">
             <End Role="Ubicacion" EntitySet="Ubicacions" />
             <End Role="UbicacionMedidaSanitaria" EntitySet="UbicacionMedidaSanitarias" />
           </AssociationSet>
@@ -639,8 +827,8 @@
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="capacidad" ColumnName="capacidad" />
                 <ScalarProperty Name="capacidadUci" ColumnName="capacidadUci" />
-                <ScalarProperty Name="director" ColumnName="director" />
                 <ScalarProperty Name="contacto" ColumnName="contacto" />
+                <ScalarProperty Name="director" ColumnName="director" />
                 <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -665,6 +853,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MedidaContencions">
+            <EntityTypeMapping TypeName="Model.MedidaContencion">
+              <MappingFragment StoreEntitySet="MedidaContencion">
+                <ScalarProperty Name="idMedidaContencion" ColumnName="idMedidaContencion" />
+                <ScalarProperty Name="medida" ColumnName="medida" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MedidaSanitarias">
             <EntityTypeMapping TypeName="Model.MedidaSanitaria">
               <MappingFragment StoreEntitySet="MedidaSanitaria">
@@ -681,12 +878,20 @@
             <EntityTypeMapping TypeName="Model.Paciente">
               <MappingFragment StoreEntitySet="Paciente">
                 <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="internado" ColumnName="internado" />
                 <ScalarProperty Name="uci" ColumnName="uci" />
                 <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
                 <ScalarProperty Name="idCentroHospitalario" ColumnName="idCentroHospitalario" />
                 <ScalarProperty Name="cedula" ColumnName="cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PacienteEstadoes">
+            <EntityTypeMapping TypeName="Model.PacienteEstado">
+              <MappingFragment StoreEntitySet="PacienteEstado">
+                <ScalarProperty Name="idPacienteEstado" ColumnName="idPacienteEstado" />
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -739,6 +944,15 @@
                 <ScalarProperty Name="continente" ColumnName="continente" />
                 <ScalarProperty Name="pais" ColumnName="pais" />
                 <ScalarProperty Name="region" ColumnName="region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UbicacionMedidaContencions">
+            <EntityTypeMapping TypeName="Model.UbicacionMedidaContencion">
+              <MappingFragment StoreEntitySet="UbicacionMedidaContencion">
+                <ScalarProperty Name="idUbicacionMedidaContencion" ColumnName="idUbicacionMedidaContencion" />
+                <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
+                <ScalarProperty Name="idMedidaContencion" ColumnName="idMedidaContencion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -36,7 +36,7 @@ namespace CoTEC_2020.Controllers
                 var paciente = db.Database.SqlQuery<MedidaSanitaria>("SELECT idMedidaSanitaria, nombre, " +
                     "descripcion, estado, fechaInicio, fechaFinal " +
                     "FROM MedidaSanitaria" +
-                    "WHERE idMedidaSanitaria = @id");
+                    " WHERE idMedidaSanitaria = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, paciente);
             }
@@ -50,8 +50,8 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<MedidaSanitaria>("INSERT INTO MedidaSanitaria" +
-                   "idMedidaSanitaria, nombre, descripcion, estado, fechaInicio, fechaFinal" +
-                    "VALUES (" + value.idMedidaSanitaria + "," + value.nombre + "," + value.descripcion + "," +
+                   " (nombre, descripcion, estado, fechaInicio, fechaFinal)" +
+                    " VALUES (" + value.nombre + "," + value.descripcion + "," +
                     value.estado + "," + value.fechaInicio + "," + value.fechaFinal + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
@@ -65,13 +65,13 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<MedidaSanitaria>("UPDATE MedidaSanitaria" +
-                    "SET idMedidaSanitaria = " + value.idMedidaSanitaria +
+                    " SET idMedidaSanitaria = " + value.idMedidaSanitaria +
                     ", nombre= " + value.nombre +
                     ", descripcion= " + value.descripcion +
                     ", estado= " + value.estado +
                     ", fechaInicio= " + value.fechaInicio +
                     ", fechaFinal= " + value.fechaFinal +
-                    "WHERE idMedidaSanitaria = " + value.idMedidaSanitaria);
+                    " WHERE idMedidaSanitaria = " + value.idMedidaSanitaria);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -85,8 +85,8 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 db.Database.SqlQuery<MedidaSanitaria>("DELETE" +
-                    "FROM MedidaSanitaria " +
-                    "WHERE idMedidaSanitaria = @id");
+                    " FROM MedidaSanitaria " +
+                    " WHERE idMedidaSanitaria = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }

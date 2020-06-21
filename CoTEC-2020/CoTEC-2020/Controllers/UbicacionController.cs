@@ -34,9 +34,9 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 var contacto = db.Database.SqlQuery<Ubicacion>("UPDATE Ubicacion" +
-                    "SET idUbicacion, continente, pais, region" +
-                    "FROM Ubicacion" +
-                    "WHERE idUbicacion = @id");
+                    " SET idUbicacion, continente, pais, region" +
+                    " FROM Ubicacion" +
+                    " WHERE idUbicacion = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, contacto);
             }
@@ -50,8 +50,8 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Ubicacion>("INSERT INTO Ubicacion" +
-                   "idUbicacion, continente, pais, region" +
-                    "VALUES (" + value.idUbicacion + "," + value.continente + "," + value.pais + "," + value.region + ")");
+                   " (continente, pais, region)" +
+                    " VALUES (" + value.continente + "," + value.pais + "," + value.region + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -64,11 +64,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.SqlQuery<Ubicacion>("UPDATE Ubicacion" +
-                    "SET idUbicacion = " + value.idUbicacion +
+                    " SET idUbicacion = " + value.idUbicacion +
                     ", continente = " + value.continente +
                     ", pais = " + value.pais +
                     ", region = " + value.region +
-                    "WHERE idUbicacion = " + value.idUbicacion);
+                    " WHERE idUbicacion = " + value.idUbicacion);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -82,8 +82,8 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 db.Database.SqlQuery<Ubicacion>("DELETE" +
-                    "FROM Ubicacion " +
-                    "WHERE idUbicacion = @id");
+                    " FROM Ubicacion " +
+                    " WHERE idUbicacion = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }

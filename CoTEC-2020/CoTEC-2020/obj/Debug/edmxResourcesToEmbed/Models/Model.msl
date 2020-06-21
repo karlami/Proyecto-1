@@ -8,8 +8,8 @@
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="capacidad" ColumnName="capacidad" />
           <ScalarProperty Name="capacidadUci" ColumnName="capacidadUci" />
-          <ScalarProperty Name="director" ColumnName="director" />
           <ScalarProperty Name="contacto" ColumnName="contacto" />
+          <ScalarProperty Name="director" ColumnName="director" />
           <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -34,6 +34,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="MedidaContencions">
+      <EntityTypeMapping TypeName="Model.MedidaContencion">
+        <MappingFragment StoreEntitySet="MedidaContencion">
+          <ScalarProperty Name="idMedidaContencion" ColumnName="idMedidaContencion" />
+          <ScalarProperty Name="medida" ColumnName="medida" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="MedidaSanitarias">
       <EntityTypeMapping TypeName="Model.MedidaSanitaria">
         <MappingFragment StoreEntitySet="MedidaSanitaria">
@@ -50,12 +59,20 @@
       <EntityTypeMapping TypeName="Model.Paciente">
         <MappingFragment StoreEntitySet="Paciente">
           <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="internado" ColumnName="internado" />
           <ScalarProperty Name="uci" ColumnName="uci" />
           <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
           <ScalarProperty Name="idCentroHospitalario" ColumnName="idCentroHospitalario" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PacienteEstadoes">
+      <EntityTypeMapping TypeName="Model.PacienteEstado">
+        <MappingFragment StoreEntitySet="PacienteEstado">
+          <ScalarProperty Name="idPacienteEstado" ColumnName="idPacienteEstado" />
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -108,6 +125,15 @@
           <ScalarProperty Name="continente" ColumnName="continente" />
           <ScalarProperty Name="pais" ColumnName="pais" />
           <ScalarProperty Name="region" ColumnName="region" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UbicacionMedidaContencions">
+      <EntityTypeMapping TypeName="Model.UbicacionMedidaContencion">
+        <MappingFragment StoreEntitySet="UbicacionMedidaContencion">
+          <ScalarProperty Name="idUbicacionMedidaContencion" ColumnName="idUbicacionMedidaContencion" />
+          <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
+          <ScalarProperty Name="idMedidaContencion" ColumnName="idMedidaContencion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
