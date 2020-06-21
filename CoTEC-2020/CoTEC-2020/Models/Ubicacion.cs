@@ -14,22 +14,11 @@ namespace CoTEC_2020.Models
     
     public partial class Ubicacion
     {
-        public Ubicacion()
-        {
-            this.CentroHospitalarios = new HashSet<CentroHospitalario>();
-            this.Personas = new HashSet<Persona>();
-            this.UbicacionMedidaContencions = new HashSet<UbicacionMedidaContencion>();
-            this.UbicacionMedidaSanitarias = new HashSet<UbicacionMedidaSanitaria>();
-        }
     
         public int idUbicacion { get; set; }
         public string continente { get; set; }
         public string pais { get; set; }
         public string region { get; set; }
     
-        public virtual ICollection<CentroHospitalario> CentroHospitalarios { get; set; }
-        public virtual ICollection<Persona> Personas { get; set; }
-        public virtual ICollection<UbicacionMedidaContencion> UbicacionMedidaContencions { get; set; }
-        public virtual ICollection<UbicacionMedidaSanitaria> UbicacionMedidaSanitarias { get; set; }
     }
 }

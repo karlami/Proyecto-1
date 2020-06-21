@@ -14,16 +14,11 @@ namespace CoTEC_2020.Models
     
     public partial class Medicamento
     {
-        public Medicamento()
-        {
-            this.PacienteMedicamentoes = new HashSet<PacienteMedicamento>();
-        }
     
         public int idMedicamento { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public string casaFarmaceutica { get; set; }
-    
-        public virtual ICollection<PacienteMedicamento> PacienteMedicamentoes { get; set; }
+
     }
 }

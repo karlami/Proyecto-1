@@ -18,7 +18,5 @@ namespace CoTEC_2020.Models
         public int idUbicacion { get; set; }
         public int idMedidaContencion { get; set; }
     
-        public virtual MedidaContencion MedidaContencion { get; set; }
-        public virtual Ubicacion Ubicacion { get; set; }
     }
 }

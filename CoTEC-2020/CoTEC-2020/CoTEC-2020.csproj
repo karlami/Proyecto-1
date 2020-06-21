@@ -164,6 +164,7 @@
     <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicamentoController.cs" />
+    <Compile Include="Controllers\MedidaContencionController.cs" />
     <Compile Include="Controllers\MedidaSanitariaController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\PatologiaController.cs" />

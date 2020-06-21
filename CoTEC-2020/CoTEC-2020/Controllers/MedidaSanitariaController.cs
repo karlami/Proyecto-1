@@ -49,7 +49,7 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<MedidaSanitaria>("INSERT INTO MedidaSanitaria" +
+                db.Database.ExecuteSqlCommand("INSERT INTO MedidaSanitaria" +
                    " (nombre, descripcion, estado, fechaInicio, fechaFinal)" +
                     " VALUES (" + value.nombre + "," + value.descripcion + "," +
                     value.estado + "," + value.fechaInicio + "," + value.fechaFinal + ")");
@@ -64,13 +64,12 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<MedidaSanitaria>("UPDATE MedidaSanitaria" +
-                    " SET idMedidaSanitaria = " + value.idMedidaSanitaria +
-                    ", nombre= " + value.nombre +
-                    ", descripcion= " + value.descripcion +
-                    ", estado= " + value.estado +
-                    ", fechaInicio= " + value.fechaInicio +
-                    ", fechaFinal= " + value.fechaFinal +
+                db.Database.ExecuteSqlCommand("UPDATE MedidaSanitaria" +
+                    " SET nombre = " + value.nombre +
+                    ", descripcion = " + value.descripcion +
+                    ", estado = " + value.estado +
+                    ", fechaInicio = " + value.fechaInicio +
+                    ", fechaFinal = " + value.fechaFinal +
                     " WHERE idMedidaSanitaria = " + value.idMedidaSanitaria);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
@@ -84,7 +83,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.SqlQuery<MedidaSanitaria>("DELETE" +
+                db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM MedidaSanitaria " +
                     " WHERE idMedidaSanitaria = @id");
 

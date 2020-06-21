@@ -33,9 +33,9 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                var contacto = db.Database.SqlQuery<Contacto>("UPDATE Contacto" +
-                    " SET idContacto, correo, idPaciente, cedula" +
-                    " FROM Contacto" +
+                var contacto = db.Database.SqlQuery<Contacto>("SELECT idContacto, correo, " +
+                    "idPaciente, cedula " +
+                    "FROM Contacto" +
                     " WHERE idContacto = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, contacto);
@@ -49,7 +49,7 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<Contacto>("INSERT INTO Contacto " +
+                db.Database.ExecuteSqlCommand("INSERT INTO Contacto " +
                    "(correo, idPaciente, cedula)" +
                     " VALUES (" + value.correo + "," + value.idPaciente + "," + value.cedula + ")");
 
@@ -63,9 +63,8 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<Contacto>("UPDATE Contacto" +
-                    " SET idContacto = " + value.idContacto +
-                    ", correo = " + value.correo +
+                db.Database.ExecuteSqlCommand("UPDATE Contacto" +
+                    " SET correo = " + value.correo +
                     ", idPaciente = " + value.idPaciente +
                     ", cedula = " + value.cedula +
                     " WHERE idContacto = " + value.idContacto);
@@ -81,7 +80,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.SqlQuery<Contacto>("DELETE" +
+                db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM Contacto " +
                     " WHERE idContacto = @id");
 

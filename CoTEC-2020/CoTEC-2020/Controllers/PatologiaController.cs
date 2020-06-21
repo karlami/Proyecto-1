@@ -19,7 +19,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 var listaPatologias = db.Database.SqlQuery<Patologia>("SELECT idPatologia, nombre, " +
-                    "descripcion, tratamiento " +
+                    "descripcion, sintomas, tratamiento " +
                     "FROM Patologia").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaPatologias);
@@ -33,9 +33,9 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                var contacto = db.Database.SqlQuery<Patologia>("UPDATE Patologia " +
-                    "SET idPatologia, nombre, descripcion, tratamiento " +
-                    "FROM Patologia " +
+                var contacto = db.Database.SqlQuery<Patologia>("SELECT idPatologia, nombre, " +
+                    "descripcion, sintomas, tratamiento " +
+                    "FROM Patologia" +
                     "WHERE idPatologia = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, contacto);
@@ -49,9 +49,9 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<Patologia>("INSERT INTO Patologia" +
-                   " (nombre, descripcion, tratamiento) " +
-                    "VALUES (" + value.nombre + "," + value.descripcion + "," + value.tratamiento + ")");
+                db.Database.ExecuteSqlCommand("INSERT INTO Patologia" +
+                   " (nombre, descripcion, sintomas, tratamiento) " +
+                    "VALUES (" + value.nombre + "," + value.descripcion + "," + value.sintomas + "," + value.tratamiento + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -63,10 +63,10 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<Patologia>("UPDATE Patologia" +
-                    " SET idPatologia = " + value.idPatologia +
-                    ", nombre = " + value.nombre +
+                db.Database.ExecuteSqlCommand("UPDATE Patologia" +
+                    " SET nombre = " + value.nombre +
                     ", descripcion = " + value.descripcion +
+                    ", sintomas = " + value.sintomas +
                     ", tratamiento = " + value.tratamiento +
                     " WHERE idPatologia = " + value.idPatologia);
 
@@ -81,7 +81,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.SqlQuery<Patologia>("DELETE" +
+                db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM Patologia " +
                     " WHERE idPatologia = @id");
 

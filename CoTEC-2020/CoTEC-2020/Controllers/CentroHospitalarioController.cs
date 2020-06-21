@@ -19,7 +19,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 var listaCentroHospitalarios = db.Database.SqlQuery<CentroHospitalario>("SELECT idCentroHospitalario, nombre, " +
-                    "capacidad, capacidadUci, director, idCentroHospitalario, idUbicacion " +
+                    "capacidad, capacidadUci, contacto, director, idUbicacion " +
                     "FROM CentroHospitalario").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaCentroHospitalarios);
@@ -34,7 +34,7 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 var centro = db.Database.SqlQuery<CentroHospitalario>("SELECT idCentroHospitalario, nombre, " +
-                    "capacidad, capacidadUci, director, contacto, idUbicacion " +
+                    "capacidad, capacidadUci, contacto, director, idUbicacion " +
                     "FROM CentroHospitalario " +
                     "WHERE idCentroHospitalario = @id");
 
@@ -49,10 +49,10 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<CentroHospitalario>("INSERT INTO CentroHospitalario " +
-                   "(nombre, capacidad, capacidadUci, director, contacto, idUbicacion) " +
-                    "VALUES ("+ value.nombre + "," + value.capacidad + "," +
-                    value.capacidadUci + "," + value.director + "," + value.contacto +
+                db.Database.ExecuteSqlCommand("INSERT INTO CentroHospitalario " +
+                   "(nombre, capacidad, capacidadUci, contacto, director, idUbicacion) " +
+                    "VALUES (" + value.nombre + "," + value.capacidad + "," +
+                    value.capacidadUci + "," + value.contacto + "," + value.director +
                     value.idUbicacion + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
@@ -65,14 +65,13 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<CentroHospitalario>("UPDATE CentroHospitalario " +
-                    "SET idCentroHospitalario = " + value.idCentroHospitalario +
-                    ", nombre= " + value.nombre +
-                    ", capacidad= " + value.capacidad +
-                    ", capacidadUci= " + value.capacidadUci +
-                    ", director= " + value.director +
-                    ", contacto= " + value.contacto +
-                    ", idUbicacion= " + value.idUbicacion +
+                db.Database.ExecuteSqlCommand("UPDATE CentroHospitalario " +
+                    "SET nombre = " + value.nombre +
+                    ", capacidad = " + value.capacidad +
+                    ", capacidadUci = " + value.capacidadUci +
+                    ", contacto = " + value.contacto +
+                    ", director = " + value.director +
+                    ", idUbicacion = " + value.idUbicacion +
                     " WHERE idCentroHospitalario = " + value.idCentroHospitalario);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
@@ -86,7 +85,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.SqlQuery<CentroHospitalario>("DELETE" +
+                db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM CentroHospitalario " +
                     " WHERE idCentroHospitalario = @id");
 

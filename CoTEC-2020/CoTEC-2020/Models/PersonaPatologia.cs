@@ -17,8 +17,6 @@ namespace CoTEC_2020.Models
         public int idPersonaPatologia { get; set; }
         public string cedula { get; set; }
         public int idPatologia { get; set; }
-    
-        public virtual Patologia Patologia { get; set; }
-        public virtual Persona Persona { get; set; }
+
     }
 }

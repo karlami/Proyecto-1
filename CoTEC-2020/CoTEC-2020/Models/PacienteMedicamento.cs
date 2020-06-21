@@ -17,8 +17,5 @@ namespace CoTEC_2020.Models
         public int idPacienteMedicamento { get; set; }
         public int idMedicamento { get; set; }
         public int idPaciente { get; set; }
-    
-        public virtual Medicamento Medicamento { get; set; }
-        public virtual Paciente Paciente { get; set; }
     }
 }

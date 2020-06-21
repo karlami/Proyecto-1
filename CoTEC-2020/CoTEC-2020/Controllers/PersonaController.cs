@@ -33,9 +33,8 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                var persona = db.Database.SqlQuery<Persona>("UPDATE Persona" +
-                    " SET cedula, nombre, primerApellido, segundoApellido, nacionalidad," +
-                    " fechaNacimiento, idUbicacion " +
+                var persona = db.Database.SqlQuery<Persona>("SELECT cedula, nombre, " +
+                    "primerApellido, segundoApellido, nacionalidad, fechaNacimiento, idUbicacion " +
                     "FROM Persona" +
                     " WHERE cedula = @id");
 
@@ -50,7 +49,7 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<Persona>("INSERT INTO Persona" +
+                db.Database.ExecuteSqlCommand("INSERT INTO Persona" +
                    " (cedula, nombre, primerApellido, segundoApellido, nacionalidad, fechaNacimiento, idUbicacion)" +
                     " VALUES (" + value.cedula + "," + value.nombre + "," + value.primerApellido + "," +
                     value.segundoApellido + "," + value.nacionalidad + "," + value.fechaNacimiento + "," + value.idUbicacion + ")");
@@ -65,9 +64,8 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<Persona>("UPDATE Persona" +
-                    " SET cedula = " + value.cedula +
-                    ", nombre = " + value.nombre +
+                db.Database.ExecuteSqlCommand("UPDATE Persona" +
+                    " SET nombre = " + value.nombre +
                     ", primerApellido = " + value.primerApellido +
                     ", segundoApellido = " + value.segundoApellido +
                     ", nacionalidad = " + value.nacionalidad +
@@ -86,7 +84,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.SqlQuery<Persona>("DELETE" +
+                db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM Persona " +
                     " WHERE cedula = @id");
 

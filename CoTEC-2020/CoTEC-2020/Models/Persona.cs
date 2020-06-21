@@ -14,13 +14,6 @@ namespace CoTEC_2020.Models
     
     public partial class Persona
     {
-        public Persona()
-        {
-            this.CentroHospitalarios = new HashSet<CentroHospitalario>();
-            this.Contactoes = new HashSet<Contacto>();
-            this.Pacientes = new HashSet<Paciente>();
-            this.PersonaPatologias = new HashSet<PersonaPatologia>();
-        }
     
         public string cedula { get; set; }
         public string nombre { get; set; }
@@ -30,10 +23,5 @@ namespace CoTEC_2020.Models
         public System.DateTime fechaNacimiento { get; set; }
         public int idUbicacion { get; set; }
     
-        public virtual ICollection<CentroHospitalario> CentroHospitalarios { get; set; }
-        public virtual ICollection<Contacto> Contactoes { get; set; }
-        public virtual ICollection<Paciente> Pacientes { get; set; }
-        public virtual Ubicacion Ubicacion { get; set; }
-        public virtual ICollection<PersonaPatologia> PersonaPatologias { get; set; }
     }
 }

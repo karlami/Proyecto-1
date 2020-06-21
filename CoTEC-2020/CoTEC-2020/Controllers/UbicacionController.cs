@@ -33,9 +33,9 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                var contacto = db.Database.SqlQuery<Ubicacion>("UPDATE Ubicacion" +
-                    " SET idUbicacion, continente, pais, region" +
-                    " FROM Ubicacion" +
+                var contacto = db.Database.SqlQuery<Ubicacion>("SELECT idUbicacion, continente, " +
+                    "pais, region " +
+                    "FROM Ubicacion" +
                     " WHERE idUbicacion = @id");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, contacto);
@@ -49,7 +49,7 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<Ubicacion>("INSERT INTO Ubicacion" +
+                db.Database.ExecuteSqlCommand("INSERT INTO Ubicacion" +
                    " (continente, pais, region)" +
                     " VALUES (" + value.continente + "," + value.pais + "," + value.region + ")");
 
@@ -63,9 +63,8 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.SqlQuery<Ubicacion>("UPDATE Ubicacion" +
-                    " SET idUbicacion = " + value.idUbicacion +
-                    ", continente = " + value.continente +
+                db.Database.ExecuteSqlCommand("UPDATE Ubicacion" +
+                    " SET continente = " + value.continente +
                     ", pais = " + value.pais +
                     ", region = " + value.region +
                     " WHERE idUbicacion = " + value.idUbicacion);
@@ -81,7 +80,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.SqlQuery<Ubicacion>("DELETE" +
+                db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM Ubicacion " +
                     " WHERE idUbicacion = @id");
 
