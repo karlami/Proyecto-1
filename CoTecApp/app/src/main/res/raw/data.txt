@@ -34,3 +34,4 @@ insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacid
 insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (10, 'Jefferson Stratford Hospital', 113, 47, '(909) 8378767', 583181351, 2720);
 insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (11, 'Arnot Ogden Medical Center', 191, 52, '(849) 3740763', 776690833, 1565);
 insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (12, 'Lakeland Regional Medical Center-St. Joseph', 284, 60, '(694) 6802782', 927232648, 2399);
+INSERT INTO Patologia(nombre, descripcion, sintomas, tratamiento) VALUES ("Asma", "Problema Pulmonar", "Dificultad para Respirar", "Mascarillas");

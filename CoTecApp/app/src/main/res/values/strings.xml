@@ -8,6 +8,21 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="cedula"><b>Cédula:</b></string>
+    <string name="nombre"><b>Nombre:</b></string>
+    <string name="ape1"><b>Primer Apellido:</b></string>
+    <string name="ape2"><b>Segundo Apellido:</b></string>
+    <string name="nacionalidad"><b>Nacionalidad:</b></string>
+    <string name="FechaN"><b>Fecha de Nacimiento:</b></string>
+    <string name="FechaI"><b>Fecha de Ingreso:</b></string>
+    <string name="Ubicacion"><b>Ubicación:</b></string>
+    <string name="internado"><b>Internado:</b></string>
+    <string name="uci"><b>Cuidados Intensivos:</b></string>
+    <string name="hospi"><b>Centro Hospitalario:</b></string>
+    <string name="estado"><b>Estado:</b></string>
+    <string name="patologia"><b>Patologías</b></string>
+    <string name="medicamento"><b>Medicación</b></string>
+    <string name="Info"><b>Información del Paciente</b></string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

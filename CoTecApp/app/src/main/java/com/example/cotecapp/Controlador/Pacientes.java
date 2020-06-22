@@ -11,11 +11,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.cotecapp.Entidades.Medicamento;
 import com.example.cotecapp.Entidades.Paciente;
+import com.example.cotecapp.InformacionPaciente;
+import com.example.cotecapp.MainActivity;
 import com.example.cotecapp.R;
 import com.example.cotecapp.RegistroPacientes;
 import com.example.cotecapp.SQLiteTools.ConexionSQLiteHelper;
@@ -75,7 +78,17 @@ public class Pacientes extends Fragment {
         Vista = inflater.inflate(R.layout.fragment_pacientes, container, false);
         addPaciente = (FloatingActionButton) Vista.findViewById(R.id.addPaciente);
         listaPacientes = (ListView) Vista.findViewById(R.id.listaPacientes);
-
+        listaPacientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Paciente paciente = listPacientes.get(position);
+                Intent intent = new Intent(getContext(), InformacionPaciente.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("paciente", paciente);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         ConsultarListaPacientes();
         ArrayAdapter adaptador = new ArrayAdapter(getContext(),
                 android.R.layout.simple_list_item_1, listaPacientesDatos);

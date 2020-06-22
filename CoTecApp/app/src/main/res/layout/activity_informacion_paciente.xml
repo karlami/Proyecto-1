@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".InformacionPaciente">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Info"
+        android:textSize="25dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cedula"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/cedulaPaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/nombrePaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ape1"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/primerApe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ape2"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/segundoApe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nacionalidad"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/nacionalidadPaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/FechaN"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <TextView
+        android:id="@+id/fechaNacimiento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/FechaI"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <TextView
+        android:id="@+id/fechaI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Ubicacion"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/ubicacionPaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/internado"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/internadoPaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/uci"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/UCI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hospi"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/centroHospitalario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/estado"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/estadopaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/patologia"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/personaPatologia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/medicamento"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+    <TextView
+        android:id="@+id/medicamentoPaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Editar Información" />
+
+
+</LinearLayout>
+
+</ScrollView>
