@@ -9,10 +9,10 @@ import androidx.annotation.Nullable;
 
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
-
     public ConexionSQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -28,10 +28,12 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.TABLA_PERSONA_PATOLOGIA);
         db.execSQL(Utilidades.TABLA_PACIENTE_MEDICAMENTO);
         db.execSQL(Utilidades.TABLA_UBICACION_MEDIDA_SANITARIA);
+        db.execSQL(Utilidades.TABLA_MEDIDA_CONTENCION);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_UBICACION);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_MEDIDA_SANITARIA);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_PATOLOGIA);
@@ -44,5 +46,6 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_PERSONA_PATOLOGIA);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_PACIENTE_MEDICAMENTO);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_UBICACION_MEDIDA_SANITARIA);
+        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_MEDIDA_CONTENCION);
     }
 }

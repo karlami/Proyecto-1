@@ -1,0 +1,36 @@
+insert into Ubicacion (idUbicacion, continente, pais, region) VALUES (8, 'Europe', 'France', 'Blois')
+insert into Ubicacion (idUbicacion, continente, pais, region) VALUES (28, 'Europe', 'Norway', 'Trondheim')
+insert into Ubicacion (idUbicacion, continente, pais, region) VALUES (30, 'Europe', 'Russia', 'Velizh')
+insert into Ubicacion (idUbicacion, continente, pais, region) VALUES (36, 'Europe', 'Norway', 'Oslo')
+insert into Ubicacion (idUbicacion, continente, pais, region) VALUES (37, 'Europe', 'France', 'Vincennes')
+insert into Ubicacion (idUbicacion, continente, pais, region) VALUES (38, 'Europe', 'Czech Republic', 'Zbraslav')
+insert into Ubicacion (idUbicacion, continente, pais, region) VALUES (42, 'Europe', 'Ukraine', 'Mukacheve')
+insert into Ubicacion (idUbicacion, continente, pais, region) VALUES (48, 'Europe', 'Portugal', 'Torres Novas')
+insert into Ubicacion (idUbicacion, continente, pais, region) VALUES (51, 'Europe', 'Poland', 'Paprotnia')
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (1, 'Lisinopril', 'Lisinopril', 'Wockhardt Limited');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (2, 'Clindamyci', 'CLINDAMYCIN PHOSPHATE', 'Hospira, Inc.');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (3, 'Lacura Extreme Blast', 'ALUMINUM ZIRCONIUM TRICHLOROHYDREX GLY', 'VVF Kansas Services LLC');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (4, 'ERY-TAB', 'erythromyci', 'Rebel Distributors Corp');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (5, 'DULOXETINE', 'DULOXETINE HYDROCHLORIDE', 'Breckenridge Pharmaceutical, Inc.');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (6, 'Aluminum Acetate Astringent', 'Calcium Acetate and Aluminum sulfate', 'TAGI Pharma Incorporated');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (7, 'Nabumetone', 'Nabumetone', 'Glenmark Generics Inc., USA');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (8, 'Hemorrhoidal', 'Mineral oil, Petrolatum, Phenylephrine HCl, Shark liver oil', 'HyVee Inc');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (9, 'Pegasys', 'peginterferon alfa-2a', 'Genentech, Inc.');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (10, 'Orphenadrine Citrate', 'Orphenadrine Citrate', 'Clinical Solutions Wholesale');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (11, 'od neighbor pharmacy lubricating plus', 'carboxymethylcellulose sodium', 'Amerisource Berge');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (12, 'Elitek', 'rasburicase', 'sanofi-aventis U.S. LLC');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (13, 'Feldene', 'piroxicam', 'Pfizer Laboratories Div Pfizer Inc');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (14, 'Aspiri', 'Aspiri', 'Kareway Product, Inc.');
+insert into Medicamento (idMedicamento, nombre, descripcion, casaFarmaceutica) values (15, 'Propranolol Hydrochloride', 'Propranolol Hydrochloride', 'Northstar RxLLC');
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (1, 'Scripps Memorial Hospital of La Jolla', 173, 29, '(769) 5888668', 759815361, 2298);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (2, 'Texas Health Harris Methodist Hospital Southwest Fort Worth', 162, 50, '(127) 9082618', 836918788, 2803);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (3, 'Texas Health Presbyterian Hospital Plano', 271, 48, '(431) 5074443', 523768687, 176);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (4, 'DLP Conemaugh Memorial Medical Center', 206, 60, '(626) 7686560', 931901089, 1810);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (5, 'St. Elizabeth Boardman Hospital', 194, 64, '(709) 9779088', 727139281, 147);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (6, 'HCA Houston Healthcare West', 157, 54, '(583) 4978268', 373359281, 2297);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (7, 'FRYE REGIONAL MEDICAL CENTER', 200, 55, '(929) 9998212', 238708746, 857);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (8, 'UPMC Hamot', 221, 32, '(670) 1311848', 850264996, 2807);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (9, 'Cullman Regional Medical Center', 184, 46, '(192) 2966874', 900921843, 2390);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (10, 'Jefferson Stratford Hospital', 113, 47, '(909) 8378767', 583181351, 2720);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (11, 'Arnot Ogden Medical Center', 191, 52, '(849) 3740763', 776690833, 1565);
+insert into CentroHospitalario (idCentroHospitalario, nombre, capacidad, capacidadUci, contacto, director, idUbicacion) values (12, 'Lakeland Regional Medical Center-St. Joseph', 284, 60, '(694) 6802782', 927232648, 2399);
