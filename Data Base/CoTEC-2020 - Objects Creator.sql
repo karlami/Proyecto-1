@@ -46,7 +46,8 @@ GO
 /****** Object:  Table MedidaContencion ******/
 CREATE TABLE MedidaContencion(
 	idMedidaContencion			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	medida						VARCHAR(500)							NOT NULL,
+	nombre						VARCHAR(100)							NOT NULL,
+	descripcion					VARCHAR(500)							NOT NULL,
 	fechaInicio					DATE									NOT NULL,
 )
 GO
