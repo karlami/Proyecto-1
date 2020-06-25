@@ -25,11 +25,11 @@ Nombre Completo, Cédula, Edad, Nacionalidad, Región, Patologías, Estado, Medicam
 */
 CREATE VIEW viewPaciente WITH ENCRYPTION AS
 SELECT
-		dbo.getNombreCompleto(pr.cedula) AS [Nombre Completo],
-		pr.cedula AS Cédula, 
+		dbo.getNombreCompleto(pr.cedula) AS NombreCompleto,
+		pr.cedula AS Cedula, 
 		dbo.getEdad(fechaNacimiento) AS Edad,
 		nacionalidad AS Nacionalidad,
-		region AS Región,
+		region AS Region,
 		dbo.getPatologias(pr.cedula) AS Patologias,
 		estado as Estado,
 		dbo.getMedicamentos(pa.idPaciente) as Medicamentos,
@@ -51,11 +51,11 @@ Nombre Completo, Cédula, Edad, Nacionalidad, Ubicación, Patologías, Estado y Cor
 */
 CREATE VIEW viewContacto WITH ENCRYPTION AS
 	SELECT
-		dbo.getNombreCompleto(pr.cedula) AS [Nombre Completo],
-		pr.cedula AS Cédula, 
+		dbo.getNombreCompleto(pr.cedula) AS NombreCompleto,
+		pr.cedula AS Cedula, 
 		dbo.getEdad(fechaNacimiento) AS Edad,
 		nacionalidad AS Nacionalidad,
-		dbo.getUbicacionCompleta(pr.idUbicacion) AS Ubicación,
+		dbo.getUbicacionCompleta(pr.idUbicacion) AS Ubicacion,
 		dbo.getPatologias(pr.cedula) AS Patologias,
 		correo as Correo
 		FROM 
@@ -72,10 +72,10 @@ Ubicación, Nombre, Capacidad, Capacidad UCI, Director, Contacto
 */
 CREATE VIEW viewCentroHospitalario WITH ENCRYPTION AS
 	SELECT
-		dbo.getRegionPais(ch.idUbicacion) AS Ubicación,
+		dbo.getRegionPais(ch.idUbicacion) AS Ubicacion,
 		ch.nombre AS Nombre,
 		ch.capacidad AS Capacidad,
-		ch.capacidadUci AS [Capacidad UCI],
+		ch.capacidadUci AS CapacidadUCI,
 		dbo.getNombreCompleto(ch.director) AS Director,
 		ch.contacto AS Contacto
 		FROM
