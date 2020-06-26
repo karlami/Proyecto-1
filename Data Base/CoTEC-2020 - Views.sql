@@ -57,7 +57,8 @@ CREATE VIEW viewContacto WITH ENCRYPTION AS
 		nacionalidad AS Nacionalidad,
 		dbo.getUbicacionCompleta(pr.idUbicacion) AS Ubicacion,
 		dbo.getPatologias(pr.cedula) AS Patologias,
-		correo as Correo
+		correo as Correo,
+		c.idContacto as IdContacto
 		FROM 
 		Persona as pr
 		INNER JOIN Contacto as c ON c.cedula = pr.cedula
@@ -77,7 +78,8 @@ CREATE VIEW viewCentroHospitalario WITH ENCRYPTION AS
 		ch.capacidad AS Capacidad,
 		ch.capacidadUci AS CapacidadUCI,
 		dbo.getNombreCompleto(ch.director) AS Director,
-		ch.contacto AS Contacto
+		ch.contacto AS Contacto,
+		ch.idCentroHospitalario as IdCentroHospitalario
 		FROM
 			CentroHospitalario as ch
 GO
