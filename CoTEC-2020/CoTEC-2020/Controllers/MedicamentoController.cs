@@ -50,11 +50,11 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("INSERT INTO Medicamento" +
+                var status = db.Database.ExecuteSqlCommand("INSERT INTO Medicamento" +
                    " (nombre, descripcion, casaFarmaceutica)" +
-                    " VALUES (" + value.nombre + "," + value.descripcion + "," + value.casaFarmaceutica + ")");
+                    " VALUES ('" + value.nombre + "','" + value.descripcion + "','" + value.casaFarmaceutica + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK,status);
             }
         }
 
@@ -64,13 +64,12 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("UPDATE Medicamento" +
-                    " SET nombre = " + value.nombre +
-                    ", descripcion = " + value.descripcion +
-                    ", casaFarmaceutica = " + value.casaFarmaceutica +
-                    " WHERE idMedicamento = " + value.idMedicamento);
+                var status = db.Database.ExecuteSqlCommand("UPDATE Medicamento" +
+                    " SET nombre = '" + value.nombre +"', descripcion = '" + value.descripcion +
+                    "', casaFarmaceutica = '" + value.casaFarmaceutica +
+                    "' WHERE idMedicamento = ('" + value.idMedicamento + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
@@ -81,11 +80,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.ExecuteSqlCommand("DELETE" +
+                var status = db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM Medicamento " +
                     " WHERE idMedicamento = @id", parametro);
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
 
 
