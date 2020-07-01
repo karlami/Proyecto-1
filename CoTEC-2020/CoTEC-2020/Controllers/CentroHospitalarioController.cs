@@ -18,9 +18,8 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                var listaCentroHospitalarios = db.Database.SqlQuery<CentroHospitalario>("SELECT idCentroHospitalario, nombre, " +
-                    "capacidad, capacidadUci, contacto, director, idUbicacion " +
-                    "FROM CentroHospitalario").ToList();
+                var listaCentroHospitalarios = db.Database.SqlQuery<vCentroHospitalario>("SELECT * " +
+                    "FROM viewCentroHospitalario").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaCentroHospitalarios);
             }

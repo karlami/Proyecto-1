@@ -21,5 +21,6 @@ namespace CoTEC_2020.Models
         public System.DateTime fechaIngreso { get; set; }
         public int idCentroHospitalario { get; set; }
         public string cedula { get; set; }
+
     }
 }

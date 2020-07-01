@@ -35,7 +35,8 @@
       <PropertyRef Name="idMedidaContencion" />
     </Key>
     <Property Name="idMedidaContencion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="medida" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="fechaInicio" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="MedidaSanitaria">

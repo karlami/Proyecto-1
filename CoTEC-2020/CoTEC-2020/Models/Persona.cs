@@ -14,7 +14,6 @@ namespace CoTEC_2020.Models
     
     public partial class Persona
     {
-    
         public string cedula { get; set; }
         public string nombre { get; set; }
         public string primerApellido { get; set; }

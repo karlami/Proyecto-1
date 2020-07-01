@@ -85,3 +85,9 @@ C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\obj\Debug\CoTEC-20
 C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\obj\Debug\CoTEC-2020.csproj.CopyComplete
 C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\obj\Debug\CoTEC-2020.dll
 C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\obj\Debug\CoTEC-2020.pdb
+C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\bin\EntityFramework.SqlServer.dll
+C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\bin\EntityFramework.SqlServer.xml
+C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\HP_640\Desktop\Proyecto1\Karla\CoTEC-2020\CoTEC-2020\bin\Microsoft.AspNet.Identity.EntityFramework.xml

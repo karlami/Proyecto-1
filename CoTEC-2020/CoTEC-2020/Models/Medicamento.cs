@@ -19,6 +19,6 @@ namespace CoTEC_2020.Models
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public string casaFarmaceutica { get; set; }
-
+    
     }
 }

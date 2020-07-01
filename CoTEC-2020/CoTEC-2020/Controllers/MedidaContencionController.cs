@@ -33,7 +33,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                var paciente = db.Database.SqlQuery<MedidaContencion>("SELECT idMedidaContencion, medida, " +
+                var paciente = db.Database.SqlQuery<MedidaContencion>("SELECT idMedidaContencion, nombre, " +
                     "fechaInicio " +
                     "FROM MedidaContencion" +
                     " WHERE idMedidaContencion = @id");
@@ -50,8 +50,8 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.ExecuteSqlCommand("INSERT INTO MedidaContencion" +
-                   " (medida, fechaInicio)" +
-                    " VALUES (" + value.medida + "," + value.fechaInicio + ")");
+                   " (nombre, fechaInicio)" +
+                    " VALUES (" + value.nombre + "," + value.fechaInicio + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -64,7 +64,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 db.Database.ExecuteSqlCommand("UPDATE MedidaContencion" +
-                    " SET medida = " + value.medida +
+                    " SET nombre = " + value.nombre +
                     ", fechaInicio = " + value.fechaInicio +
                     " WHERE idMedidaContencion = " + value.idMedidaContencion);
 

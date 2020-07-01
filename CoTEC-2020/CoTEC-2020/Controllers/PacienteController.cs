@@ -12,20 +12,30 @@ namespace CoTEC_2020.Controllers
 {
     public class PacienteController : ApiController
     {
+        /*
+        Select para Paciente
+        Obtiene la siguiente información de los Pacientes:
+        idPaciente, internado, UCI, fechaIngreso, idCentroHospitalario, cedula.
+        */
         [HttpGet]
         [Route("api/GetPacientes")]
         public HttpResponseMessage Get()
         {
             using (var db = new CoTECEntities())
             {
-                var listaPacientes = db.Database.SqlQuery<Paciente>("SELECT idPaciente, " +
-                    "internado, uci, fechaIngreso, idCentroHospitalario, cedula " +
-                    "FROM Paciente").ToList();
+                var listaPacientes = db.Database.SqlQuery<vPaciente>("SELECT *" +
+                    "FROM viewPaciente").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaPacientes);
             }
         }
 
+        /*
+        Select para un Paciente en espcífico
+        Recibe el idPaciente y lo usa en la cláusula WHERE
+        Obtiene la siguiente información del Paciente:
+        idPaciente, internado, UCI, fechaIngreso, idCentroHospitalario, cedula.
+        */
         [HttpGet]
         [Route("api/GetPaciente/{id}")]
         public HttpResponseMessage Get(int id)
@@ -42,6 +52,11 @@ namespace CoTEC_2020.Controllers
             }
         }
 
+        /*
+        Insert de un Paciente
+        Recibe toda la información del nuevo Paciente
+        Crea una tupla en Paciente con los valores ingresados
+        */
         [HttpPost]
         [Route("api/PostPacientes")]
         public HttpResponseMessage Post([FromBody] Paciente value)
@@ -59,6 +74,11 @@ namespace CoTEC_2020.Controllers
             }
         }
 
+        /*
+        Update de un Paciente
+        Recibe toda la información del Paciente a modificar
+        Actualiza la tupla que el idPaciente indique
+        */
         [HttpPut]
         [Route("api/PutPacientes")]
         public HttpResponseMessage Put([FromBody] Paciente value)
@@ -77,6 +97,11 @@ namespace CoTEC_2020.Controllers
             }
         }
 
+        /*
+        Delete de un Paciente
+        Recibe el id del Paciente a eliminar
+        Elimina la tupla con el id indicado
+        */
         [HttpDelete]
         [Route("api/DeletePacientes/{id}")]
         public HttpResponseMessage Delete(string id)
