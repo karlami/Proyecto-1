@@ -49,12 +49,12 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("INSERT INTO Persona" +
+                var status = db.Database.ExecuteSqlCommand("INSERT INTO Persona" +
                    " (cedula, nombre, primerApellido, segundoApellido, nacionalidad, fechaNacimiento, idUbicacion)" +
-                    " VALUES (" + value.cedula + "," + value.nombre + "," + value.primerApellido + "," +
-                    value.segundoApellido + "," + value.nacionalidad + "," + value.fechaNacimiento + "," + value.idUbicacion + ")");
+                    " VALUES ('" + value.cedula + "','" + value.nombre + "','" + value.primerApellido + "','" +
+                    value.segundoApellido + "','" + value.nacionalidad + "','" + value.fechaNacimiento + "','" + value.idUbicacion + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
@@ -64,16 +64,16 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("UPDATE Persona" +
-                    " SET nombre = " + value.nombre +
-                    ", primerApellido = " + value.primerApellido +
-                    ", segundoApellido = " + value.segundoApellido +
-                    ", nacionalidad = " + value.nacionalidad +
-                    ", fechaNacimiento = " + value.fechaNacimiento +
-                    ", idUbicacion = " + value.idUbicacion +
-                    " WHERE cedula = " + value.cedula);
+                var status = db.Database.ExecuteSqlCommand("UPDATE Persona" +
+                    " SET nombre = '" + value.nombre +
+                    "', primerApellido = '" + value.primerApellido +
+                    "', segundoApellido = '" + value.segundoApellido +
+                    "', nacionalidad = '" + value.nacionalidad +
+                    "', fechaNacimiento = '" + value.fechaNacimiento +
+                    "', idUbicacion = '" + value.idUbicacion +
+                    "' WHERE cedula = ('" + value.cedula + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
@@ -84,11 +84,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.ExecuteSqlCommand("DELETE" +
+                var status = db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM Persona " +
                     " WHERE cedula = @id");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
 
 

@@ -49,11 +49,11 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("INSERT INTO Patologia" +
+                var status = db.Database.ExecuteSqlCommand("INSERT INTO Patologia" +
                    " (nombre, descripcion, sintomas, tratamiento) " +
-                    "VALUES (" + value.nombre + "," + value.descripcion + "," + value.sintomas + "," + value.tratamiento + ")");
+                    "VALUES ('" + value.nombre + "','" + value.descripcion + "','" + value.sintomas + "','" + value.tratamiento + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
@@ -63,14 +63,14 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("UPDATE Patologia" +
-                    " SET nombre = " + value.nombre +
-                    ", descripcion = " + value.descripcion +
-                    ", sintomas = " + value.sintomas +
-                    ", tratamiento = " + value.tratamiento +
-                    " WHERE idPatologia = " + value.idPatologia);
+                var status = db.Database.ExecuteSqlCommand("UPDATE Patologia" +
+                    " SET nombre = '" + value.nombre +
+                    "', descripcion = '" + value.descripcion +
+                    "', sintomas = '" + value.sintomas +
+                    "', tratamiento = '" + value.tratamiento +
+                    "' WHERE idPatologia = ('" + value.idPatologia + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
@@ -81,11 +81,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.ExecuteSqlCommand("DELETE" +
+                var status = db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM Patologia " +
                     " WHERE idPatologia = @id");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
 
 
