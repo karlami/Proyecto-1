@@ -14,6 +14,28 @@ CoTEC-2020 - Data Loader II
 */
 
 
+/*
+--------------------------------------------------------------------
+Ubicacion de Inserts por Tabla en Script Actual
+--------------------------------------------------------------------
+Ubicacion...................................................25
+Medicamento.................................................236
+Patologia...................................................491
+MedidaSanitaria.............................................515
+MedidaContencion............................................566
+Persona.....................................................608c
+CentroHospitalario..........................................5637c
+EstadoPaciente..............................................c
+Paciente....................................................5842c
+Contacto....................................................6782c
+PacienteMedicamento.........................................9199c
+PersonaPatologia............................................10609c
+UbicacionMedidaContencion...................................14618c
+UbicacionMedidaSanitaria ...................................13706c
+--------------------------------------------------------------------
+*/
+
+
 use [CoTEC-2020];
 GO
 
@@ -3299,6 +3321,7 @@ GO
 insert into EstadoPaciente (estado) values ('Activo - Contagiado');
 insert into EstadoPaciente (estado) values ('Recuperado');
 insert into EstadoPaciente (estado) values ('Muerto');
+insert into EstadoPaciente (estado) values ('Desconocido');
 GO
 
 /****** Data:  Paciente ******/

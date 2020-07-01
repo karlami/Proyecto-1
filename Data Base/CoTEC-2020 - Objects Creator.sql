@@ -13,9 +13,11 @@ CoTEC-2020 - Objects Creator
 --------------------------------------------------------------------
 */
 
+
 /****** Object:  Database CoTEC-2020 ******/
 CREATE DATABASE [CoTEC-2020]
 GO
+
 
 USE [CoTEC-2020]
 GO 
@@ -124,13 +126,12 @@ CREATE TABLE Paciente(
 	internado					VARCHAR(10)								NOT NULL,
 	uci							VARCHAR(10)								NOT NULL,
 	fechaIngreso				DATE									NOT NULL,
-	idEstadoPaciente			INT										NOT NULL,
+	idEstadoPaciente			INT										NOT NULL						DEFAULT 4,
 	idCentroHospitalario		INT										NOT NULL,
 	cedula						VARCHAR(30)								NOT NULL,
-	FOREIGN KEY(idEstadoPaciente)							REFERENCES EstadoPaciente(idEstadoPaciente),
+	FOREIGN KEY(idEstadoPaciente)					REFERENCES EstadoPaciente(idEstadoPaciente)					ON DELETE SET DEFAULT,
 	FOREIGN KEY(idCentroHospitalario)				REFERENCES CentroHospitalario(idCentroHospitalario),
 	FOREIGN KEY(cedula)								REFERENCES Persona(cedula)
-
 )
 GO
 
