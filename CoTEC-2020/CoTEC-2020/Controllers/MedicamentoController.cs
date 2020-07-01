@@ -54,7 +54,7 @@ namespace CoTEC_2020.Controllers
                    " (nombre, descripcion, casaFarmaceutica)" +
                     " VALUES ('" + value.nombre + "','" + value.descripcion + "','" + value.casaFarmaceutica + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK,status);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 

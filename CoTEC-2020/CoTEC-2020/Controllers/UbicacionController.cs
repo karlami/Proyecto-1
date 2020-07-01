@@ -69,7 +69,7 @@ namespace CoTEC_2020.Controllers
                     "', region = '" + value.region +
                     "' WHERE idUbicacion = ('" + value.idUbicacion + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 

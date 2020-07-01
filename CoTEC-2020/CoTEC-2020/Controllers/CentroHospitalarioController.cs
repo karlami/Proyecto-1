@@ -51,8 +51,7 @@ namespace CoTEC_2020.Controllers
                 db.Database.ExecuteSqlCommand("INSERT INTO CentroHospitalario " +
                    "(nombre, capacidad, capacidadUci, contacto, director, idUbicacion) " +
                     "VALUES (" + value.nombre + "," + value.capacidad + "," +
-                    value.capacidadUci + "," + value.contacto + "," + value.director +
-                    value.idUbicacion + ")");
+                    value.capacidadUci + "," + value.contacto + "," + value.director + ")");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -70,7 +69,6 @@ namespace CoTEC_2020.Controllers
                     ", capacidadUci = " + value.capacidadUci +
                     ", contacto = " + value.contacto +
                     ", director = " + value.director +
-                    ", idUbicacion = " + value.idUbicacion +
                     " WHERE idCentroHospitalario = " + value.idCentroHospitalario);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);

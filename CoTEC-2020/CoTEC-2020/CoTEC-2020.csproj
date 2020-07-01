@@ -523,6 +523,9 @@
     <Compile Include="Models\UbicacionMedidaSanitaria.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\vCentroHospitalario.cs" />
+    <Compile Include="Models\vContacto.cs" />
+    <Compile Include="Models\vPaciente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
