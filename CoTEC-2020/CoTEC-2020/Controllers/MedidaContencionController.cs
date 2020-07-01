@@ -49,11 +49,11 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("INSERT INTO MedidaContencion" +
+                var status = db.Database.ExecuteSqlCommand("INSERT INTO MedidaContencion" +
                    " (medida, fechaInicio)" +
-                    " VALUES (" + value.medida + "," + value.fechaInicio + ")");
+                    " VALUES ('" + value.medida + "','" + value.fechaInicio + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
@@ -63,12 +63,12 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("UPDATE MedidaContencion" +
-                    " SET medida = " + value.medida +
-                    ", fechaInicio = " + value.fechaInicio +
-                    " WHERE idMedidaContencion = " + value.idMedidaContencion);
+                var status = db.Database.ExecuteSqlCommand("UPDATE MedidaContencion" +
+                    " SET medida = '" + value.medida +
+                    "', fechaInicio = '" + value.fechaInicio +
+                    "' WHERE idMedidaContencion = ('" + value.idMedidaContencion + "')");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
@@ -79,11 +79,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.ExecuteSqlCommand("DELETE" +
+                var status = db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM MedidaContencion " +
                     " WHERE idMedidaContencion = @id");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
 
 

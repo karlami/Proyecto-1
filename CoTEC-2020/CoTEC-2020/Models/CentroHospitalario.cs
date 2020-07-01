@@ -21,7 +21,8 @@ namespace CoTEC_2020.Models
         public int capacidadUci { get; set; }
         public string contacto { get; set; }
         public string director { get; set; }
-        public int idUbicacion { get; set; }
-    
+        public int region { get; set; }
+        public int pais { get; set; }
+
     }
 }
