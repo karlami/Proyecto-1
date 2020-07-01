@@ -110,26 +110,27 @@ CREATE TABLE Contacto(
 GO
 
 
+/****** Object:  Table EstadoPacientes ******/
+CREATE TABLE EstadoPaciente(
+	idEstadoPaciente					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	estado								VARCHAR(50)								NOT NULL,
+)
+GO
+
+
 /****** Object:  Table Paciente ******/
 CREATE TABLE Paciente(
 	idPaciente					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	internado					VARCHAR(10)								NOT NULL,
 	uci							VARCHAR(10)								NOT NULL,
 	fechaIngreso				DATE									NOT NULL,
+	idEstadoPaciente			INT										NOT NULL,
 	idCentroHospitalario		INT										NOT NULL,
 	cedula						VARCHAR(30)								NOT NULL,
+	FOREIGN KEY(idEstadoPaciente)							REFERENCES EstadoPaciente(idEstadoPaciente),
 	FOREIGN KEY(idCentroHospitalario)				REFERENCES CentroHospitalario(idCentroHospitalario),
 	FOREIGN KEY(cedula)								REFERENCES Persona(cedula)
-)
-GO
 
-
-/****** Object:  Table PacienteEstado ******/
-CREATE TABLE PacienteEstado(
-	idPacienteEstado					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	idPaciente							INT										NOT NULL,
-	estado								VARCHAR(30)								NOT NULL,
-	FOREIGN KEY(idPaciente)				REFERENCES Paciente(idPaciente),
 )
 GO
 

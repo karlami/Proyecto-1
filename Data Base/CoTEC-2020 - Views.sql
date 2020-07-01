@@ -40,7 +40,7 @@ SELECT
 		Persona as pr
 		JOIN Paciente as pa ON pa.cedula = pr.cedula
 		JOIN Ubicacion as u ON pr.idUbicacion=u.idUbicacion
-		JOIN PacienteEstado as pe ON pa.idPaciente=pe.idPaciente
+		JOIN EstadoPaciente as ep ON pa.idEstadoPaciente=ep.idEstadoPaciente
 GO
 
 
