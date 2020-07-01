@@ -40,7 +40,8 @@
             <PropertyRef Name="idMedidaContencion" />
           </Key>
           <Property Name="idMedidaContencion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="medida" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="fechaInicio" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="MedidaSanitaria">
@@ -437,7 +438,8 @@
             <PropertyRef Name="idMedidaContencion" />
           </Key>
           <Property Name="idMedidaContencion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="medida" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="UbicacionMedidaContencions" Relationship="Self.FK__Ubicacion__idMed__46E78A0C" FromRole="MedidaContencion" ToRole="UbicacionMedidaContencion" />
         </EntityType>
@@ -857,7 +859,8 @@
             <EntityTypeMapping TypeName="Model.MedidaContencion">
               <MappingFragment StoreEntitySet="MedidaContencion">
                 <ScalarProperty Name="idMedidaContencion" ColumnName="idMedidaContencion" />
-                <ScalarProperty Name="medida" ColumnName="medida" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
               </MappingFragment>
             </EntityTypeMapping>

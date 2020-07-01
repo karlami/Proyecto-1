@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="17dc9ffd2a7246458b31070e8296483a" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.CentroHospitalario" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+      <Diagram DiagramId="27835c5ae4594a7a9a36aa441172f164" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="Model.CentroHospitalario" Width="1.5" PointX="5.125" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Contacto" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Medicamento" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MedidaContencion" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MedidaSanitaria" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Medicamento" Width="1.5" PointX="7.375" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MedidaContencion" Width="1.5" PointX="1" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MedidaSanitaria" Width="1.5" PointX="5" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Paciente" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PacienteEstado" Width="1.5" PointX="9.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PacienteMedicamento" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Patologia" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PacienteEstado" Width="1.5" PointX="9.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PacienteMedicamento" Width="1.5" PointX="10" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Patologia" Width="1.5" PointX="8.75" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Persona" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PersonaPatologia" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Ubicacion" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PersonaPatologia" Width="1.5" PointX="6.625" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Ubicacion" Width="1.5" PointX="0.5" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.UbicacionMedidaContencion" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.UbicacionMedidaSanitaria" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UbicacionMedidaSanitaria" Width="1.5" PointX="2.125" PointY="5.25" IsExpanded="true" />
         <AssociationConnector Association="Model.FK__CentroHos__direc__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK__CentroHos__idUbi__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK__Paciente__idCent__37A5467C" ManuallyRouted="false" />

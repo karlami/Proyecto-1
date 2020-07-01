@@ -18,9 +18,8 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                var listaCentroHospitalarios = db.Database.SqlQuery<CentroHospitalario>("SELECT idCentroHospitalario, nombre, " +
-                    "capacidad, capacidadUci, contacto, director, region, pais " +
-                    "FROM CentroHospitalario").ToList();
+                var listaCentroHospitalarios = db.Database.SqlQuery<vCentroHospitalario>("SELECT * " +
+                    "FROM viewCentroHospitalario").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaCentroHospitalarios);
             }
@@ -34,7 +33,7 @@ namespace CoTEC_2020.Controllers
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
                 var centro = db.Database.SqlQuery<CentroHospitalario>("SELECT idCentroHospitalario, nombre, " +
-                    "capacidad, capacidadUci, contacto, director, region, pais " +
+                    "capacidad, capacidadUci, contacto, director, idUbicacion " +
                     "FROM CentroHospitalario " +
                     "WHERE idCentroHospitalario = @id");
 
@@ -49,13 +48,13 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                var status = db.Database.ExecuteSqlCommand("INSERT INTO CentroHospitalario " +
+                db.Database.ExecuteSqlCommand("INSERT INTO CentroHospitalario " +
                    "(nombre, capacidad, capacidadUci, contacto, director, idUbicacion) " +
-                    "VALUES ('" + value.nombre + "','" + value.capacidad + "','" +
-                    value.capacidadUci + "','" + value.contacto + "','" + value.director + "','" +
-                    value.region + "','" + value.pais + "')");
+                    "VALUES (" + value.nombre + "," + value.capacidad + "," +
+                    value.capacidadUci + "," + value.contacto + "," + value.director +
+                    value.idUbicacion + ")");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+                return this.Request.CreateResponse(HttpStatusCode.OK);
             }
         }
 
@@ -71,8 +70,7 @@ namespace CoTEC_2020.Controllers
                     ", capacidadUci = " + value.capacidadUci +
                     ", contacto = " + value.contacto +
                     ", director = " + value.director +
-                    ", region = " + value.region +
-                    ", pais = " + value.pais +
+                    ", idUbicacion = " + value.idUbicacion +
                     " WHERE idCentroHospitalario = " + value.idCentroHospitalario);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);

@@ -90,7 +90,6 @@ namespace CoTEC_2020.Controllers
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
 
-
         }
     }
 }

@@ -16,8 +16,9 @@ namespace CoTEC_2020.Models
     {
     
         public int idMedidaContencion { get; set; }
-        public string medida { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
         public System.DateTime fechaInicio { get; set; }
-    
+
     }
 }

@@ -19,6 +19,6 @@ namespace CoTEC_2020.Models
         public string continente { get; set; }
         public string pais { get; set; }
         public string region { get; set; }
-    
+
     }
 }

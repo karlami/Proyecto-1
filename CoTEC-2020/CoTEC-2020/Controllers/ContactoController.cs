@@ -18,9 +18,8 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                var listaContactos = db.Database.SqlQuery<Contacto>("SELECT idContacto, correo, " +
-                    "idPaciente, cedula " +
-                    "FROM Contacto").ToList();
+                var listaContactos = db.Database.SqlQuery<vContacto>("SELECT * " +
+                    "FROM viewContacto").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaContactos);
             }

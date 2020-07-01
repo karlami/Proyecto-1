@@ -33,7 +33,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                var paciente = db.Database.SqlQuery<MedidaContencion>("SELECT idMedidaContencion, medida, " +
+                var paciente = db.Database.SqlQuery<MedidaContencion>("SELECT idMedidaContencion, nombre, " +
                     "fechaInicio " +
                     "FROM MedidaContencion" +
                     " WHERE idMedidaContencion = @id");
@@ -49,11 +49,11 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                var status = db.Database.ExecuteSqlCommand("INSERT INTO MedidaContencion" +
-                   " (medida, fechaInicio)" +
-                    " VALUES ('" + value.medida + "','" + value.fechaInicio + "')");
+                db.Database.ExecuteSqlCommand("INSERT INTO MedidaContencion" +
+                   " (nombre, fechaInicio)" +
+                    " VALUES (" + value.nombre + "," + value.fechaInicio + ")");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+                return this.Request.CreateResponse(HttpStatusCode.OK);
             }
         }
 
@@ -63,12 +63,12 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                var status = db.Database.ExecuteSqlCommand("UPDATE MedidaContencion" +
-                    " SET medida = '" + value.medida +
-                    "', fechaInicio = '" + value.fechaInicio +
-                    "' WHERE idMedidaContencion = ('" + value.idMedidaContencion + "')");
+                db.Database.ExecuteSqlCommand("UPDATE MedidaContencion" +
+                    " SET nombre = " + value.nombre +
+                    ", fechaInicio = " + value.fechaInicio +
+                    " WHERE idMedidaContencion = " + value.idMedidaContencion);
 
-                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+                return this.Request.CreateResponse(HttpStatusCode.OK);
             }
         }
 
@@ -79,11 +79,11 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 SqlParameter parametro = new SqlParameter("@id", id);
-                var status = db.Database.ExecuteSqlCommand("DELETE" +
+                db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM MedidaContencion " +
                     " WHERE idMedidaContencion = @id");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+                return this.Request.CreateResponse(HttpStatusCode.OK);
             }
 
 
