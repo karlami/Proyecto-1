@@ -84,3 +84,22 @@ CREATE VIEW viewCentroHospitalario WITH ENCRYPTION AS
 			CentroHospitalario as ch
 GO
 
+
+/*
+Vista para MedidaSanitaria
+Obtiene la siguiente información de las Medidas Sanitarias:
+Nombre, Descripcion, Estado, Ubicacion, FechaInicial y FechaFinal
+*/
+CREATE VIEW viewMedidaSanitaria WITH ENCRYPTION AS
+	SELECT
+		ms.nombre as Nombre,
+		ms.descripcion as Descripcion,
+		ums.estado as Estado,
+		dbo.getUbicacionCompleta(ums.idUbicacion) AS Ubicacion,
+		ums.fechaInicio as FechaInicio,
+		ums.fechaFinal as FechaFinal
+	FROM
+		MedidaSanitaria as ms
+		JOIN UbicacionMedidaSanitaria as ums ON ms.idMedidaSanitaria = ums.idMedidaSanitaria
+GO
+

@@ -36,9 +36,6 @@ CREATE TABLE MedidaSanitaria(
 	idMedidaSanitaria			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre						VARCHAR(100)							NOT NULL,
 	descripcion					VARCHAR(500)							NOT NULL,
-	estado						VARCHAR(20)								NOT NULL,
-	fechaInicio					DATE									NOT NULL,
-	fechaFinal					DATE									NULL,
 )
 GO
 
@@ -48,7 +45,7 @@ CREATE TABLE MedidaContencion(
 	idMedidaContencion			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre						VARCHAR(100)							NOT NULL,
 	descripcion					VARCHAR(500)							NOT NULL,
-	fechaInicio					DATE									NOT NULL,
+	fechaInicio					DATE									NOT NULL
 )
 GO
 
@@ -59,7 +56,7 @@ CREATE TABLE Patologia(
 	nombre						VARCHAR(100)							NOT NULL,
 	descripcion					VARCHAR(500)							NOT NULL,
 	sintomas					VARCHAR(500)							NOT NULL,
-	tratamiento					VARCHAR(500)							NOT NULL,
+	tratamiento					VARCHAR(500)							NOT NULL
 )
 GO
 
@@ -69,7 +66,7 @@ CREATE TABLE Medicamento(
 	idMedicamento				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre						VARCHAR(100)							NOT NULL,
 	descripcion					VARCHAR(500)							NOT NULL,
-	casaFarmaceutica			VARCHAR(100)							NOT NULL,
+	casaFarmaceutica			VARCHAR(100)							NOT NULL
 )
 GO
 
@@ -176,6 +173,9 @@ CREATE TABLE UbicacionMedidaSanitaria(
 	idUbicacionMedidaSanitaria	INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idUbicacion					INT										NOT NULL,
 	idMedidaSanitaria			INT										NOT NULL,
+	estado						VARCHAR(20)								NOT NULL,
+	fechaInicio					DATE									NOT NULL,
+	fechaFinal					DATE									NULL,
 	FOREIGN KEY(idUbicacion)						REFERENCES Ubicacion(idUbicacion),
 	FOREIGN KEY(idMedidaSanitaria)					REFERENCES MedidaSanitaria(idMedidaSanitaria)
 )
