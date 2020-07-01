@@ -51,7 +51,7 @@ namespace CoTEC_2020.Controllers
             {
                 var status = db.Database.ExecuteSqlCommand("INSERT INTO MedidaContencion" +
                    " (medida, fechaInicio)" +
-                    " VALUES ('" + value.medida + "','" + value.fechaInicio + "')");
+                    " VALUES ('" + value.nombre + "','" + value.fechaInicio + "')");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
@@ -64,7 +64,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 var status = db.Database.ExecuteSqlCommand("UPDATE MedidaContencion" +
-                    " SET medida = '" + value.medida +
+                    " SET medida = '" + value.nombre +
                     "', fechaInicio = '" + value.fechaInicio +
                     "' WHERE idMedidaContencion = ('" + value.idMedidaContencion + "')");
 
