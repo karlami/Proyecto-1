@@ -45,7 +45,6 @@ CREATE TABLE MedidaContencion(
 	idMedidaContencion			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre						VARCHAR(100)							NOT NULL,
 	descripcion					VARCHAR(500)							NOT NULL,
-	fechaInicio					DATE									NOT NULL
 )
 GO
 
@@ -162,6 +161,7 @@ CREATE TABLE UbicacionMedidaContencion(
 	idUbicacionMedidaContencion	INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idUbicacion					INT										NOT NULL,
 	idMedidaContencion			INT										NOT NULL,
+	fechaInicio					DATE									NOT NULL,
 	FOREIGN KEY(idUbicacion)						REFERENCES Ubicacion(idUbicacion),
 	FOREIGN KEY(idMedidaContencion)					REFERENCES MedidaContencion(idMedidaContencion)
 )

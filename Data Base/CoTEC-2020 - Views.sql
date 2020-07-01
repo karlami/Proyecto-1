@@ -103,3 +103,20 @@ CREATE VIEW viewMedidaSanitaria WITH ENCRYPTION AS
 		JOIN UbicacionMedidaSanitaria as ums ON ms.idMedidaSanitaria = ums.idMedidaSanitaria
 GO
 
+
+/*
+Vista para MedidaContencion
+Obtiene la siguiente información de las Medidas de Contencion:
+Nombre, Descripcion, Estado, Ubicacion, FechaInicial y FechaFinal
+*/
+CREATE VIEW viewMedidaContencion WITH ENCRYPTION AS
+	SELECT
+		mc.nombre as Nombre,
+		mc.descripcion as Descripcion,
+		dbo.getUbicacionCompleta(umc.idUbicacion) AS Ubicacion,
+		umc.fechaInicio as FechaInicio
+	FROM
+		MedidaContencion as mc
+		JOIN UbicacionMedidaContencion as umc ON mc.idMedidaContencion = umc.idMedidaContencion
+GO
+
