@@ -37,6 +37,34 @@ BEGIN
 		ROLLBACK;
 		THROW 50001, 'No se puede eliminar, es un estado predefinido',1;
 	END
-END;
+END
+GO
+
+
+/*
+Trigger Cantidad de Camas en CentroHospitalario
+*/
+CREATE TRIGGER triggerCentroHospitalario
+ON CentroHospitalario
+FOR INSERT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	IF ( (SELECT capacidad FROM inserted) < (SELECT capacidadUci FROM inserted) ) 
+		BEGIN
+			ROLLBACK;
+			THROW 50001, 'No se puede insertar, capacidadUci es mayor a capacidad',1;
+		END
+	--ELSE IF ( (SELECT idCentroHospitalario FROM Paciente) = (SELECT idCentroHospitalario FROM deleted))
+	--	BEGIN
+	--		UPDATE Paciente  
+	--		SET idCentroHospitalario = (SELECT TOP 1 idCentroHospitalario From CentroHospitalario ORDER BY NEWID())
+	--		--Verifica que este actualizando el idCentroHospitalario que es
+	--		WHERE idCentroHospitalario = (SELECT idCentroHospitalario FROM deleted)
+
+			--ROLLBACK;
+			--THROW 50001, 'No se puede actualizar, capacidadUci es mayor a capacidad',1;
+		--END
+END
 GO
 

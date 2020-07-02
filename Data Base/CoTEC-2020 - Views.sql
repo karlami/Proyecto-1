@@ -120,3 +120,4 @@ CREATE VIEW viewMedidaContencion WITH ENCRYPTION AS
 		JOIN UbicacionMedidaContencion as umc ON mc.idMedidaContencion = umc.idMedidaContencion
 GO
 
+

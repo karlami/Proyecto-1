@@ -1,3 +1,5 @@
+
+
 /*
 --------------------------------------------------------------------
 Proyecto #1 - CoTEC-2020
@@ -127,22 +129,42 @@ GO
 
 
 /*
-Funcion que le ingreso la region y devuelve el id de la ubicacion
+Obtiene el id de la Ubicacion al ingresar el continente, pais y region
+param: continente VARCHAR(75), pais VARCHAR(75) y region VARCHAR(75)
+return: idUbicacion
 */
-CREATE FUNCTION getIdUbicacion(@region VARCHAR(75)) RETURNS INT
+CREATE FUNCTION getIdUbicacion(@continente VARCHAR(75), @pais VARCHAR(75), @region VARCHAR(75)) RETURNS INT
 AS
 BEGIN
 	DECLARE @IdUbicacion INT
-	SET @IdUbicacion=(SELECT Ubicacion.idUbicacion FROM Ubicacion 
-		WHERE @region=Ubicacion.region)
+	SET @IdUbicacion=(SELECT TOP 1 Ubicacion.idUbicacion FROM Ubicacion 
+		WHERE @continente=Ubicacion.continente AND @pais=Ubicacion.pais AND @region=Ubicacion.region)
+	IF (@IdUbicacion IS NULL)
+	BEGIN
+		SET @IdUbicacion = 0
+	END
 	RETURN @IdUbicacion
 END
 GO
 
 
+--/*
+--Funcion que le ingreso la region y devuelve el id de la ubicacion
+--*/
+--CREATE FUNCTION getIdUbicacion(@region VARCHAR(75)) RETURNS INT
+--AS
+--BEGIN
+--	DECLARE @IdUbicacion INT
+--	SET @IdUbicacion=(SELECT Ubicacion.idUbicacion FROM Ubicacion 
+--		WHERE @region=Ubicacion.region)
+--	RETURN @IdUbicacion
+--END
+--GO
+
+
 /*
-Funcion que le ingreso la patologia y devuelve el id de la patologia
-param: nombre de la patologia VARCHAR(100)
+Obtiene el id de Patologia al ingresar el nombre de la patologia
+param: nombre VARCHAR(100)
 return: idPatologia
 */
 CREATE FUNCTION getIdPatologia(@nombre VARCHAR(100)) RETURNS INT
@@ -157,8 +179,8 @@ GO
 
 
 /*
-Funcion que le ingreso la medicacion y devuelve el id de la patologia
-param: nombre del medicamento VARCHAR(100)
+Obtiene el id del Medicamento al ingresar el nombre del medicamento
+param: nombre VARCHAR(100)
 return: idMedicamento
 */
 CREATE FUNCTION getIdMedicamento(@nombre VARCHAR(100)) RETURNS INT
