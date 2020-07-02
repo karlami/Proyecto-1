@@ -42,7 +42,7 @@ GO
 
 
 /*
-Trigger Cantidad de Camas en CentroHospitalario
+Trigger para CentroHospitalario
 */
 CREATE TRIGGER triggerCentroHospitalario
 ON CentroHospitalario

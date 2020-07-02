@@ -101,17 +101,6 @@ CREATE TABLE CentroHospitalario(
 GO
 
 
-/****** Object:  Table Contacto ******/
-CREATE TABLE Contacto(
-	idContacto					INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	correo						VARCHAR(100)							NOT NULL,
-	idPaciente					INT										NOT NULL,
-	cedula						VARCHAR(30)								NOT NULL,
-	FOREIGN KEY(cedula)								REFERENCES Persona(cedula)
-)
-GO
-
-
 /****** Object:  Table EstadoPacientes ******/
 CREATE TABLE EstadoPaciente(
 	idEstadoPaciente					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
@@ -132,6 +121,18 @@ CREATE TABLE Paciente(
 	FOREIGN KEY(idEstadoPaciente)					REFERENCES EstadoPaciente(idEstadoPaciente)					ON DELETE SET DEFAULT,
 	FOREIGN KEY(idCentroHospitalario)				REFERENCES CentroHospitalario(idCentroHospitalario),
 	FOREIGN KEY(cedula)								REFERENCES Persona(cedula)
+)
+GO
+
+
+/****** Object:  Table Contacto ******/
+CREATE TABLE Contacto(
+	idContacto					INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	correo						VARCHAR(100)							NOT NULL,
+	idPaciente					INT										NOT NULL,
+	cedula						VARCHAR(30)								NOT NULL,
+	FOREIGN KEY(cedula)								REFERENCES Persona(cedula),
+	FOREIGN KEY(idPaciente)							REFERENCES Paciente(idPaciente)
 )
 GO
 
