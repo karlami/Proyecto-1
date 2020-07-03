@@ -56,7 +56,7 @@ namespace CoTEC_2020.Controllers
         Insert de un Paciente
         Recibe toda la información del nuevo Paciente
         Crea una tupla en Paciente con los valores ingresados
-        */
+        
         [HttpPost]
         [Route("api/PostPacientes")]
         public HttpResponseMessage Post([FromBody] Paciente value)
@@ -83,6 +83,7 @@ namespace CoTEC_2020.Controllers
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
         }
+        */
 
         /*
         Update de un Paciente
