@@ -137,10 +137,8 @@ CREATE VIEW viewAcumuladoCasos WITH ENCRYPTION AS
 		JOIN Ubicacion as u ON umc.idUbicacion = u.idUbicacion
 	WHERE umc.fechaInicio BETWEEN GETDATE() AND DATEADD(week, 1, GETDATE())
 GO
-
 /*
 Para correrlo para que cumpla lo establecido en especificación:
-
 SELECT FechaInicio, Nombre
 FROM viewAcumuladoCasos
 WHERE Pais='__pais_-'

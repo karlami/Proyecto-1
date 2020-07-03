@@ -148,18 +148,36 @@ END
 GO
 
 
---/*
---Funcion que le ingreso la region y devuelve el id de la ubicacion
---*/
---CREATE FUNCTION getIdUbicacion(@region VARCHAR(75)) RETURNS INT
---AS
---BEGIN
---	DECLARE @IdUbicacion INT
---	SET @IdUbicacion=(SELECT Ubicacion.idUbicacion FROM Ubicacion 
---		WHERE @region=Ubicacion.region)
---	RETURN @IdUbicacion
---END
---GO
+/*
+Obtiene el idUbicacion al ingresar la region de la ubicacion
+param: region VARCHAR(75)
+return: idUbicacion
+*/
+CREATE FUNCTION getIdUbicacionFromRegion(@region VARCHAR(75)) RETURNS INT
+AS
+BEGIN
+	DECLARE @IdUbicacion INT
+	SET @IdUbicacion=(SELECT Ubicacion.idUbicacion FROM Ubicacion 
+		WHERE @region=Ubicacion.region)
+	RETURN @IdUbicacion
+END
+GO
+
+
+/*
+Obtiene el idUbicacion al ingresar la region y el pais de la ubicacion
+param:  region VARCHAR(75) y pais VARCHAR(75)
+return: idUbicacion
+*/
+CREATE FUNCTION getIdUbicacionFromRegionPais(@region VARCHAR(75), @pais VARCHAR(75)) RETURNS INT
+AS
+BEGIN
+	DECLARE @IdUbicacion INT
+	SET @IdUbicacion=(SELECT Ubicacion.idUbicacion FROM Ubicacion 
+		WHERE @region=Ubicacion.region AND @pais=Ubicacion.pais)
+	RETURN @IdUbicacion
+END
+GO
 
 
 /*

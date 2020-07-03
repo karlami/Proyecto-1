@@ -31,9 +31,9 @@ CREATE PROCEDURE modifyCentroHospitalario(
 	@capacidadUci INT, 
 	@contacto VARCHAR(50),
 	@director VARCHAR(30),
-	@idUbicacion INT,
+	--@idUbicacion INT,
 	-- Atributos de Ubicacion
-	@continente VARCHAR(75),
+	--@continente VARCHAR(75),
 	@pais VARCHAR(75),
 	@region VARCHAR(75),
 	-- Atributo para tipo de declaracion
@@ -43,18 +43,18 @@ BEGIN
 
 	IF @statementType = 'Insert'
 		BEGIN
-			--Genera una nueva ubicacion solo si no esta ya antes creada
-			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-			BEGIN
-				INSERT INTO Ubicacion (
-					continente, 
-					pais,
-					region )
-				VALUES (
-					 @continente,
-					 @pais,
-					 @region )
-			END
+			----Genera una nueva ubicacion solo si no esta ya antes creada
+			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
+			--BEGIN
+			--	INSERT INTO Ubicacion (
+			--		continente, 
+			--		pais,
+			--		region )
+			--	VALUES (
+			--		 @continente,
+			--		 @pais,
+			--		 @region )
+			--END
 
 			INSERT INTO CentroHospitalario (
 				nombre,
@@ -69,23 +69,23 @@ BEGIN
 				@capacidadUci,
 				@contacto,
 				@director,
-				dbo.getIdUbicacion(@continente, @pais, @region) )
+				dbo.getIdUbicacionFromRegionPais(@region, @pais) )
 		END
 
 	ELSE IF @statementType = 'Update'
 		BEGIN
-			--Genera una nueva ubicacion solo si no esta ya antes creada
-			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-			BEGIN
-				INSERT INTO Ubicacion (
-					continente, 
-					pais,
-					region )
-				VALUES (
-					 @continente,
-					 @pais,
-					 @region )
-			END
+			----Genera una nueva ubicacion solo si no esta ya antes creada
+			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
+			--BEGIN
+			--	INSERT INTO Ubicacion (
+			--		continente, 
+			--		pais,
+			--		region )
+			--	VALUES (
+			--		 @continente,
+			--		 @pais,
+			--		 @region )
+			--END
 
 			UPDATE CentroHospitalario  
 			SET nombre = @nombre,  
@@ -93,7 +93,7 @@ BEGIN
 				capacidadUci = @capacidadUci,
 				contacto = @contacto,
 				director = @director,
-				idUbicacion = dbo.getIdUbicacion(@continente, @pais, @region)
+				idUbicacion = dbo.getIdUbicacionFromRegionPais(@region, @pais)
 			--Verifica que este actualizando el idCentroHospitalario que es
 			WHERE idCentroHospitalario = @idCentroHospitalario 
 				AND @capacidadUci <= @capacidad --Verifica que las capacidades coincidan
@@ -119,7 +119,6 @@ BEGIN
 
 END
 GO
-
 /*
 
 --Para ejecutar modifyCentroHospitalario:
@@ -155,10 +154,10 @@ CREATE PROCEDURE modifyPaciente(
 	@segundoApellido VARCHAR(75),
 	@nacionalidad VARCHAR(50),
 	@fechaNacimiento DATE,
-	@idUbicacion INT,
+	--@idUbicacion INT,
 	-- Atributos de Ubicacion
-	@continente VARCHAR(75),
-	@pais VARCHAR(75),
+	--@continente VARCHAR(75),
+	--@pais VARCHAR(75),
 	@region VARCHAR(75),
 	--Atributos de Paciente
 	@idPaciente INT,
@@ -174,18 +173,18 @@ BEGIN
 	
 	IF @statementType = 'Insert'
 		BEGIN
-			--Genera una nueva ubicacion solo si no esta ya antes creada
-			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-				BEGIN
-					INSERT INTO Ubicacion (
-						continente, 
-						pais,
-						region )
-					VALUES (
-						 @continente,
-						 @pais,
-						 @region )
-				END
+			----Genera una nueva ubicacion solo si no esta ya antes creada
+			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
+			--	BEGIN
+			--		INSERT INTO Ubicacion (
+			--			continente, 
+			--			pais,
+			--			region )
+			--		VALUES (
+			--			 @continente,
+			--			 @pais,
+			--			 @region )
+			--	END
 
 			-- Genera una Persona solo si no esta ya antes creada
 			IF NOT (@cedula IN (SELECT cedula FROM Persona WHERE cedula = @cedula) )
@@ -205,7 +204,7 @@ BEGIN
 						@segundoApellido,
 						@nacionalidad,
 						@fechaNacimiento,
-						dbo.getIdUbicacion(@continente, @pais, @region) )
+						dbo.getIdUbicacionFromRegion(@region) )
 				END
 
 			-- Genera un Paciente solo si no esta ya antes creado
@@ -230,19 +229,6 @@ BEGIN
 
 	ELSE IF @statementType = 'Update'
 		BEGIN
-			--Genera una nueva ubicacion solo si no esta ya antes creada
-			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-				BEGIN
-					INSERT INTO Ubicacion (
-						continente, 
-						pais,
-						region )
-					VALUES (
-						 @continente,
-						 @pais,
-						 @region )
-				END
-
 			--Actualiza los datos de Persona
 			UPDATE Persona  
 			SET cedula = @cedula,
@@ -251,7 +237,7 @@ BEGIN
 				segundoApellido = @segundoApellido,
 				nacionalidad = @nacionalidad,
 				fechaNacimiento = @fechaNacimiento,
-				idUbicacion = dbo.getIdUbicacion(@continente, @pais, @region)
+				idUbicacion = dbo.getIdUbicacionFromRegion(@region)
 			WHERE cedula = @cedula
 				--Verifica que la persona exista
 				IF NOT (@cedula IN (SELECT cedula FROM Persona))
@@ -290,7 +276,6 @@ BEGIN
 		END
 END;
 GO
-
 /*
 
 --Para ejecutar modifyPaciente:
@@ -336,10 +321,10 @@ CREATE PROCEDURE modifyContacto(
 	@nacionalidad VARCHAR(50),
 	@fechaNacimiento DATE,
 	@idUbicacion INT,
-	-- Atributos de Ubicacion
-	@continente VARCHAR(75),
-	@pais VARCHAR(75),
-	@region VARCHAR(75),
+	---- Atributos de Ubicacion
+	--@continente VARCHAR(75),
+	--@pais VARCHAR(75),
+	--@region VARCHAR(75),
 	-- Atributos de Contacto
 	@idContacto INT,
 	@correo	varchar(100),
@@ -351,18 +336,18 @@ BEGIN
 
 	IF @statementType = 'Insert'
 		BEGIN
-			--Genera una nueva ubicacion solo si no esta ya antes creada
-			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-				BEGIN
-					INSERT INTO Ubicacion (
-						continente, 
-						pais,
-						region )
-					VALUES (
-						 @continente,
-						 @pais,
-						 @region )
-				END
+			----Genera una nueva ubicacion solo si no esta ya antes creada
+			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
+			--	BEGIN
+			--		INSERT INTO Ubicacion (
+			--			continente, 
+			--			pais,
+			--			region )
+			--		VALUES (
+			--			 @continente,
+			--			 @pais,
+			--			 @region )
+			--	END
 
 			-- Genera una Persona solo si no esta ya antes creada
 			IF NOT (@cedula IN (SELECT cedula FROM Persona WHERE cedula = @cedula) )
@@ -382,7 +367,8 @@ BEGIN
 						@segundoApellido,
 						@nacionalidad,
 						@fechaNacimiento,
-						dbo.getIdUbicacion(@continente, @pais, @region) )
+						@idUbicacion )
+						--dbo.getIdUbicacion(@continente, @pais, @region) )
 				END
 
 			-- Genera un Contacto solo si no esta ya antes creado
@@ -401,18 +387,18 @@ BEGIN
 
 	ELSE IF @statementType = 'Update'
 		BEGIN
-			--Genera una nueva ubicacion solo si no esta ya antes creada
-			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-				BEGIN
-					INSERT INTO Ubicacion (
-						continente, 
-						pais,
-						region )
-					VALUES (
-						 @continente,
-						 @pais,
-						 @region )
-				END
+			----Genera una nueva ubicacion solo si no esta ya antes creada
+			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
+			--	BEGIN
+			--		INSERT INTO Ubicacion (
+			--			continente, 
+			--			pais,
+			--			region )
+			--		VALUES (
+			--			 @continente,
+			--			 @pais,
+			--			 @region )
+			--	END
 
 			--Actualiza los datos de Persona
 			UPDATE Persona  
@@ -422,7 +408,7 @@ BEGIN
 				segundoApellido = @segundoApellido,
 				nacionalidad = @nacionalidad,
 				fechaNacimiento = @fechaNacimiento,
-				idUbicacion = dbo.getIdUbicacion(@continente, @pais, @region)
+				idUbicacion = @idUbicacion)        --dbo.getIdUbicacion(@continente, @pais, @region)
 			WHERE cedula = @cedula
 				--Verifica que la persona exista
 				IF NOT (@cedula IN (SELECT cedula FROM Persona))
@@ -454,7 +440,7 @@ BEGIN
 		END
 
 END
-
+GO
 /*
 
 --Para ejecutar modifyContacto:
@@ -487,13 +473,179 @@ EXEC modifyContacto
 
 
 
+/*
+Proceso para actualizar datos de BaseTable
+*/
+ALTER PROCEDURE modifyMedidaSanitaria(
+	-- Atributos de MedidaSanitaria
+	@idMedidaSanitaria INT,
+	@nombre varchar(100),
+	@descripcion varchar(500),
+	-- Atributo para tipo de declaracion
+	@statementType VARCHAR(20) ) 
+AS
+BEGIN
+
+	IF @statementType = 'Insert'
+		BEGIN
+		-- Genera una MedidaSanitaria solo si no esta ya antes creada
+			IF NOT (@nombre IN (SELECT nombre FROM MedidaSanitaria WHERE nombre = @nombre) )
+				BEGIN
+					INSERT INTO MedidaSanitaria(
+						nombre,
+						descripcion )
+					VALUES (
+						@nombre,
+						@descripcion )
+				END
+			ELSE
+				THROW 50001, 'Ya existe una Medida Sanitaria con ese Nombre',1;
+		END
+
+	ELSE IF @statementType = 'Update'
+		BEGIN
+
+		-- Actualiza una MedidaSanitaria solo si esta existe
+			IF (@idMedidaSanitaria IN (SELECT @idMedidaSanitaria FROM MedidaSanitaria WHERE @idMedidaSanitaria = @idMedidaSanitaria) )
+				BEGIN
+					UPDATE MedidaSanitaria
+					SET nombre = @nombre,
+						descripcion = @descripcion
+					WHERE idMedidaSanitaria = @idMedidaSanitaria
+				END
+			ELSE
+				THROW 50001, 'No existe una Medida Sanitaria con ese idMedidaSanitaria',1;
+		END
+
+	ELSE IF @statementType = 'Delete'
+		BEGIN
+		PRINT 'Delete'
+		END
+
+	ELSE
+		BEGIN
+		PRINT 'Error'
+		END
+
+END
+GO
+
+
+
+
+/*
+Proceso para actualizar datos de BaseTable
+*/
+ALTER PROCEDURE modifyUbicacionMedidaSanitaria(
+	-- Atributos de UbicacionMedidaSanitaria
+	@idUbicacionMedidaSanitaria INT,
+	@idUbicacion INT,
+	@idMedidaSanitaria INT,
+	@estado varchar(20),
+	@fechaInicio date,
+	@fechaFinal date,
+	-- Atributos de Ubicacion
+	@continente VARCHAR(75),
+	@pais VARCHAR(75),
+	@region VARCHAR(75),
+	-- Atributo para tipo de declaracion
+	@statementType VARCHAR(20) ) 
+AS
+BEGIN
+
+	IF @statementType = 'Insert'
+		BEGIN
+			--Genera una nueva ubicacion solo si no esta ya antes creada
+			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
+				BEGIN
+					INSERT INTO Ubicacion (
+						continente, 
+						pais,
+						region )
+					VALUES (
+						 @continente,
+						 @pais,
+						 @region )
+				END
+
+			-- Genera una UbicacionMedidaSanitaria
+			INSERT INTO UbicacionMedidaSanitaria(
+				idUbicacion,
+				idMedidaSanitaria,
+				estado,
+				fechaInicio,
+				fechaFinal )
+			VALUES (
+				dbo.getIdUbicacion(@continente, @pais, @region),
+				@idMedidaSanitaria,
+				@estado,
+				@fechaInicio,
+				@fechaFinal )
+		END
+
+	ELSE IF @statementType = 'Update'
+		BEGIN
+			--Genera una nueva ubicacion solo si no esta ya antes creada
+			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
+				BEGIN
+					INSERT INTO Ubicacion (
+						continente, 
+						pais,
+						region )
+					VALUES (
+						 @continente,
+						 @pais,
+						 @region )
+				END
+
+			-- Actualiza una UbicacionMedidaSanitaria solo si esta existe
+			IF (@idUbicacionMedidaSanitaria IN (SELECT idUbicacionMedidaSanitaria FROM UbicacionMedidaSanitaria WHERE idUbicacionMedidaSanitaria = @idUbicacionMedidaSanitaria) )
+				BEGIN
+					UPDATE UbicacionMedidaSanitaria
+					SET idUbicacion = dbo.getIdUbicacion(@continente, @pais, @region),
+						idMedidaSanitaria = @idMedidaSanitaria,
+						estado = @estado,
+						fechaInicio = @fechaInicio,
+						fechaFinal = @fechaFinal
+					WHERE idUbicacionMedidaSanitaria = @idUbicacionMedidaSanitaria
+				END
+			ELSE
+				THROW 50001, 'No existe una Ubicacion Medida Sanitaria con ese idUbicacionMedidaSanitaria',1;
+		END
+
+	ELSE IF @statementType = 'Delete'
+		BEGIN
+			--Verifica que la UbicacionMedidaSanitaria exista
+			IF NOT (@idUbicacionMedidaSanitaria IN (SELECT idUbicacionMedidaSanitaria FROM UbicacionMedidaSanitaria))
+					THROW 50001, 'No hay ninguna UbicacionMedidaSanitaria con este idUbicacionMedidaSanitaria.',1;
+			--Borra la UbicacionMedidaSanitaria
+			DELETE FROM UbicacionMedidaSanitaria WHERE idUbicacionMedidaSanitaria = @idUbicacionMedidaSanitaria
+		END
+
+	ELSE
+		BEGIN
+		PRINT 'Error'
+		END
+
+END
+GO
+
+
+
+
+
+
+
+
+
+
 
 /******* BASE STORED PROCEDURE *******/
 /*
 Proceso para actualizar datos de BaseTable
 */
 /*
-CREATE PROCEDURE UpdateBaseTable(
+CREATE PROCEDURE modifyBaseTable(
 	-- Atributos
 	--@
 	-- Atributo para tipo de declaracion
