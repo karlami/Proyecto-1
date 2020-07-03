@@ -121,3 +121,29 @@ CREATE VIEW viewMedidaContencion WITH ENCRYPTION AS
 GO
 
 
+/*
+Vista para Requerimiento de Software: Acumulado de casos confirmados
+Obtiene la siguiente información del Acumulado de casos confirmados
+FechaInicio, Pais, y Nombre de Medida Contencion
+*/
+CREATE VIEW viewAcumuladoCasos WITH ENCRYPTION AS
+	SELECT
+		umc.fechaInicio as FechaInicio,
+		u.pais as Pais,
+		mc.nombre as Nombre
+	FROM
+		MedidaContencion as mc
+		JOIN UbicacionMedidaContencion as umc ON mc.idMedidaContencion = umc.idMedidaContencion
+		JOIN Ubicacion as u ON umc.idUbicacion = u.idUbicacion
+	WHERE umc.fechaInicio BETWEEN GETDATE() AND DATEADD(week, 1, GETDATE())
+GO
+
+/*
+Para correrlo para que cumpla lo establecido en especificación:
+
+SELECT FechaInicio, Nombre
+FROM viewAcumuladoCasos
+WHERE Pais='__pais_-'
+ORDER BY FechaInicio
+*/
+

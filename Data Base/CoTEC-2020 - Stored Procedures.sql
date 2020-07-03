@@ -480,3 +480,47 @@ EXEC modifyContacto
 
 */
 
+
+
+
+
+
+
+
+
+/******* BASE STORED PROCEDURE *******/
+/*
+Proceso para actualizar datos de BaseTable
+*/
+/*
+CREATE PROCEDURE UpdateBaseTable(
+	-- Atributos
+	--@
+	-- Atributo para tipo de declaracion
+	@statementType VARCHAR(20) ) 
+AS
+BEGIN
+
+	IF @statementType = 'Insert'
+		BEGIN
+		PRINT 'Insert'
+		END
+
+	IF @statementType = 'Update'
+		BEGIN
+		PRINT 'Update'
+		END
+
+	IF @statementType = 'Delete'
+		BEGIN
+		PRINT 'Delete'
+		END
+
+	ELSE
+		BEGIN
+		PRINT 'Error'
+		END
+
+END
+GO
+*/

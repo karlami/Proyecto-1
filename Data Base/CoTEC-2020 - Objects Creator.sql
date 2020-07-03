@@ -104,7 +104,7 @@ GO
 /****** Object:  Table EstadoPacientes ******/
 CREATE TABLE EstadoPaciente(
 	idEstadoPaciente					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	estado								VARCHAR(50)								NOT NULL,
+	estado								VARCHAR(50)								NOT NULL
 )
 GO
 
