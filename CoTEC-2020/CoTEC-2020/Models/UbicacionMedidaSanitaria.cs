@@ -17,6 +17,11 @@ namespace CoTEC_2020.Models
         public int idUbicacionMedidaSanitaria { get; set; }
         public int idUbicacion { get; set; }
         public int idMedidaSanitaria { get; set; }
-
+        public string estado { get; set; }
+        public System.DateTime fechaInicio { get; set; }
+        public Nullable<System.DateTime> fechaFinal { get; set; }
+    
+        public virtual MedidaSanitaria MedidaSanitaria { get; set; }
+        public virtual Ubicacion Ubicacion { get; set; }
     }
 }

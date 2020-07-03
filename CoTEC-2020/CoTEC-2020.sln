@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoTEC-2020", "CoTEC-2020\CoTEC-2020.csproj", "{4CE6FF07-5FD9-4BFD-8F61-747B36FEFF13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoTEC-2020", "CoTEC-2020\CoTEC-2020.csproj", "{2973BC78-3626-4642-B90C-4F55D62F9033}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4CE6FF07-5FD9-4BFD-8F61-747B36FEFF13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CE6FF07-5FD9-4BFD-8F61-747B36FEFF13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CE6FF07-5FD9-4BFD-8F61-747B36FEFF13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CE6FF07-5FD9-4BFD-8F61-747B36FEFF13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2973BC78-3626-4642-B90C-4F55D62F9033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2973BC78-3626-4642-B90C-4F55D62F9033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2973BC78-3626-4642-B90C-4F55D62F9033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2973BC78-3626-4642-B90C-4F55D62F9033}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5A3C69D2-DCB1-453B-9752-F39835F5CF76}
+		SolutionGuid = {CB94A0C6-BF5F-4A86-8B13-E59AD53FA215}
 	EndGlobalSection
 EndGlobal

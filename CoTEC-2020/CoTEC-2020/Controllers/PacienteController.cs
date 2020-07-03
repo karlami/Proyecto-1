@@ -64,11 +64,21 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("INSERT INTO Paciente " +
-                   "(internado, uci, fechaIngreso, idCentroHospitalario, cedula)" +
-                    " VALUES (" + value.internado + "," +
-                    value.uci + "," + value.fechaIngreso + "," + value.idCentroHospitalario + 
-                    value.cedula + ")");
+                db.Database.ExecuteSqlCommand("EXEC modifyPaciente" +
+                    @cedula = '117390700',
+                    @nombre = 'Ruben',
+                    @primerApellido = 'Salas',
+                    @segundoApellido = 'Ramirez',
+                    @nacionalidad = 'Costa Rica',
+                    @fechaNacimiento = '1999-03-29',
+                    @region = 'Paris',
+                    @idPaciente = 0,
+                    @internado = 'false',
+                    @uci = 'false',
+                    @fechaIngreso = '2020-04-17',
+                    @idEstadoPaciente = 3,
+                    @idCentroHospitalario = 42,
+                    @statementType = 'Insertar';);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
