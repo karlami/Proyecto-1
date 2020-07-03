@@ -59,23 +59,23 @@ namespace CoTEC_2020.Controllers
         */
         [HttpPost]
         [Route("api/PostPacientes")]
-        public HttpResponseMessage Post([FromBody] Paciente value)
+        public HttpResponseMessage Post([FromBody] pPaciente value)
         {
 
             using (var db = new CoTECEntities())
             {
                 db.Database.ExecuteSqlCommand("EXEC modifyContacto" +
-                    "@cedula = " + "117390700" +
-                    ",@nombre = " + "Ruben" +
-                    "@primerApellido = " + "117390700" +
-                    ",@segundoApellido = " + "Ruben" +
-                     "@nacionalidad = " + "117390700" +
-                    ",@fechaNacimiento = " + "2020-04-17" +
-                    "@idUbicacion = " + 69 +
-                    ",@idContacto = " + "Ruben" +
-                    "@correo = " + "117390700" +
-                    ",@idPaciente = " + "Ruben" +
-                    "@statementType = " + "117390700" 
+                    "@cedula = '" + value.Cedula +
+                    "' ,@nombre = '" + "Ruben" +
+                    "' ,@primerApellido = '" + "117390700" +
+                    "' ,@segundoApellido = '" + "Ruben" +
+                    "' ,@nacionalidad = '" + "117390700" +
+                    "' ,@fechaNacimiento = '" + "2020-04-17" +
+                    "' ,@idUbicacion = '" + 69 +
+                    "' ,@idContacto = '" + "Ruben" +
+                    "' ,@correo = '" + "117390700" +
+                    "' ,@idPaciente = '" + "Ruben" +
+                    "' ,@statementType = '" + "117390700" 
 
 );
 

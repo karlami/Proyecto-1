@@ -18,7 +18,8 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                var listaCentroHospitalarios = db.Database.SqlQuery<vCentroHospitalario>("SELECT * " +
+                var listaCentroHospitalarios = db.Database.SqlQuery<vCentroHospitalario>("SELECT Ubicacion, Nombre," +
+                    " Capacidad, CapacidadUCI, Director, Contacto, IdCentroHospitalario " +
                     "FROM viewCentroHospitalario").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaCentroHospitalarios);
@@ -31,11 +32,10 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                SqlParameter parametro = new SqlParameter("@id", id);
-                var centro = db.Database.SqlQuery<CentroHospitalario>("SELECT idCentroHospitalario, nombre, " +
-                    "capacidad, capacidadUci, contacto, director, idUbicacion " +
-                    "FROM CentroHospitalario " +
-                    "WHERE idCentroHospitalario = @id");
+                var centro = db.Database.SqlQuery<vCentroHospitalario>("SELECT Ubicacion, Nombre," +
+                    " Capacidad, CapacidadUCI, Director, Contacto, IdCentroHospitalario " +
+                    "FROM viewCentroHospitalario " +
+                    "WHERE idCentroHospitalario = " + id).FirstOrDefault();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, centro);
             }
@@ -43,35 +43,45 @@ namespace CoTEC_2020.Controllers
 
         [HttpPost]
         [Route("api/PostCentroHospitalarios")]
-        public HttpResponseMessage Post([FromBody] CentroHospitalario value)
+        public HttpResponseMessage Post([FromBody] pCentroHospitalario value)
         {
 
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("INSERT INTO CentroHospitalario " +
-                   "(nombre, capacidad, capacidadUci, contacto, director, idUbicacion) " +
-                    "VALUES (" + value.nombre + "," + value.capacidad + "," +
-                    value.capacidadUci + "," + value.contacto + "," + value.director + ")");
+                var status = db.Database.ExecuteSqlCommand("EXEC modifyCentroHospitalario " +
+                    "@idCentroHospitalario = '" + value.idCentroHospitalario +
+                    "' ,@nombre = '" + value.nombre +
+                    "' ,@capacidad = '" + value.capacidad +
+                    "' ,@capacidadUci = '" + value.capacidadUci +
+                    "' ,@contacto = '" + value.contacto +
+                    "' ,@director = '" + value.director +
+                    "' ,@pais = '" + value.pais +
+                    "' ,@region = '" + value.region +
+                    "' ,@statementType = '" + "Insert" + "'; ");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
         [HttpPut]
         [Route("api/PutCentroHospitalarios")]
-        public HttpResponseMessage Put([FromBody] CentroHospitalario value)
+        public HttpResponseMessage Put([FromBody] pCentroHospitalario value)
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("UPDATE CentroHospitalario " +
-                    "SET nombre = " + value.nombre +
-                    ", capacidad = " + value.capacidad +
-                    ", capacidadUci = " + value.capacidadUci +
-                    ", contacto = " + value.contacto +
-                    ", director = " + value.director +
-                    " WHERE idCentroHospitalario = " + value.idCentroHospitalario);
+                var status = db.Database.ExecuteSqlCommand("EXEC modifyCentroHospitalario " +
+                    "@idCentroHospitalario = '" + value.idCentroHospitalario +
+                    "' ,@nombre = '" + value.nombre +
+                    "' ,@capacidad = '" + value.capacidad +
+                    "' ,@capacidadUci = '" + value.capacidadUci +
+                    "' ,@contacto = '" + value.contacto +
+                    "' ,@director = '" + value.director +
+                    "' ,@pais = '" + value.pais +
+                    "' ,@region = '" + value.region +
+                    "' ,@statementType = '" + "Update" + "'; ");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
@@ -81,12 +91,18 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.ExecuteSqlCommand("DELETE" +
-                    " FROM CentroHospitalario " +
-                    " WHERE idCentroHospitalario = @id");
+                var status = db.Database.ExecuteSqlCommand("EXEC modifyCentroHospitalario " +
+                    "@idCentroHospitalario = '" + id +
+                    "' ,@nombre = '" + "" +
+                    "' ,@capacidad = '" + 0 +
+                    "' ,@capacidadUci = '" + 0 +
+                    "' ,@contacto = '" + 0 +
+                    "' ,@director = '" + "" +
+                    "' ,@pais = '" + "" +
+                    "' ,@region = '" + "" +
+                    "' ,@statementType = '" + "Delete" + "'; ");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
 
 

@@ -66,7 +66,7 @@ namespace CoTEC_2020.Controllers
         }
 
         [HttpPut]
-        [Route("api/PutContactos")]
+        [Route("api/PutContactos/{cedula}")]
         public HttpResponseMessage Put()
         {
             using (var db = new CoTECEntities())
@@ -75,7 +75,7 @@ namespace CoTEC_2020.Controllers
                     "@cedula = '" + "1111111" +
                     "' ,@nombre = '" + "Ruben" +
                     "' ,@primerApellido = '" + "Cascodo" +
-                    "' ,@segundoApellido = '" + "Ruben" +
+                    "' ,@segundoApellido = '" + "Verno" +
                     "' ,@nacionalidad = '" + "117390700" +
                     "' ,@fechaNacimiento = '" + "2020-04-17" +
                     "' ,@idUbicacion = '" + 198 +

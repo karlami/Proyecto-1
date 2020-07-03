@@ -571,12 +571,15 @@
     <Compile Include="Models\Patologia.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\pCentroHospitalario.cs" />
+    <Compile Include="Models\pContacto.cs" />
     <Compile Include="Models\Persona.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PersonaPatologia.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\pPaciente.cs" />
     <Compile Include="Models\Ubicacion.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
