@@ -4,22 +4,32 @@ import java.io.Serializable;
 
 public class Paciente implements Serializable {
     private Integer idPaciente;
-    private Integer internado;
-    private Integer uci;
+    private String internado;
+    private String uci;
     private String fechaIngreso;
     private Integer idCentroHospitalario;
     private String cedula;
+    private Integer idEstado;
 
-    public Paciente(Integer idPaciente, Integer internado, Integer uci, String fechaIngreso, Integer idCentroHospitalario, String cedula) {
+    public Paciente(Integer idEstado,Integer idPaciente, String internado, String uci, String fechaIngreso, Integer idCentroHospitalario, String cedula) {
         this.idPaciente = idPaciente;
         this.internado = internado;
         this.uci = uci;
         this.fechaIngreso = fechaIngreso;
         this.idCentroHospitalario = idCentroHospitalario;
         this.cedula = cedula;
+        this.idEstado = idEstado;
 
     }
     public Paciente(){};
+
+    public Integer getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(Integer idEstado) {
+        this.idEstado = idEstado;
+    }
 
     public Integer getIdPaciente() {
         return idPaciente;
@@ -29,19 +39,19 @@ public class Paciente implements Serializable {
         this.idPaciente = idPaciente;
     }
 
-    public Integer getInternado() {
+    public String getInternado() {
         return internado;
     }
 
-    public void setInternado(Integer internado) {
+    public void setInternado(String internado) {
         this.internado = internado;
     }
 
-    public Integer getUci() {
+    public String getUci() {
         return uci;
     }
 
-    public void setUci(Integer uci) {
+    public void setUci(String uci) {
         this.uci = uci;
     }
 

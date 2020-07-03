@@ -8,6 +8,7 @@ public class Contacto implements Serializable {
     private Integer idPaciente;
     private String cedula;
 
+    public Contacto(){};
     public Contacto(Integer idContacto, String correo, Integer idPaciente, String cedula) {
         this.idContacto = idContacto;
         this.correo = correo;

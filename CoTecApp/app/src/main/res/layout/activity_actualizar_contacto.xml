@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActualizarContacto">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            tools:context=".ActualizarContacto">
+
+            <EditText
+                android:id="@+id/Nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:hint="Nombre del Contacto"
+                android:inputType="text"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp"></EditText>
+
+            <EditText
+                android:id="@+id/Apellido1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Primer Apellido"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/Nombre"
+                tools:layout_editor_absoluteX="16dp"></EditText>
+
+            <EditText
+                android:id="@+id/Apellido2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Segundo Apellido"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/Apellido1"
+                tools:layout_editor_absoluteX="0dp"></EditText>
+
+            <EditText
+                android:id="@+id/Cedula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cédula"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/Apellido2"
+                tools:layout_editor_absoluteX="0dp"></EditText>
+
+            <EditText
+                android:id="@+id/Fecha_N"
+                android:layout_width="216dp"
+                android:layout_height="49dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:clickable="true"
+                android:hint="Fecha de Nacimiento"
+                android:inputType="none"
+                app:layout_constraintEnd_toStartOf="@+id/seleccionarFechaNaci"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Cedula"></EditText>
+
+            <EditText
+                android:id="@+id/Nacionalidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nacionalidad"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/Fecha_N"
+                tools:layout_editor_absoluteX="0dp"></EditText>
+
+            <Spinner
+                android:id="@+id/PatoloCombo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/Nacionalidad"
+                tools:layout_editor_absoluteX="-16dp"></Spinner>
+
+            <EditText
+                android:id="@+id/Patologias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Patologías"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/PatoloCombo"
+                tools:layout_editor_absoluteX="0dp"></EditText>
+
+            <EditText
+                android:id="@+id/Correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/ubicacionCombo"
+                tools:layout_editor_absoluteX="-32dp"></EditText>
+
+            <Spinner
+                android:id="@+id/ubicacionCombo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dialog"
+                app:layout_constraintTop_toBottomOf="@+id/GuardarPatologia"
+                tools:layout_editor_absoluteX="-16dp" />
+
+            <Button
+                android:id="@+id/RegistrarBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrar"
+                app:layout_constraintTop_toBottomOf="@+id/Correo"
+                tools:layout_editor_absoluteX="-16dp" />
+
+            <Button
+                android:id="@+id/GuardarPatologia"
+                android:layout_width="179dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="24dp"
+                android:text="Guardar Patologia"
+                app:layout_constraintEnd_toStartOf="@+id/BorrarPatologia"
+                app:layout_constraintHorizontal_bias="0.571"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Patologias" />
+
+            <Button
+                android:id="@+id/BorrarPatologia"
+                android:layout_width="180dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:text="Borrar Patologías"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Patologias" />
+
+            <Button
+                android:id="@+id/CancelarRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancelar"
+                app:layout_constraintTop_toBottomOf="@+id/RegistrarBtn"
+                tools:layout_editor_absoluteX="-41dp" />
+
+            <Button
+                android:id="@+id/seleccionarFechaNaci"
+                android:layout_width="148dp"
+                android:layout_height="41dp"
+                android:text="Seleccionar"
+                app:layout_constraintBottom_toTopOf="@+id/Nacionalidad"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Cedula" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</LinearLayout>

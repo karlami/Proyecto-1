@@ -1,6 +1,7 @@
 package com.example.cotecapp.Controlador;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,12 +9,14 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.cotecapp.Entidades.Medicamento;
 import com.example.cotecapp.Entidades.Paciente;
@@ -114,11 +117,12 @@ public class Pacientes extends Fragment {
         while (cursor.moveToNext()){
             paciente = new Paciente();
             paciente.setIdPaciente(cursor.getInt(0));
-            paciente.setInternado(cursor.getInt(1));
-            paciente.setUci(cursor.getInt(2));
+            paciente.setInternado(cursor.getString(1));
+            paciente.setUci(cursor.getString(2));
             paciente.setFechaIngreso(cursor.getString(3));
             paciente.setIdCentroHospitalario(cursor.getInt(4));
             paciente.setCedula(cursor.getString(5));
+            paciente.setIdEstado(cursor.getInt(6));
             listPacientes.add(paciente);
         }
         db.close();

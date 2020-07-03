@@ -10,7 +10,9 @@ public class Persona implements Serializable {
     private String nacionalidad;
     private String fechaNacimiento;
     private Integer idUbicacion;
+    public Persona(){
 
+    }
     public Persona(String cedula, String nombre, String primerApellido, String segundoApellido, String nacionalidad, String fechaNacimiento, Integer idUbicacion) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -20,6 +22,7 @@ public class Persona implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
         this.idUbicacion = idUbicacion;
     }
+
 
     public String getCedula() {
         return cedula;

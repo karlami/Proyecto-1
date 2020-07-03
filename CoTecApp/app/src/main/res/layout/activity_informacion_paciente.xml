@@ -225,10 +225,25 @@
         tools:layout_editor_absoluteY="40dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/editarInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Editar Información" />
+    <Button
+        android:id="@+id/MostrarContactos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mostrar Contactos" />
+    <Button
+        android:id="@+id/EliminarPaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Eliminar Paciente" />
+    <Button
+        android:id="@+id/Volver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancelar" />
 
 
 </LinearLayout>

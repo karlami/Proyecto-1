@@ -20,7 +20,9 @@ import android.widget.Toast;
 import com.example.cotecapp.Entidades.Estado;
 import com.example.cotecapp.Entidades.Hospital;
 import com.example.cotecapp.Entidades.Medicamento;
+import com.example.cotecapp.Entidades.Paciente;
 import com.example.cotecapp.Entidades.Patologia;
+import com.example.cotecapp.Entidades.Persona;
 import com.example.cotecapp.Entidades.Ubicacion;
 import com.example.cotecapp.SQLiteTools.ConexionSQLiteHelper;
 import com.example.cotecapp.SQLiteTools.Utilidades;
@@ -29,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class RegistroPacientes extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class ActualizarPaciente extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private Spinner EstadoCombo, comboUbicacion, idHospitalCombo, Id_Medicamento_Combo, comboPatologia;
     ArrayList<Ubicacion> listaUbicaciones;
     ArrayList<Hospital> listaHospitales;
@@ -43,17 +45,17 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
 
     private Utilidades U;
     private EditText Nombre, Apellido1, Apellido2, Cedula, Nacionalidad, Fecha_Nacimiento,
-             patologia, FechaIngreso, actualFecha, medicamentosPaciente;
+            patologia, FechaIngreso, actualFecha, medicamentosPaciente;
     private int dia, mes, ano;
-    private Button BorrarMedicamentos, GuardarMedicamento, Registrar,
+    private Button BorrarMedicamentos, GuardarMedicamento, GuardarCambios,
             Cancelar, seleccionarFechaIngreso, seleccionarFechaNacimiento,
             GuardarPatologia, BorrarPatologia;
-
+    private Paciente PacienteActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro_pacientes);
+        setContentView(R.layout.activity_actualizar_paciente);
         conn = new ConexionSQLiteHelper(this, "CoTec", null, 1);
         listaMedicamentosPaciente = new ArrayList<>();
         listaPatologiasPaciente = new ArrayList<>();
@@ -130,20 +132,19 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
                 R.layout.spinner, listaHospi);
         idHospitalCombo.setAdapter(adaptadorH);
 
-        Fecha_Nacimiento.setInputType(InputType.TYPE_NULL);
-        FechaIngreso.setInputType(InputType.TYPE_NULL);
-        patologia.setInputType(InputType.TYPE_NULL);
-        medicamentosPaciente.setInputType(InputType.TYPE_NULL);
-
         ConsultarMedicamentos();
         Id_Medicamento_Combo = (Spinner) findViewById(R.id.Id_Medicamento);
         ArrayAdapter<CharSequence> adaptadorM = new ArrayAdapter(this,
                 R.layout.spinner, listMedi);
         Id_Medicamento_Combo.setAdapter(adaptadorM);
+        Cedula.setInputType(InputType.TYPE_NULL);
 
-
-        Registrar = findViewById(R.id.RegistrarBtn);
+        GuardarCambios = findViewById(R.id.RegistrarBtn);
         Fecha_Nacimiento.setInputType(InputType.TYPE_NULL);
+        FechaIngreso.setInputType(InputType.TYPE_NULL);
+        patologia.setInputType(InputType.TYPE_NULL);
+        medicamentosPaciente.setInputType(InputType.TYPE_NULL);
+
 
         seleccionarFechaNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,10 +160,15 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
                 showDatePickerDialog();
             }
         });
-        Registrar.setOnClickListener(new View.OnClickListener() {
+        GuardarCambios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EjecutarRegistro();
+                EjecutarUpdate();
+                Intent intent = new Intent(getApplicationContext(), InformacionPaciente.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("paciente", PacienteActual);
+                intent.putExtras(bundle);
+                startActivity(intent);;
             }
         });
         findViewById(R.id.CancelarRegistro).setOnClickListener(new View.OnClickListener() {
@@ -171,9 +177,107 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
                 volverAlMain();
             }
         });
-
+        Bundle pacienteRecibido = getIntent().getExtras();
+        if(pacienteRecibido != null){
+            Persona persona = (Persona) pacienteRecibido.get("persona");
+            Paciente paciente = (Paciente) pacienteRecibido.get("paciente");
+            PacienteActual = paciente;
+            Nombre.setText(persona.getNombre());
+            Apellido1.setText(persona.getPrimerApellido());
+            Apellido2.setText(persona.getSegundoApellido());
+            Cedula.setText(persona.getCedula());
+            Fecha_Nacimiento.setText(persona.getFechaNacimiento());
+            Nacionalidad.setText(persona.getNacionalidad());
+            FechaIngreso.setText(paciente.getFechaIngreso());
+            if(paciente.getUci().equals("true")){
+                UCI.setChecked(true);
+            }else{
+                UCI.setChecked(false);
+            }
+            if(paciente.getInternado().equals("true")){
+                Internado.setChecked(true);
+            }else{
+                Internado.setChecked(false);
+            }
+            setearEstado(paciente.getIdEstado());
+            setearHospital(paciente.getIdCentroHospitalario());
+            setearUbicacion(persona.getIdUbicacion());
+            setearPatologias(persona.getCedula());
+            setearMedicacion(paciente.getIdPaciente());
+        }
 
     }
+    public void setearPatologias(String cedula){
+        SQLiteDatabase db = conn.getReadableDatabase();
+        String consulta = "SELECT "+Utilidades.PATOLOGIA_CAMPO_NOMBRE+"," +
+                " P."+Utilidades.PATOLOGIA_CAMPO_ID+" FROM "+
+                Utilidades.NOMBRE_TABLA_PATOLOGIA + " AS P" +
+                ","+Utilidades.NOMBRE_TABLA_PERSONA_PATOLOGIA+" AS PP" +
+                " WHERE "+Utilidades.TABLA_PERSONA_PATOLOGIA_CAMPO_CEDULA+"='"+cedula+"'"+
+                " AND PP."+Utilidades.TABLA_PERSONA_PATOLOGIA_CAMPO_ID_PATOLOGIA+
+                "= P."+Utilidades.PATOLOGIA_CAMPO_ID;
+        Cursor cursor = db.rawQuery(consulta,null);
+        String patologias = "";
+        while(cursor.moveToNext()){
+            if(patologias.equals("")){
+                patologias = patologias+cursor.getString(0);
+            }else{
+                patologias = patologias+", "+cursor.getString(0);
+            }
+            Patologia patologia = new Patologia();
+            patologia.setIdPatologia(cursor.getInt(1));
+            listaPatologiasPaciente.add(patologia);
+        }
+        this.patologia.setText(patologias);
+
+        db.close();
+    }
+    public void setearMedicacion(Integer idPaciente){
+        SQLiteDatabase db = conn.getReadableDatabase();
+        String consultaMedicamento = "SELECT "+Utilidades.MEDICAMENTO_CAMPO_NOMBRE+", " +
+                " M."+Utilidades.MEDICAMENTO_CAMPO_ID_MEDICAMENTO+" FROM "+
+                Utilidades.NOMBRE_TABLA_PACIENTE_MEDICAMENTO + " AS PM" +
+                ","+Utilidades.NOMBRE_TABLA_MEDICAMENTO+" AS M" +
+                " WHERE "+Utilidades.PACIENTE_MEDICAMENTO_CAMPO_ID_PACIENTE+"="+idPaciente
+                +" AND PM."+Utilidades.PACIENTE_MEDICAMENTO_CAMPO_ID_MEDICAMENTO+
+                "= M."+Utilidades.MEDICAMENTO_CAMPO_ID_MEDICAMENTO;
+        Cursor cursor = db.rawQuery(consultaMedicamento,null);
+        String medicamentos = "";
+        while(cursor.moveToNext()){
+            if(medicamentos.equals("")){
+                medicamentos = medicamentos+cursor.getString(0);
+            }else{
+                medicamentos = medicamentos+", "+cursor.getString(0);
+            }
+            Medicamento medicamento = new Medicamento();
+            medicamento.setIdMedicamento(cursor.getInt(1));
+            listaMedicamentosPaciente.add(medicamento);
+        }
+        medicamentosPaciente.setText(medicamentos);
+        db.close();
+    }
+    public void setearEstado(Integer idEstado){
+        for(int i = 0; i < listaEstados.size(); i++){
+            if(listaEstados.get(i).getIdEstado().equals(idEstado)){
+                EstadoCombo.setSelection(i+1);
+            }
+        }
+    }
+    public void setearHospital(Integer idHospi){
+        for(int i = 0; i < listaHospitales.size(); i++){
+            if(listaHospitales.get(i).getIdCentroHospitalario().equals(idHospi)){
+                idHospitalCombo.setSelection(i+1);
+            }
+        }
+    }
+    public void setearUbicacion(Integer idUbicacion){
+        for(int i = 0; i < listaUbicaciones.size(); i++){
+            if(listaUbicaciones.get(i).getId().equals(idUbicacion)){
+                comboUbicacion.setSelection(i+1);
+            }
+        }
+    }
+
     public void ConsultarEstados(){
         listaEstados = new ArrayList<>();
         SQLiteDatabase db = conn.getWritableDatabase();
@@ -318,12 +422,12 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
         actualFecha.setText(date);
     }
 
-    public void EjecutarRegistro(){
+    public void EjecutarUpdate(){
         if(validarCampos()){
-            registrarPaciente();
+            actualizarPaciente();
         }
     }
-    public void registrarPaciente(){
+    public void actualizarPaciente(){
         String internadoCheck = "'false'";
         String uciCheck = "'false'";
         if(Internado.isChecked()){
@@ -339,60 +443,49 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
         int posIdHospi = idHospitalCombo.getSelectedItemPosition() - 1;
         String IdHospi = listaHospitales.get(posIdHospi).getIdCentroHospitalario().toString();
 
-        String selectPersona = "SELECT * FROM "+U.NOMBRE_TABLA_PERSONA+" " +
-                "WHERE "+U.PERSONA_CAMPO_CEDULA+"='"+Cedula.getText()+"'";
-        Cursor cursor = db.rawQuery(selectPersona, null);
-        if(!cursor.moveToFirst()){
-            String InsertPersona =
-                    "INSERT INTO "+U.NOMBRE_TABLA_PERSONA+" " +
-                            "("+U.PERSONA_CAMPO_CEDULA+", "+U.PERSONA_CAMPO_NOMBRE+", "
-                            +U.PERSONA_CAMPO_PRIMER_APELLIDO+","+U.PERSONA_CAMPO_SEGUNDO_APELLIDO+"," +
-                            " "+U.PERSONA_CAMPO_NACIONALIDAD+", "+U.PERSONA_CAMPO_FECHA_NACIMIENTO+", " +
-                            ""+U.PERSONA_CAMPO_ID_UBICACION+" )" +
-                            "VALUES ('"+Cedula.getText().toString()+"', '"+Nombre.getText().toString()+"', " +
-                            " '"+Apellido1.getText().toString()+"', '"+Apellido2.getText().toString()+"', " +
-                            " '"+Nacionalidad.getText().toString()+"', '"+Fecha_Nacimiento.getText().toString()+"'," +
-                            " "+idUbi+");";
-            db.execSQL(InsertPersona);
-            agregarPatologias();
-        }else{
-            Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, "Esta persona ya está registrado.", duration);
-            toast.show();
-        }
-        String selectPaciente = "SELECT * FROM "+U.NOMBRE_TABLA_PACIENTE+" " +
-                "WHERE "+U.TABLA_PACIENTE_CAMPO_CEDULA+"='"+Cedula.getText()+"'";
-        cursor = db.rawQuery(selectPaciente, null);
-        if(!cursor.moveToFirst()){
-            int posEstado = EstadoCombo.getSelectedItemPosition() - 1;
-            String InsertPaciente = "INSERT INTO "+U.NOMBRE_TABLA_PACIENTE+"("+
-                    U.TABLA_PACIENTE_CAMPO_INTERNADO+","+U.TABLA_PACIENTE_CAMPO_UCI+","+
-                    U.TABLA_PACIENTE_CAMPO_FECHA_INGRES+","+
-                    U.TABLA_PACIENTE_CAMPO_ID_ESTADO_PACIENTE+","+
-                    U.TABLA_PACIENTE_CAMPO_ID_CENTRO_HOSPI+","+
-                    U.TABLA_PACIENTE_CAMPO_CEDULA+") " +
-                    "VALUES ("+internadoCheck+","+uciCheck+"," +
-                    "'"+FechaIngreso.getText().toString()+"',"+listaEstados.get(posEstado).getIdEstado()+", "+IdHospi+", '"+
-                    Cedula.getText().toString()+"');";
-            db.execSQL(InsertPaciente);
-            Cursor c = db.rawQuery("SELECT * FROM "+U.NOMBRE_TABLA_PACIENTE+" WHERE "+
-                    U.TABLA_PACIENTE_CAMPO_CEDULA+" = '"+Cedula.getText().toString()+"' ", null);
-            c.moveToFirst();
-            String idPaciente = c.getString(0);
+        String updatePersona = "UPDATE "+U.NOMBRE_TABLA_PERSONA+" "+
+                "SET "+U.PERSONA_CAMPO_CEDULA+"='"+Cedula.getText().toString()+"',"
+                +U.PERSONA_CAMPO_NOMBRE+"='"+Nombre.getText().toString()+"',"
+                +U.PERSONA_CAMPO_PRIMER_APELLIDO+"='"+Apellido1.getText().toString()+"',"
+                +U.PERSONA_CAMPO_SEGUNDO_APELLIDO+"='"+Apellido2.getText().toString()+"',"
+                +U.PERSONA_CAMPO_NACIONALIDAD+"='"+Nacionalidad.getText().toString()+"',"
+                +U.PERSONA_CAMPO_FECHA_NACIMIENTO+"='"+Fecha_Nacimiento.getText().toString()+"',"
+                +U.PERSONA_CAMPO_ID_UBICACION+"="+idUbi+
+                " WHERE "+U.PERSONA_CAMPO_CEDULA+"='"+Cedula.getText().toString()+"'";
+        db.execSQL(updatePersona);
+        int posEstado = EstadoCombo.getSelectedItemPosition() - 1;
 
-            agregarMedicamentos(idPaciente);
-            db.close();
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }else{
-            Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, "Este paciente ya existe.", duration);
-            toast.show();
-        }
+        String UpdatePaciente = "UPDATE "+U.NOMBRE_TABLA_PACIENTE+"" +
+                " SET "+U.TABLA_PACIENTE_CAMPO_INTERNADO+"="+internadoCheck+","+
+                U.TABLA_PACIENTE_CAMPO_UCI+"="+uciCheck+","+
+                U.TABLA_PACIENTE_CAMPO_FECHA_INGRES+"='"+FechaIngreso.getText().toString()+"',"+
+                U.TABLA_PACIENTE_CAMPO_ID_ESTADO_PACIENTE+"="+listaEstados.get(posEstado).getIdEstado()+","+
+                U.TABLA_PACIENTE_CAMPO_ID_CENTRO_HOSPI+"="+IdHospi+","+
+                U.TABLA_PACIENTE_CAMPO_CEDULA+"='"+Cedula.getText().toString()+"' "+"" +
+                "WHERE "+U.TABLA_PACIENTE_CAMPO_ID_PACIENTE+"="+PacienteActual.getIdPaciente();
+        db.execSQL(UpdatePaciente);
+
+        String idPaciente = PacienteActual.getIdPaciente().toString();
+
+
+        borrarPatologiasMedicamentos(PacienteActual.getIdPaciente());
+        agregarPatologias();
+        agregarMedicamentos(idPaciente);
+
+        db.close();
     }
-
+    public void borrarPatologiasMedicamentos(Integer idPaciente){
+        String deletePatologias = "DELETE FROM "+U.NOMBRE_TABLA_PERSONA_PATOLOGIA
+                +" WHERE "+U.TABLA_PERSONA_PATOLOGIA_CAMPO_CEDULA+"='"
+                +Cedula.getText()+"'";
+        String deleteMedicacion = "DELETE FROM "+U.NOMBRE_TABLA_PACIENTE_MEDICAMENTO
+                +" WHERE "+U.PACIENTE_MEDICAMENTO_CAMPO_ID_PACIENTE+"="
+                +idPaciente;
+        SQLiteDatabase db = conn.getWritableDatabase();
+        db.execSQL(deleteMedicacion);
+        db.execSQL(deletePatologias);
+        db.close();
+    }
     public void agregarPatologias(){
         SQLiteDatabase db = conn.getWritableDatabase();
         for(int i = 0; i < listaPatologiasPaciente.size(); i++){
@@ -418,8 +511,8 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
 
     }
     public void volverAlMain(){
-         Intent intent = new Intent(this, MainActivity.class);
-         startActivity(intent);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public boolean validarCampos(){
@@ -480,6 +573,7 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
             FechaIngreso.setError("Campo Obligatorio");
             retorno = false;
         }
+
 
         return retorno;
     }

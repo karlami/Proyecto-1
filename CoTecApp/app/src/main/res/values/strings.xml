@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">CoTec App</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_registro_pacientes">RegistroPacientes</string>
     <!-- Strings used for fragments for navigation -->
@@ -23,6 +22,9 @@
     <string name="patologia"><b>Patologías</b></string>
     <string name="medicamento"><b>Medicación</b></string>
     <string name="Info"><b>Información del Paciente</b></string>
+    <string name="Correo"><b>Correo:</b></string>
+    <string name="Paciente"><b>Paciente asociado:</b></string>
+    <string name="InfoContacto"><b>Información del Contacto</b></string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

@@ -34,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
         conn = new ConexionSQLiteHelper(this, "CoTec", null, 1);
         SQLiteDatabase db = conn.getWritableDatabase();
-
+        /*try {
+            cargarBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
         tabLayout = findViewById(R.id.tabs);
         viewpager = findViewById(R.id.viewPager);
 

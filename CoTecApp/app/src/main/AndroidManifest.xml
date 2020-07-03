@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InformacionPaciente"></activity>
+        <activity android:name=".ActualizarContacto"></activity>
+        <activity android:name=".InformacionContacto" />
+        <activity android:name=".RegistroContacto" />
+        <activity android:name=".ContactosDePaciente" />
+        <activity android:name=".Contactos" />
+        <activity android:name=".ActualizarPaciente" />
+        <activity android:name=".Activitys.ActualizarPaciente" />
+        <activity android:name=".InformacionPaciente" />
         <activity
             android:name=".RegistroPacientes"
             android:label="@string/title_activity_registro_pacientes"

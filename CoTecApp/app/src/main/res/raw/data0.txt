@@ -1,0 +1,250 @@
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'France', 'Blois')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Norway', 'Trondheim')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Velizh')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Norway', 'Oslo')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'France', 'Vincennes')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Czech Republic', 'Zbraslav')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Ukraine', 'Mukacheve')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Portugal', 'Torres Novas')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Poland', 'Paprotnia')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Poland', 'Stare Pole')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Greece', 'Loukísia')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Satinka')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'France', 'Roue')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Dukhovnitskoye')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Belarus', 'Lyasny')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Swede', 'Linköping')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Poland', 'Elk')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'France', 'Saint-Quenti')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'France', 'Toulouse')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Poland', 'Kamieniec')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'France', 'Chantilly')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Yur’yevets')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Frolovo')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Finland', 'Kihniö')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Poland', 'Koszeci')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Slovenia', 'Poljcane')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Ireland', 'Adare')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Portugal', 'Lemenhe')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Portugal', 'Murganhal')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Monaco', 'Monte-Carlo')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Albania', 'Lekas')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Poland', 'Herby')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Staritsa')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Swede', 'Örnsköldsvik')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Portugal', 'Vila Nova')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Poland', 'Dzikowiec')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Portugal', 'Monte Leite')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Slovenia', 'Solka')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Novyye Cherëmushki')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Finland', 'Tuusniemi')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Pirogovo')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Swede', 'Hallstavik')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Latvia', 'Limbaži')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Netherlands', 'Amsterdam Noord west')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Ukraine', 'Denyshi')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Swede', 'Järna')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'France', 'Schiltigheim')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Bulgaria', 'Suedinenie')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Kola')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Ukraine', 'Chutove')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Ireland', 'Nava')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Ukraine', 'Berezanka')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Russia', 'Darovskoy')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Portugal', 'Odivelas')
+insert into Ubicacion (continente, pais, region) VALUES ('Europe', 'Portugal', 'Guimarei')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Colombia', 'Herrá')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Peru', 'Layo')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Salgueiro')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'United States', 'Nashville')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Lagoa Vermelha')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Colombia', 'Urrao')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Peru', 'Panao')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'United States', 'San Antonio')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Formiga')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Colombia', 'Ospina')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Arapongas')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Peru', 'Tuti')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Argentina', 'Deán Funes')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Una')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Gravataí')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Cuba', 'Nueva Gerona')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'United States', 'Nashville')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'El Salvador', 'Ilopango')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Peru', 'Huancaray')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Canada', 'Two Hills')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Canada', 'Mont-Joli')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'São Bento')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Honduras', 'Quebradas')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Esmeraldas')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Bahamas', 'West End')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Colombia', 'Cerrito')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Extrema')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Peru', 'Satipo')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Argentina', 'Gaimá')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Canada', 'Otterburn Park')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Novo Aripuanã')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Canada', 'Val-d''Or')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Forquilhinha')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'Pelotas')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Panama', 'Pueblo Nuevo')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Peru', 'Pallanchacra')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Mexico', 'Benito Juarez')
+insert into Ubicacion (continente, pais, region) VALUES ('America', 'Brazil', 'São Sebastião')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Gandusari')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Cuozhou')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Wujiasha')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Moba')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Russia', 'Shumikhinskiy')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Yuanqua')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Merik')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Shunde')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Jialu')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Paritjunus')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Gandusari')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Cibeureum')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Somorpenang')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Israel', 'Dimona')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Liancheng')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Banjar Susut Kaja')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Qiaosi')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Pondoktelo')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Oemollo')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Tongzi')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Lianyi')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Armenia', 'Apaga')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Lixiqiao')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Philippines', 'Banocboc')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Fengme')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Huangdu')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Japa', 'Nakanojomachi')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Vietnam', 'Giemdiem')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Xinzhou')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Azerbaija', 'Bilajari')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Huashixia')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Reuleuet')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Dasha')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Jiaodai')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Bamiantong')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Babaka')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Haruai')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Haria')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Russia', 'Shirokaya Rechka')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Bulanga')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Payama')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Wuxi')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Sanfang')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Rancabugel')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Chengdong')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Xishiqiao')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Zhaiwu')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Russia', 'Novogornyy')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Huaya')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Philippines', 'Natoni')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Armenia', 'Vardablur')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Philippines', 'Kanlagay')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Campaka')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Mutang')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Thailand', 'Nong Phai')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Sukamaju')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Japa', 'Musashino')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Xiema')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Yeme', 'Ar Rujum')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Zuogaiduoma')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Vietnam', 'Phú Khuong')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Lianghekou')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Fangya')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'China', 'Chenggua')
+insert into Ubicacion (continente, pais, region) VALUES ('Asia', 'Indonesia', 'Warungbante')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Beni', 'Kandi')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'South Suda', 'Rumbek')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Tunisia', 'Sfax')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Nigeria', 'Bornu Yassu')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Ivory Coast', 'Yamoussoukro')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Democratic Republic of the Congo', 'Demba')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Kenya', 'Homa Bay')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Portugal', 'Biscoitos')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Mali', 'Sokolo')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Nigeria', 'Sofo-Birnin-Gwari')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Mali', 'Sokolo')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Egypt', 'Juhaynah')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Morocco', 'Sidi Smaïl')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Nigeria', 'Garko')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'South Africa', 'Wartburg')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Tunisia', 'Sfax')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Ethiopia', 'Bako')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Ethiopia', 'Adis Zeme')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Morocco', 'Aknoul')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'South Africa', 'Benoni')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Mozambique', 'Cuamba')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Cameroo', 'Loum')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Libya', 'Tripoli')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Botswana', 'Serowe')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Burkina Faso', 'Pô')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Nigeria', 'Dankalwa')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Chad', 'Biltine')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Tunisia', 'Masaki')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Portugal', 'Lomba do Loução')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Democratic Republic of the Congo', 'Wamba')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Chad', 'Goz Beïda')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'Democratic Republic of the Congo', 'Kongolo')
+insert into Ubicacion (continente, pais, region) VALUES ('Africa', 'South Africa', 'Lephalale')
+insert into Ubicacion (continente, pais, region) VALUES ('Oceania', 'Australia', 'Sydney')
+insert into Ubicacion (continente, pais, region) VALUES ('Oceania', 'Fiji', 'Suva')
+insert into Ubicacion (continente, pais, region) VALUES ('Oceania', 'Kiribati', 'Tarawa')
+insert into Ubicacion (continente, pais, region) VALUES ('Oceania', 'Micronesia', 'Palikir')
+insert into Ubicacion (continente, pais, region) VALUES ('Oceania', 'Nauru', 'Yaren District')
+insert into Ubicacion (continente, pais, region) VALUES ('Oceania', 'New Zeland', 'Wellingto')
+insert into Ubicacion (continente, pais, region) VALUES ('Oceania', 'Palau', 'Bgerulmud')
+insert into Ubicacion (continente, pais, region) VALUES ('Oceania', 'Tuvalu', 'Funafuti')
+insert into Ubicacion (continente, pais, region) VALUES ('Oceania', 'Australia', 'Canberra')
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Lisinopril', 'Lisinopril', 'Wockhardt Limited');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Clindamyci', 'CLINDAMYCIN PHOSPHATE', 'Hospira, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Lacura Extreme Blast', 'ALUMINUM ZIRCONIUM TRICHLOROHYDREX GLY', 'VVF Kansas Services LLC');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('ERY-TAB', 'erythromyci', 'Rebel Distributors Corp');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('DULOXETINE', 'DULOXETINE HYDROCHLORIDE', 'Breckenridge Pharmaceutical, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Aluminum Acetate Astringent', 'Calcium Acetate and Aluminum sulfate', 'TAGI Pharma Incorporated');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Nabumetone', 'Nabumetone', 'Glenmark Generics Inc., USA');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Hemorrhoidal', 'Mineral oil, Petrolatum, Phenylephrine HCl, Shark liver oil', 'HyVee Inc');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Pegasys', 'peginterferon alfa-2a', 'Genentech, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Orphenadrine Citrate', 'Orphenadrine Citrate', 'Clinical Solutions Wholesale');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('good neighbor pharmacy lubricating plus', 'carboxymethylcellulose sodium', 'Amerisource Berge');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Elitek', 'rasburicase', 'sanofi-aventis U.S. LLC');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Feldene', 'piroxicam', 'Pfizer Laboratories Div Pfizer Inc');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Aspiri', 'Aspiri', 'Kareway Product, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Propranolol Hydrochloride', 'Propranolol Hydrochloride', 'Northstar RxLLC');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('OPANA ER', 'Oxymorphone Hydrochloride', 'Rebel Distributors Corp');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Ibuprofe', 'Ibuprofe', 'SAVE-A-LOT FOOD STORES, LTD.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Morrhuate Sodium', 'Morrhuate Sodium', 'American Regent, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('SULPHUR', 'SULFUR', 'Remedy Makers');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('HUSKY 575 Foaming Antiseptic Hand Cleaner', 'triclosa', 'Canberra Corporatio');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Azacitidine', 'Azacitidine', 'Dr. Reddy''s Laboratories Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('CPDA-1', 'Anticoagulant Citrate Phosphate Dextrose Adenine', 'Fenwal, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Equaline Stomach Relief', 'Bismuth subsalicylate', 'Supervalu Inc');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Total Antimony', 'antimonium tartaricum', 'White Manufacturing Inc. DBA Micro -West');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Childrens Plus Multi-Symptom Cold Grape', 'Childrens Tylenol Plus Multi-Symptom Cold', 'Good Neighbor Pharmacy');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Nighttime', 'Acetaminophen, Dextromethorphan HBr, Doxylamine succinate', 'Publix Super Markets Inc');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('berkley and jensen acid controller', 'Famotidine', 'BJWC');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Ropinirole Hydrochloride', 'Ropinirole Hydrochloride', 'AvKARE, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Mirapex', 'pramipexole dihydrochloride', 'Boehringer Ingelheim Pharmaceuticals, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Clonidine Hydrochloride', 'Clonidine Hydrochloride', 'BluePoint Laboratories');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('REYATAZ', 'ATAZANAVIR SULFATE', 'A-S Medication Solutions LLC');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Childrens Cold and Cough', 'Diphenhydramine HCl, Phenylephrine HCl', 'Walgreens');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('TAZICEF', 'CEFTAZIDIME', 'Hospira, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Aqua Rush Serum', 'Glyceri', 'AMI Cosmetic Co.,Ltd.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('UV LOCK FLOWER MILD SU', 'OCTINOXATE, Titanium Dioxide, Octocrylene, AVOBENZONE', 'NATURE REPUBLIC CO., LTD.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Leader Cherry SPF 4 Lip Balm', 'Padimate O, Petrolatum', 'Cardinal Health (Leader)');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Perform', 'MENTHOL', 'Performance Health LLC');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Oxyge', 'Oxyge', 'Denman Services, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Black Birch', 'Black Birch', 'Nelco Laboratories, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('CYPROHEPTADINE HYDROCHLORIDE', 'CYPROHEPTADINE HYDROCHLORIDE', 'Breckenridge Pharmaceutical, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Clonazepam', 'clonazepam', 'Bryant Ranch Prepack');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Prodri', 'Isometheptene Mucate, Caffeine, and Acetaminophe', 'Gentex Pharma');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Terrestristat', 'Alfalfa, Avena sativa, Fucus vesiculosus, Thyroidinum (suis), Agate, Cadmium iodatum, Calcarea phosphorica, Cuprum metallicum,', 'Energique, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Leflunomide', 'Leflunomide', 'Trigen Laboratories, LLC');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Metformin Hydrochloride', 'metformin hydrochloride', 'Physicians Total Care, Inc.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Hydromorphone Hydrochloride', 'Hydromorphone Hydrochloride', 'Rhodes Pharmaceuticals L.P.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Hydrocortisone Butyrate', 'hydrocortisone butyrate', 'Rouses Point Pharm');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Pleo Quent', 'penicillium glabrum', 'Sanum Kehlbeck GmbH & Co. KG');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Pier 1 Imports Blueberry Parfait Anti-Bacterial Hand Sanitizer', 'ALCOHOL', 'ALILY (ZHANGZHOU) BATH PRODUCTS LTD.');
+insert into Medicamento (nombre, descripcion, casaFarmaceutica) values ('Allergy Relief', 'Loratadine', 'Ohm Laboratories Inc.');

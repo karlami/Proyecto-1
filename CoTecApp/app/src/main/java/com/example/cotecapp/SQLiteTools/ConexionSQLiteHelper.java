@@ -24,7 +24,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.TABLA_CENTRO_HOSPITALARIO);
         db.execSQL(Utilidades.TABLA_CONTACTO);
         db.execSQL(Utilidades.TABLA_PACIENTE);
-        db.execSQL(Utilidades.TABLA_PACIENTE_ESTADO);
+        db.execSQL(Utilidades.TABLA_ESTADO_PACIENTE);
         db.execSQL(Utilidades.TABLA_PERSONA_PATOLOGIA);
         db.execSQL(Utilidades.TABLA_PACIENTE_MEDICAMENTO);
         db.execSQL(Utilidades.TABLA_UBICACION_MEDIDA_SANITARIA);
@@ -42,7 +42,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_CENTRO_HOSPITALARIO);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_CONTACTO);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_PACIENTE);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_PACIENTE_ESTADO);
+        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_ESTADO_PACIENTE);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_PERSONA_PATOLOGIA);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_PACIENTE_MEDICAMENTO);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.NOMBRE_TABLA_UBICACION_MEDIDA_SANITARIA);

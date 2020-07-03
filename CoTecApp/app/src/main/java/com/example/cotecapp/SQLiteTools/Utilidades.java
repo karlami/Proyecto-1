@@ -110,6 +110,13 @@ public class Utilidades extends AppCompatActivity {
             "FOREIGN KEY("+CENTRO_HOSPITALARIO_CAMPO_DIRECTOR+") REFERENCES Persona("+PERSONA_CAMPO_CEDULA+")," +
             "FOREIGN KEY("+CENTRO_HOSPITALARIO_CAMPO_ID_UBICACION+") REFERENCES "+NOMBRE_TABLA_UBICACION+"("+UBICACION_CAMPO_ID+")" +
             ");";
+    //Estado paciente
+    public static final String NOMBRE_TABLA_ESTADO_PACIENTE = "EstadoPaciente";
+    public static final String ESTADO_PACIENTE_CAMPO_IDESTADO = "idEstadoPaciente";
+    public static final String ESTADO_PACIENTE_CAMPO_ESTADO = "estado";
+    public static final String TABLA_ESTADO_PACIENTE =  "CREATE TABLE "+NOMBRE_TABLA_ESTADO_PACIENTE+"(" +
+            " "+ ESTADO_PACIENTE_CAMPO_IDESTADO +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            " "+ESTADO_PACIENTE_CAMPO_ESTADO+" VARCHAR(50) NOT NULL)";
 
     //Constantes para la tabla Contacto de la base de datos
     public static final String NOMBRE_TABLA_CONTACTO = "Contacto";
@@ -134,32 +141,22 @@ public class Utilidades extends AppCompatActivity {
     public static final String TABLA_PACIENTE_CAMPO_FECHA_INGRES = "fechaIngreso";
     public static final String TABLA_PACIENTE_CAMPO_ID_CENTRO_HOSPI = "idCentroHospitalario";
     public static final String TABLA_PACIENTE_CAMPO_CEDULA = "cedula";
+    public static final String TABLA_PACIENTE_CAMPO_ID_ESTADO_PACIENTE = "idEstadoPaciente";
 
     public static final String TABLA_PACIENTE = "CREATE TABLE "+NOMBRE_TABLA_PACIENTE+"(" +
             TABLA_PACIENTE_CAMPO_ID_PACIENTE + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            TABLA_PACIENTE_CAMPO_INTERNADO + " BOOLEAN," +
-            TABLA_PACIENTE_CAMPO_UCI + " BOOLEAN," +
+            TABLA_PACIENTE_CAMPO_INTERNADO + " VARCHAR(10)," +
+            TABLA_PACIENTE_CAMPO_UCI + " VARCHAR(10)," +
             TABLA_PACIENTE_CAMPO_FECHA_INGRES + " DATE  NOT NULL," +
             TABLA_PACIENTE_CAMPO_ID_CENTRO_HOSPI + " INT  NOT NULL," +
             TABLA_PACIENTE_CAMPO_CEDULA + " VARCHAR(30)  NOT NULL," +
+            TABLA_PACIENTE_CAMPO_ID_ESTADO_PACIENTE+" INTEGER NOT NULL,"+
             "FOREIGN KEY("+TABLA_PACIENTE_CAMPO_ID_CENTRO_HOSPI+") REFERENCES " +
             "CentroHospitalario("+CENTRO_HOSPITALARIO_CAMPO_ID+")," +
-            "FOREIGN KEY("+TABLA_PACIENTE_CAMPO_CEDULA+")  REFERENCES "+NOMBRE_TABLA_PERSONA+"("+PERSONA_CAMPO_CEDULA+")" +
-            ");";
+            "FOREIGN KEY("+TABLA_PACIENTE_CAMPO_CEDULA+")  REFERENCES "+NOMBRE_TABLA_PERSONA+"("+PERSONA_CAMPO_CEDULA+")," +
+            "FOREIGN KEY("+TABLA_PACIENTE_CAMPO_ID_ESTADO_PACIENTE+") REFERENCES " +
+            NOMBRE_TABLA_ESTADO_PACIENTE+"("+ ESTADO_PACIENTE_CAMPO_IDESTADO +"));";
 
-
-    //Constantes para la tabla PacienteEstado de la base de datos
-    public static final String NOMBRE_TABLA_PACIENTE_ESTADO = "PacienteEstado";
-    public static final String PACIENTE_ESTADO_CAMPO_ID_PACIENTE_ESTADO = "idPacienteEstado";
-    public static final String PACIENTE_ESTADO_CAMPO_ID_PACIENTE = "idPaciente";
-    public static final String PACIENTE_ESTADO_CAMPO_ESTADO = "estado";
-
-    public static final String TABLA_PACIENTE_ESTADO = "CREATE TABLE "+NOMBRE_TABLA_PACIENTE_ESTADO+"(" +
-            PACIENTE_ESTADO_CAMPO_ID_PACIENTE_ESTADO + "  INTEGER PRIMARY KEY AUTOINCREMENT ," +
-            PACIENTE_ESTADO_CAMPO_ID_PACIENTE +   " INT  NOT NULL," +
-            PACIENTE_ESTADO_CAMPO_ESTADO + "  VARCHAR(30)  NOT NULL," +
-            "FOREIGN KEY("+PACIENTE_ESTADO_CAMPO_ID_PACIENTE+") REFERENCES "+NOMBRE_TABLA_PACIENTE+"("+TABLA_PACIENTE_CAMPO_ID_PACIENTE+")" +
-            ")";
 
     //Constantes para la tabla PersonaPatologia de la base de datos
     public static final String NOMBRE_TABLA_PERSONA_PATOLOGIA = "PersonaPatologia";
@@ -188,7 +185,7 @@ public class Utilidades extends AppCompatActivity {
             "FOREIGN KEY("+PACIENTE_MEDICAMENTO_CAMPO_ID_MEDICAMENTO+") REFERENCES "+
             NOMBRE_TABLA_MEDICAMENTO+"("+MEDICAMENTO_CAMPO_ID_MEDICAMENTO+")," +
             "FOREIGN KEY("+PACIENTE_MEDICAMENTO_CAMPO_ID_PACIENTE+") REFERENCES "+
-            NOMBRE_TABLA_PACIENTE+"("+PACIENTE_ESTADO_CAMPO_ID_PACIENTE+")" +
+            NOMBRE_TABLA_PACIENTE+"("+TABLA_PACIENTE_CAMPO_ID_PACIENTE+")" +
             ");";
 
 
@@ -220,5 +217,7 @@ public class Utilidades extends AppCompatActivity {
             TABLA_MEDIDA_CONTENCION_CAMPO_MEDIDA + " VARCHAR(500) NOT NULL," +
             TABLA_MEDIDA_CONTENCION_CAMPO_FECHA_INICIO + " DATE NOT NULL" +
             ")";
+
+
 
 }
