@@ -21,7 +21,5 @@ namespace CoTEC_2020.Models
         public System.DateTime fechaInicio { get; set; }
         public Nullable<System.DateTime> fechaFinal { get; set; }
     
-        public virtual MedidaSanitaria MedidaSanitaria { get; set; }
-        public virtual Ubicacion Ubicacion { get; set; }
     }
 }

@@ -28,15 +28,14 @@ namespace CoTEC_2020.Controllers
 
         [HttpGet]
         [Route("api/GetPersona/{id}")]
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get(string id)
         {
             using (var db = new CoTECEntities())
             {
-                SqlParameter parametro = new SqlParameter("@id", id);
                 var persona = db.Database.SqlQuery<Persona>("SELECT cedula, nombre, " +
                     "primerApellido, segundoApellido, nacionalidad, fechaNacimiento, idUbicacion " +
                     "FROM Persona" +
-                    " WHERE cedula = @id");
+                    " WHERE cedula = " + id).FirstOrDefault();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, persona);
             }
@@ -86,7 +85,7 @@ namespace CoTEC_2020.Controllers
                 SqlParameter parametro = new SqlParameter("@id", id);
                 var status = db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM Persona " +
-                    " WHERE cedula = @id");
+                    " WHERE cedula = " + id);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }

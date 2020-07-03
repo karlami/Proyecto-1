@@ -56,7 +56,7 @@ namespace CoTEC_2020.Controllers
         Insert de un Paciente
         Recibe toda la información del nuevo Paciente
         Crea una tupla en Paciente con los valores ingresados
-        
+        */
         [HttpPost]
         [Route("api/PostPacientes")]
         public HttpResponseMessage Post([FromBody] Paciente value)
@@ -64,26 +64,25 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("EXEC modifyPaciente" +
-                    @cedula = '117390700',
-                    @nombre = 'Ruben',
-                    @primerApellido = 'Salas',
-                    @segundoApellido = 'Ramirez',
-                    @nacionalidad = 'Costa Rica',
-                    @fechaNacimiento = '1999-03-29',
-                    @region = 'Paris',
-                    @idPaciente = 0,
-                    @internado = 'false',
-                    @uci = 'false',
-                    @fechaIngreso = '2020-04-17',
-                    @idEstadoPaciente = 3,
-                    @idCentroHospitalario = 42,
-                    @statementType = 'Insertar';);
+                db.Database.ExecuteSqlCommand("EXEC modifyContacto" +
+                    "@cedula = " + "117390700" +
+                    ",@nombre = " + "Ruben" +
+                    "@primerApellido = " + "117390700" +
+                    ",@segundoApellido = " + "Ruben" +
+                     "@nacionalidad = " + "117390700" +
+                    ",@fechaNacimiento = " + "2020-04-17" +
+                    "@idUbicacion = " + 69 +
+                    ",@idContacto = " + "Ruben" +
+                    "@correo = " + "117390700" +
+                    ",@idPaciente = " + "Ruben" +
+                    "@statementType = " + "117390700" 
+
+);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
         }
-        */
+        
 
         /*
         Update de un Paciente

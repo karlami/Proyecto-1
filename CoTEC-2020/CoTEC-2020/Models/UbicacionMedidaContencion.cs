@@ -19,7 +19,5 @@ namespace CoTEC_2020.Models
         public int idMedidaContencion { get; set; }
         public System.DateTime fechaInicio { get; set; }
     
-        public virtual MedidaContencion MedidaContencion { get; set; }
-        public virtual Ubicacion Ubicacion { get; set; }
     }
 }

@@ -14,14 +14,9 @@ namespace CoTEC_2020.Models
     
     public partial class EstadoPaciente
     {
-        public EstadoPaciente()
-        {
-            this.Pacientes = new HashSet<Paciente>();
-        }
     
         public int idEstadoPaciente { get; set; }
         public string estado { get; set; }
     
-        public virtual ICollection<Paciente> Pacientes { get; set; }
     }
 }

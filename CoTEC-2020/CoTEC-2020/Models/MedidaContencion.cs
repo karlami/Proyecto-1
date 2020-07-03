@@ -14,15 +14,10 @@ namespace CoTEC_2020.Models
     
     public partial class MedidaContencion
     {
-        public MedidaContencion()
-        {
-            this.UbicacionMedidaContencions = new HashSet<UbicacionMedidaContencion>();
-        }
     
         public int idMedidaContencion { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
     
-        public virtual ICollection<UbicacionMedidaContencion> UbicacionMedidaContencions { get; set; }
     }
 }
