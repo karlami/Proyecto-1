@@ -508,7 +508,7 @@ BEGIN
 		BEGIN
 
 		-- Actualiza una MedidaSanitaria solo si esta existe
-			IF (@idMedidaSanitaria IN (SELECT @idMedidaSanitaria FROM MedidaSanitaria WHERE @idMedidaSanitaria = @idMedidaSanitaria) )
+			IF (@idMedidaSanitaria IN (SELECT @idMedidaSanitaria FROM MedidaSanitaria WHERE @idMedidaSanitaria = idMedidaSanitaria) )
 				BEGIN
 					UPDATE MedidaSanitaria
 					SET nombre = @nombre,
@@ -557,19 +557,6 @@ BEGIN
 
 	IF @statementType = 'Insert'
 		BEGIN
-			--Genera una nueva ubicacion solo si no esta ya antes creada
-			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-				BEGIN
-					INSERT INTO Ubicacion (
-						continente, 
-						pais,
-						region )
-					VALUES (
-						 @continente,
-						 @pais,
-						 @region )
-				END
-
 			-- Genera una UbicacionMedidaSanitaria
 			INSERT INTO UbicacionMedidaSanitaria(
 				idUbicacion,
@@ -578,7 +565,7 @@ BEGIN
 				fechaInicio,
 				fechaFinal )
 			VALUES (
-				dbo.getIdUbicacion(@continente, @pais, @region),
+				@idUbicacion,
 				@idMedidaSanitaria,
 				@estado,
 				@fechaInicio,
@@ -587,24 +574,12 @@ BEGIN
 
 	ELSE IF @statementType = 'Update'
 		BEGIN
-			--Genera una nueva ubicacion solo si no esta ya antes creada
-			IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-				BEGIN
-					INSERT INTO Ubicacion (
-						continente, 
-						pais,
-						region )
-					VALUES (
-						 @continente,
-						 @pais,
-						 @region )
-				END
 
 			-- Actualiza una UbicacionMedidaSanitaria solo si esta existe
 			IF (@idUbicacionMedidaSanitaria IN (SELECT idUbicacionMedidaSanitaria FROM UbicacionMedidaSanitaria WHERE idUbicacionMedidaSanitaria = @idUbicacionMedidaSanitaria) )
 				BEGIN
 					UPDATE UbicacionMedidaSanitaria
-					SET idUbicacion = dbo.getIdUbicacion(@continente, @pais, @region),
+					SET idUbicacion = @idUbicacion,
 						idMedidaSanitaria = @idMedidaSanitaria,
 						estado = @estado,
 						fechaInicio = @fechaInicio,
