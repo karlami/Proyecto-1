@@ -24,7 +24,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 var listaPacientes = db.Database.SqlQuery<vPaciente>("SELECT NombreCompleto, Cedula, Edad, " +
-                    "Nacionalidad, Region, Patologias, Estado, Medicamentos, Internado, UCI, IdPaciente " +
+                    "Nacionalidad, Region, Patologias, Estado, CentroHospitalario, Medicamentos, Internado, UCI, IdPaciente " +
                     "FROM viewPaciente").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaPacientes);
@@ -44,7 +44,7 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 var paciente = db.Database.SqlQuery<vPaciente>("SELECT NombreCompleto, Cedula, Edad, " +
-                    "Nacionalidad, Region, Patologias, Estado, Medicamentos, Internado, UCI, IdPaciente " +
+                    "Nacionalidad, Region, Patologias, Estado, CentroHospitalario, Medicamentos, Internado, UCI, IdPaciente " +
                     "FROM viewPaciente" +
                     " WHERE idPaciente = " + id).FirstOrDefault();
 
@@ -72,14 +72,14 @@ namespace CoTEC_2020.Controllers
                     "' ,@nacionalidad = '" + value.nacionalidad +
                     "' ,@fechaNacimiento = '" + value.fechaNacimiento +
                     "' ,@region = '" + value.region +
-                    "' ,@idPatologia = '" + value.patologias +
+                    "' ,@patologia = '" + value.patologias +
                     "' ,@idPaciente = '" + value.idPaciente +
                     "' ,@internado = '" + value.internado +
                     "' ,@uci = '" + value.uci +
                     "' ,@fechaIngreso = '" + value.fechaIngreso +
                     "' ,@idEstadoPaciente = '" + value.estado +
                     "' ,@idCentroHospitalario = '" + value.idCentroHospitalario +
-                    "' ,@idMedicamento = '" + value.medicacion +
+                    "' ,@medicamento = '" + value.medicacion +
                     "' ,@statementType = '" + "Insert" + "'; ");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
@@ -106,14 +106,14 @@ namespace CoTEC_2020.Controllers
                     "' ,@nacionalidad = '" + value.nacionalidad +
                     "' ,@fechaNacimiento = '" + value.fechaNacimiento +
                     "' ,@region = '" + value.region +
-                    "' ,@idPatologia = '" + value.patologias +
+                    "' ,@patologia = '" + value.patologias +
                     "' ,@idPaciente = '" + value.idPaciente +
                     "' ,@internado = '" + value.internado +
                     "' ,@uci = '" + value.uci +
                     "' ,@fechaIngreso = '" + value.fechaIngreso +
                     "' ,@idEstadoPaciente = '" + value.estado +
                     "' ,@idCentroHospitalario = '" + value.idCentroHospitalario +
-                    "' ,@idMedicamento = '" + value.medicacion +
+                    "' ,@medicamento = '" + value.medicacion +
                     "' ,@statementType = '" + "Update" + "'; ");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
@@ -139,14 +139,14 @@ namespace CoTEC_2020.Controllers
                     "' ,@nacionalidad = '" + "" +
                     "' ,@fechaNacimiento = '" + "" +
                     "' ,@region = '" + "" +
-                    "' ,@idPatologia = '" + 0 +
+                    "' ,@patologia = '" + 0 +
                     "' ,@idPaciente = '" + id +
                     "' ,@internado = '" + "" +
                     "' ,@uci = '" + "" +
                     "' ,@fechaIngreso = '" + "" +
                     "' ,@idEstadoPaciente = '" + "" +
                     "' ,@idCentroHospitalario = '" + 0 +
-                    "' ,@idMedicamento = '" + 0 +
+                    "' ,@medicamento = '" + 0 +
                     "' ,@statementType = '" + "Delete" + "'; ");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);

@@ -14,6 +14,7 @@ namespace CoTEC_2020.Models
         public string Region { get; set; }
         public string Patologias { get; set; }
         public string Estado { get; set; }
+        public int CentroHospitalario { get; set; }
         public string Medicamentos { get; set; }
         public string Internado { get; set; }
         public string UCI { get; set; }

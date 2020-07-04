@@ -11,8 +11,8 @@ namespace CoTEC_2020.Models
         public string cedula { get; set; }
         public System.DateTime fechaNacimiento { get; set; }
         public string region { get; set; }
-        public int medicacion { get; set; }
-        public int patologias { get; set; }
+        public string medicacion { get; set; }
+        public string patologias { get; set; }
         public string nacionalidad { get; set; }
         public string nombre { get; set; }
         public string primerApellido { get; set; }

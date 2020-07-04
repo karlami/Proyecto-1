@@ -32,7 +32,7 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                var contacto = db.Database.SqlQuery<Contacto>("SELECT NombreCompleto, Cedula, " +
+                var contacto = db.Database.SqlQuery<vContacto>("SELECT NombreCompleto, Cedula, " +
                     "Edad, Nacionalidad, Ubicacion, Patologias, Correo, IdContacto " +
                     "FROM viewContacto" +
                     " WHERE idContacto = " + id).FirstOrDefault();
@@ -49,39 +49,41 @@ namespace CoTEC_2020.Controllers
             using (var db = new CoTECEntities())
             {
                 var status = db.Database.ExecuteSqlCommand("EXEC modifyContacto " +
-                    "@cedula = '" + "1111111" +
-                    "' ,@nombre = '" + "Ruben" +
-                    "' ,@primerApellido = '" + "Cascodo" +
-                    "' ,@segundoApellido = '" + "Verno" +
-                    "' ,@nacionalidad = '" + "117390700" +
-                    "' ,@fechaNacimiento = '" + "2020-04-17" +
-                    "' ,@idUbicacion = '" + 198 +
-                    "' ,@idContacto = '" + 7 +
-                    "' ,@correo = '" + "rubsalas@hotmail.com" +
-                    "' ,@idPaciente = '" + 13 +
-                    "' ,@statementType = '" + "Update" + "'; ");
+                    "@cedula = '" + value.cedula +
+                    "' ,@nombre = '" + value.nombre +
+                    "' ,@primerApellido = '" + value.primerApellido +
+                    "' ,@segundoApellido = '" + value.segundoApellido +
+                    "' ,@nacionalidad = '" + value.nacionalidad +
+                    "' ,@fechaNacimiento = '" + value.fechaNacimiento +
+                    "' ,@idUbicacion = '" + value.idUbicacion +
+                    "' ,@patologia = '" + value.patologias +
+                    "' ,@idContacto = '" + value.idContacto +
+                    "' ,@correo = '" + value.correo +
+                    "' ,@idPaciente = '" + value.idPaciente +
+                    "' ,@statementType = '" + "Insert" + "'; ");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
         [HttpPut]
-        [Route("api/PutContactos/{cedula}")]
+        [Route("api/PutContactos")]
         public HttpResponseMessage Put([FromBody] pContacto value)
         {
             using (var db = new CoTECEntities())
             {
                 var status = db.Database.ExecuteSqlCommand("EXEC modifyContacto " +
-                    "@cedula = '" + "1111111" +
-                    "' ,@nombre = '" + "Ruben" +
-                    "' ,@primerApellido = '" + "Cascodo" +
-                    "' ,@segundoApellido = '" + "Verno" +
-                    "' ,@nacionalidad = '" + "117390700" +
-                    "' ,@fechaNacimiento = '" + "2020-04-17" +
-                    "' ,@idUbicacion = '" + 198 +
-                    "' ,@idContacto = '" + 7 +
-                    "' ,@correo = '" + "rubsalas@hotmail.com" +
-                    "' ,@idPaciente = '" + 13 +
+                    "@cedula = '" + value.cedula +
+                    "' ,@nombre = '" + value.nombre +
+                    "' ,@primerApellido = '" + value.primerApellido +
+                    "' ,@segundoApellido = '" + value.segundoApellido +
+                    "' ,@nacionalidad = '" + value.nacionalidad +
+                    "' ,@fechaNacimiento = '" + value.fechaNacimiento +
+                    "' ,@idUbicacion = '" + value.idUbicacion +
+                    "' ,@patologia = '" + value.patologias +
+                    "' ,@idContacto = '" + value.idContacto +
+                    "' ,@correo = '" + value.correo +
+                    "' ,@idPaciente = '" + value.idPaciente +
                     "' ,@statementType = '" + "Update" + "'; ");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
@@ -90,21 +92,22 @@ namespace CoTEC_2020.Controllers
 
         [HttpDelete]
         [Route("api/DeleteContactos/{id}")]
-        public HttpResponseMessage Delete(string id)
+        public HttpResponseMessage Delete(int id)
         {
             using (var db = new CoTECEntities())
             {
                 var status = db.Database.ExecuteSqlCommand("EXEC modifyContacto " +
-                    "@cedula = '" + id +
-                    "' ,@nombre = '" + "Ruben" +
-                    "' ,@primerApellido = '" + "Ruben" +
-                    "' ,@segundoApellido = '" + "Ruben" +
-                    "' ,@nacionalidad = '" + "117390700" +
-                    "' ,@fechaNacimiento = '" + "2020-04-17" +
-                    "' ,@idUbicacion = '" + 198 +
-                    "' ,@idContacto = '" + 7 +
-                    "' ,@correo = '" + "rubsalas@hotmail.com" +
-                    "' ,@idPaciente = '" + 13 +
+                    "@cedula = '" + "" +
+                    "' ,@nombre = '" + "" +
+                    "' ,@primerApellido = '" + "" +
+                    "' ,@segundoApellido = '" + "" +
+                    "' ,@nacionalidad = '" + "" +
+                    "' ,@fechaNacimiento = '" + "" +
+                    "' ,@idUbicacion = '" + 0 +
+                    "' ,@patologia = '" + 0 +
+                    "' ,@idContacto = '" + id +
+                    "' ,@correo = '" + "" +
+                    "' ,@idPaciente = '" + 0 +
                     "' ,@statementType = '" + "Delete" + "'; ");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
