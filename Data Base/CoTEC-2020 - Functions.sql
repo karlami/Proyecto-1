@@ -21,7 +21,7 @@ Go
 
 
 /*
-Obtiene el nombre completo de una persona al ingresar su cedula
+Obtiene el nombre completo de una persona al ingresar su cedula.
 param: cedula INT
 return: nombre completo concatenado
 */
@@ -149,22 +149,6 @@ GO
 
 
 /*
-Obtiene el idUbicacion al ingresar la region de la ubicacion
-param: region VARCHAR(75)
-return: idUbicacion
-*/
-CREATE FUNCTION getIdUbicacionFromRegion(@region VARCHAR(75)) RETURNS INT
-AS
-BEGIN
-	DECLARE @IdUbicacion INT
-	SET @IdUbicacion=(SELECT Ubicacion.idUbicacion FROM Ubicacion 
-		WHERE @region=Ubicacion.region)
-	RETURN @IdUbicacion
-END
-GO
-
-
-/*
 Obtiene el idUbicacion al ingresar la region y el pais de la ubicacion
 param:  region VARCHAR(75) y pais VARCHAR(75)
 return: idUbicacion
@@ -175,6 +159,22 @@ BEGIN
 	DECLARE @IdUbicacion INT
 	SET @IdUbicacion=(SELECT Ubicacion.idUbicacion FROM Ubicacion 
 		WHERE @region=Ubicacion.region AND @pais=Ubicacion.pais)
+	RETURN @IdUbicacion
+END
+GO
+
+
+/*
+Obtiene el idUbicacion al ingresar la region de la ubicacion
+param: region VARCHAR(75)
+return: idUbicacion
+*/
+CREATE FUNCTION getIdUbicacionFromRegion(@region VARCHAR(75)) RETURNS INT
+AS
+BEGIN
+	DECLARE @IdUbicacion INT
+	SET @IdUbicacion=(SELECT Ubicacion.idUbicacion FROM Ubicacion 
+		WHERE @region=Ubicacion.region)
 	RETURN @IdUbicacion
 END
 GO

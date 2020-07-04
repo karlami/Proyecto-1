@@ -24,7 +24,7 @@ Obtiene la siguiente información de los Pacientes:
 Nombre Completo, Cédula, Edad, Nacionalidad, Región, Patologías, Estado, Medicamentos, Internado y UCI.
 */
 CREATE VIEW viewPaciente WITH ENCRYPTION AS
-SELECT
+	SELECT
 		dbo.getNombreCompleto(pr.cedula) AS NombreCompleto,
 		pr.cedula AS Cedula, 
 		dbo.getEdad(fechaNacimiento) AS Edad,
@@ -59,7 +59,7 @@ CREATE VIEW viewContacto WITH ENCRYPTION AS
 		dbo.getPatologias(pr.cedula) AS Patologias,
 		correo as Correo,
 		c.idContacto as IdContacto
-		FROM 
+	FROM 
 		Persona as pr
 		INNER JOIN Contacto as c ON c.cedula = pr.cedula
 		JOIN Ubicacion as u ON pr.idUbicacion=u.idUbicacion
@@ -73,15 +73,17 @@ Ubicación, Nombre, Capacidad, Capacidad UCI, Director, Contacto
 */
 CREATE VIEW viewCentroHospitalario WITH ENCRYPTION AS
 	SELECT
-		dbo.getRegionPais(ch.idUbicacion) AS Ubicacion,
+		u.pais as Pais,
+		u.region as Region,
 		ch.nombre AS Nombre,
 		ch.capacidad AS Capacidad,
 		ch.capacidadUci AS CapacidadUCI,
 		dbo.getNombreCompleto(ch.director) AS Director,
 		ch.contacto AS Contacto,
 		ch.idCentroHospitalario as IdCentroHospitalario
-		FROM
-			CentroHospitalario as ch
+	FROM
+		CentroHospitalario as ch
+		JOIN Ubicacion as u ON ch.idUbicacion = u.idUbicacion
 GO
 
 

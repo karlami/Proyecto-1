@@ -33,18 +33,18 @@ CREATE TABLE Ubicacion(
 GO
 
 
-/****** Object:  Table MedidaSanitaria ******/
-CREATE TABLE MedidaSanitaria(
-	idMedidaSanitaria			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+/****** Object:  Table MedidaContencion ******/
+CREATE TABLE MedidaContencion(
+	idMedidaContencion			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre						VARCHAR(100)							NOT NULL,
 	descripcion					VARCHAR(500)							NOT NULL,
 )
 GO
 
 
-/****** Object:  Table MedidaContencion ******/
-CREATE TABLE MedidaContencion(
-	idMedidaContencion			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+/****** Object:  Table MedidaSanitaria ******/
+CREATE TABLE MedidaSanitaria(
+	idMedidaSanitaria			INT IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre						VARCHAR(100)							NOT NULL,
 	descripcion					VARCHAR(500)							NOT NULL,
 )
