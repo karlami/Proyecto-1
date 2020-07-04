@@ -518,10 +518,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AcumuladoController.cs" />
     <Compile Include="Controllers\CentroHospitalarioController.cs" />
     <Compile Include="Controllers\ContactoController.cs" />
+    <Compile Include="Controllers\ContencionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicamentoController.cs" />
+    <Compile Include="Controllers\MedidaSanitariaController.cs" />
+    <Compile Include="Controllers\MedidaSanitariaPaisController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\PatologiaController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
@@ -580,6 +584,7 @@
     <Compile Include="Models\PersonaPatologia.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\pMedida.cs" />
     <Compile Include="Models\pPaciente.cs" />
     <Compile Include="Models\Ubicacion.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -590,8 +595,10 @@
     <Compile Include="Models\UbicacionMedidaSanitaria.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\vAcumulado.cs" />
     <Compile Include="Models\vCentroHospitalario.cs" />
     <Compile Include="Models\vContacto.cs" />
+    <Compile Include="Models\vContencion.cs" />
     <Compile Include="Models\vPaciente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -665,7 +672,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Acumulado\" />
+    <Folder Include="Views\Contencion\" />
     <Folder Include="Views\CustomRegExConstraint\" />
+    <Folder Include="Views\MedidaSanitariaPais\" />
+    <Folder Include="Views\MedidaSanitaria\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
