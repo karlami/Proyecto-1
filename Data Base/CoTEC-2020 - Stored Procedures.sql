@@ -31,9 +31,6 @@ CREATE PROCEDURE modifyCentroHospitalario(
 	@capacidadUci INT, 
 	@contacto VARCHAR(50),
 	@director VARCHAR(30),
-	--@idUbicacion INT,
-	-- Atributos de Ubicacion
-	--@continente VARCHAR(75),
 	@pais VARCHAR(75),
 	@region VARCHAR(75),
 	-- Atributo para tipo de declaracion
@@ -43,19 +40,7 @@ BEGIN
 
 	IF @statementType = 'Insert'
 		BEGIN
-			----Genera una nueva ubicacion solo si no esta ya antes creada
-			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-			--BEGIN
-			--	INSERT INTO Ubicacion (
-			--		continente, 
-			--		pais,
-			--		region )
-			--	VALUES (
-			--		 @continente,
-			--		 @pais,
-			--		 @region )
-			--END
-
+			--Genera un CentroHospitalario
 			INSERT INTO CentroHospitalario (
 				nombre,
 				capacidad,
@@ -74,19 +59,7 @@ BEGIN
 
 	ELSE IF @statementType = 'Update'
 		BEGIN
-			----Genera una nueva ubicacion solo si no esta ya antes creada
-			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-			--BEGIN
-			--	INSERT INTO Ubicacion (
-			--		continente, 
-			--		pais,
-			--		region )
-			--	VALUES (
-			--		 @continente,
-			--		 @pais,
-			--		 @region )
-			--END
-
+			--Actualiza un CentroHospitalario con idCentroHospitalario especifico
 			UPDATE CentroHospitalario  
 			SET nombre = @nombre,  
 				capacidad = @capacidad,  
@@ -120,22 +93,20 @@ BEGIN
 END
 GO
 /*
-
 --Para ejecutar modifyCentroHospitalario:
 
 EXEC modifyCentroHospitalario
+-- Atributos de CentroHospitalario
 @idCentroHospitalario = 202,  
 @nombre = 'Vicente de Paul',
 @capacidad = 176,
 @capacidadUci = 175, 
 @contacto = '(506) 123456',
 @director = '100397538',
-@idUbicacion = 1,
-@continente = 'America',
 @pais = 'Costa Rica',
 @region = 'Heredia',
+-- Atributo para tipo de declaracion
 @statementType = 'Insert';
-
 */
 
 
@@ -146,7 +117,7 @@ EXEC modifyCentroHospitalario
 /*
 Proceso para modificar datos de Paciente
 */
-CREATE PROCEDURE modifyPaciente(
+CREATE PROCEDURE  modifyPaciente(
 	-- Atributos de Persona
 	@cedula VARCHAR(30),
 	@nombre	VARCHAR(75),
@@ -154,18 +125,19 @@ CREATE PROCEDURE modifyPaciente(
 	@segundoApellido VARCHAR(75),
 	@nacionalidad VARCHAR(50),
 	@fechaNacimiento DATE,
-	--@idUbicacion INT,
 	-- Atributos de Ubicacion
-	--@continente VARCHAR(75),
-	--@pais VARCHAR(75),
 	@region VARCHAR(75),
-	--Atributos de Paciente
+	-- Atributos PersonaPatologia
+	@idPatologia INT,
+	-- Atributos de Paciente
 	@idPaciente INT,
 	@internado VARCHAR(10),
 	@uci VARCHAR(10),
 	@fechaIngreso DATE,
-	@idEstadoPaciente INT, --estado como?
+	@idEstadoPaciente INT,
 	@idCentroHospitalario INT,
+	-- Atributos PacienteMedicacion
+	@idMedicamento INT,
 	-- Atributo para tipo de declaracion
 	@statementType VARCHAR(20) )
 AS
@@ -173,19 +145,7 @@ BEGIN
 	
 	IF @statementType = 'Insert'
 		BEGIN
-			----Genera una nueva ubicacion solo si no esta ya antes creada
-			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-			--	BEGIN
-			--		INSERT INTO Ubicacion (
-			--			continente, 
-			--			pais,
-			--			region )
-			--		VALUES (
-			--			 @continente,
-			--			 @pais,
-			--			 @region )
-			--	END
-
+			
 			-- Genera una Persona solo si no esta ya antes creada
 			IF NOT (@cedula IN (SELECT cedula FROM Persona WHERE cedula = @cedula) )
 				BEGIN
@@ -207,6 +167,24 @@ BEGIN
 						dbo.getIdUbicacionFromRegion(@region) )
 				END
 
+			---- Genera un PersonaPatologia solo si no esta ya antes creado
+			--IF NOT (
+			--		( @cedula IN (SELECT cedula FROM PersonaPatologia WHERE cedula = @cedula) )
+			--		AND
+			--		(@idPatologia IN (SELECT cedula FROM PersonaPatologia WHERE cedula = @cedula))
+			--		)
+			--	BEGIN
+			--		--
+			--	END
+
+			-- Genera un PersonaPatologia
+			INSERT INTO PersonaPatologia (
+				cedula,
+				idPatologia )
+			VALUES (
+				@cedula,
+				@idPatologia )
+
 			-- Genera un Paciente solo si no esta ya antes creado
 			IF NOT (@cedula IN (SELECT cedula FROM Paciente WHERE cedula = @cedula) )
 				BEGIN
@@ -219,27 +197,51 @@ BEGIN
 						cedula )
 					VALUES (
 						@internado,
-						@uci, 
+						@uci,
 						@fechaIngreso,
 						@idEstadoPaciente,
 						@idCentroHospitalario,
 						@cedula )
 				END
+
+			---- Genera un PacienteMedicamento solo si no esta ya antes creado
+			--IF NOT (
+			--		( @idPaciente IN (SELECT cedula FROM PacienteMedicamento WHERE idPaciente = @idPaciente) )
+			--		AND
+			--		(@idMedicacion IN (SELECT idMedicacion FROM PacienteMedicamento WHERE idPaciente = @idPaciente))
+			--		)
+			--	BEGIN
+			--		--
+			--	END
+
+			-- Genera un PacienteMedicamento
+			INSERT INTO PacienteMedicamento (
+						idMedicamento,
+						idPaciente )
+					VALUES (
+						@idMedicamento,
+						@idPaciente )
+
 		END
 
 	ELSE IF @statementType = 'Update'
 		BEGIN
 			--Actualiza los datos de Persona
 			UPDATE Persona  
-			SET cedula = @cedula,
-				nombre = @nombre,
+			SET	nombre = @nombre,
 				primerApellido = @primerApellido,
 				segundoApellido = @segundoApellido,
 				nacionalidad = @nacionalidad,
 				fechaNacimiento = @fechaNacimiento,
 				idUbicacion = dbo.getIdUbicacionFromRegion(@region)
 			WHERE cedula = @cedula
-				--Verifica que la persona exista
+
+			--Actualiza los datos de PersonaPatologia
+			UPDATE PersonaPatologia
+			SET idPatologia = @idpatologia
+			WHERE cedula =  @cedula
+
+			--Verifica que la persona exista
 				IF NOT (@cedula IN (SELECT cedula FROM Persona))
 						THROW 50001, 'No hay ninguna persona con esta cedula.',1;
 
@@ -249,12 +251,17 @@ BEGIN
 				uci = @uci,
 				fechaIngreso = @fechaIngreso,
 				idEstadoPaciente = @idEstadoPaciente,
-				idCentroHospitalario = @idCentroHospitalario,
-				cedula = @cedula
-			WHERE cedula = @cedula
+				idCentroHospitalario = @idCentroHospitalario
+			WHERE idPaciente =  @idPaciente
+
+			--Actualiza los datos de PacienteMedicamento
+			UPDATE PacienteMedicamento
+			SET idMedicamento = @idMedicamento
+			WHERE idPaciente =  @idPaciente
+
 			--Verifica que el paciente exista
-				IF NOT (@cedula IN (SELECT cedula FROM Paciente))
-						THROW 50001, 'No hay ningun paciente con esta cedula.',1;
+				IF NOT (@idPaciente IN (SELECT idPaciente FROM Paciente))
+						THROW 50001, 'No hay ningun paciente con este idPaciente.',1;
 		END
 
 	ELSE IF @statementType = 'Delete'
@@ -277,32 +284,33 @@ BEGIN
 END;
 GO
 /*
-
 --Para ejecutar modifyPaciente:
 
 EXEC modifyPaciente
+-- Atributos de Persona
 @cedula = '117390700',
 @nombre	='Ruben',
 @primerApellido	= 'Salas',
 @segundoApellido = 'Ramirez',
 @nacionalidad = 'Costa Rica',
 @fechaNacimiento = '1999-03-29',
-@idUbicacion = 69,
 -- Atributos de Ubicacion
-@continente = 'Europe',
-@pais = 'France',
 @region = 'Paris',
+--Atributos PersonaPatologia
+@idPatologia = 9,
 --Atributos de Paciente
-@idPaciente = 936,
+@idPaciente = 935,
 @internado = 'false',
 @uci = 'false',
 @fechaIngreso = '2020-04-17',
 @idEstadoPaciente = 3,
 @idCentroHospitalario = 42,
+-- Atributos PacienteMedicacion
+@idMedicamento = 35,
 -- Atributo para tipo de declaracion
 @statementType = 'Delete';
-
 */
+
 
 
 
@@ -321,10 +329,8 @@ CREATE PROCEDURE modifyContacto(
 	@nacionalidad VARCHAR(50),
 	@fechaNacimiento DATE,
 	@idUbicacion INT,
-	---- Atributos de Ubicacion
-	--@continente VARCHAR(75),
-	--@pais VARCHAR(75),
-	--@region VARCHAR(75),
+	-- Atributos PersonaPatologia
+	@idPatologia INT,
 	-- Atributos de Contacto
 	@idContacto INT,
 	@correo	varchar(100),
@@ -336,19 +342,6 @@ BEGIN
 
 	IF @statementType = 'Insert'
 		BEGIN
-			----Genera una nueva ubicacion solo si no esta ya antes creada
-			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-			--	BEGIN
-			--		INSERT INTO Ubicacion (
-			--			continente, 
-			--			pais,
-			--			region )
-			--		VALUES (
-			--			 @continente,
-			--			 @pais,
-			--			 @region )
-			--	END
-
 			-- Genera una Persona solo si no esta ya antes creada
 			IF NOT (@cedula IN (SELECT cedula FROM Persona WHERE cedula = @cedula) )
 				BEGIN
@@ -368,13 +361,33 @@ BEGIN
 						@nacionalidad,
 						@fechaNacimiento,
 						@idUbicacion )
-						--dbo.getIdUbicacion(@continente, @pais, @region) )
 				END
 
-			-- Genera un Contacto solo si no esta ya antes creado
-			IF NOT (@cedula IN (SELECT cedula FROM Contacto WHERE cedula = @cedula) )
-				BEGIN
-					INSERT INTO Contacto (
+			---- Genera un PersonaPatologia solo si no esta ya antes creado
+			--IF NOT (
+			--		( @cedula IN (SELECT cedula FROM PersonaPatologia WHERE cedula = @cedula) )
+			--		AND
+			--		(@idPatologia IN (SELECT cedula FROM PersonaPatologia WHERE cedula = @cedula))
+			--		)
+			--	BEGIN
+			--		--
+			--	END
+
+			-- Genera un PersonaPatologia solo si no esta ya antes creado
+			INSERT INTO PersonaPatologia (
+				cedula,
+				idPatologia )
+			VALUES (
+				@cedula,
+				@idPatologia )
+
+			---- Genera un Contacto solo si no esta ya antes creado
+			--IF NOT (@cedula IN (SELECT cedula FROM Contacto WHERE cedula = @cedula) )
+			--	BEGIN
+					
+			--	END
+
+			INSERT INTO Contacto (
 						correo,
 						idPaciente,
 						cedula )
@@ -382,44 +395,35 @@ BEGIN
 						@correo,
 						@idPaciente,
 						@cedula )
-				END
 		END
 
 	ELSE IF @statementType = 'Update'
 		BEGIN
-			----Genera una nueva ubicacion solo si no esta ya antes creada
-			--IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
-			--	BEGIN
-			--		INSERT INTO Ubicacion (
-			--			continente, 
-			--			pais,
-			--			region )
-			--		VALUES (
-			--			 @continente,
-			--			 @pais,
-			--			 @region )
-			--	END
-
 			--Actualiza los datos de Persona
 			UPDATE Persona  
-			SET cedula = @cedula,
-				nombre = @nombre,
+			SET nombre = @nombre,
 				primerApellido = @primerApellido,
 				segundoApellido = @segundoApellido,
 				nacionalidad = @nacionalidad,
 				fechaNacimiento = @fechaNacimiento,
-				idUbicacion = @idUbicacion)        --dbo.getIdUbicacion(@continente, @pais, @region)
+				idUbicacion = @idUbicacion
 			WHERE cedula = @cedula
-				--Verifica que la persona exista
+
+			--Actualiza los datos de PersonaPatologia
+			UPDATE PersonaPatologia
+			SET idPatologia = @idpatologia
+			WHERE cedula =  @cedula
+
+			--Verifica que la persona exista
 				IF NOT (@cedula IN (SELECT cedula FROM Persona))
 						THROW 50001, 'No hay ninguna persona con esta cedula.',1;
 
-			--Actualiza los datos de Paciente
+			--Actualiza los datos de Contacto
 			UPDATE Contacto
 			SET correo = @correo,
-				idPaciente = @idPaciente,
-				cedula = @cedula
+				idPaciente = @idPaciente
 			WHERE idContacto = @idContacto
+
 			--Verifica que el contacto exista
 				IF NOT (@idContacto IN (SELECT idContacto FROM Contacto))
 						THROW 50001, 'No hay ningun contacto con este idContacto.',1;
@@ -427,7 +431,7 @@ BEGIN
 
 	ELSE IF @statementType = 'Delete'
 		BEGIN
-			--Verifica que el contacto exista
+			--Verifica que el Contacto exista
 			IF NOT (@idContacto IN (SELECT idContacto FROM Contacto))
 					THROW 50001, 'No hay ningun contacto con este idContacto.',1;
 			--Borra el Contacto
@@ -442,10 +446,10 @@ BEGIN
 END
 GO
 /*
-
 --Para ejecutar modifyContacto:
 
 EXEC modifyContacto
+-- Atributos de Persona
 @cedula = '117390704',
 @nombre	='Ruben',
 @primerApellido	= 'Salas',
@@ -453,17 +457,14 @@ EXEC modifyContacto
 @nacionalidad = 'Costa Rica',
 @fechaNacimiento = '1999-03-29',
 @idUbicacion = 69,
--- Atributos de Ubicacion
-@continente = 'Europe',
-@pais = 'Belgium',
-@region = 'Boom',
---Atributos de Paciente
+--Atributos PersonaPatologia
+@idPatologia = 9,
+--Atributos de Contacto
 @idContacto = 5,
-@correo = 'rubsalas@htomail.com',
+@correo = 'rubsalas@hotmail.com',
 @idPaciente = 10,
 -- Atributo para tipo de declaracion
 @statementType = 'Update';
-
 */
 
 
@@ -474,9 +475,9 @@ EXEC modifyContacto
 
 
 /*
-Proceso para actualizar datos de BaseTable
+Proceso para actualizar datos de MedidaSanitaria
 */
-ALTER PROCEDURE modifyMedidaSanitaria(
+CREATE PROCEDURE modifyMedidaSanitaria(
 	-- Atributos de MedidaSanitaria
 	@idMedidaSanitaria INT,
 	@nombre varchar(100),
@@ -534,9 +535,9 @@ GO
 
 
 /*
-Proceso para actualizar datos de BaseTable
+Proceso para actualizar datos de UbicacionMedidaSanitaria
 */
-ALTER PROCEDURE modifyUbicacionMedidaSanitaria(
+CREATE PROCEDURE modifyUbicacionMedidaSanitaria(
 	-- Atributos de UbicacionMedidaSanitaria
 	@idUbicacionMedidaSanitaria INT,
 	@idUbicacion INT,
@@ -675,4 +676,20 @@ BEGIN
 
 END
 GO
+*/
+
+
+/*
+--Genera una nueva ubicacion solo si no esta ya antes creada
+		IF ((dbo.getIdUbicacion(@continente, @pais, @region) != @idUbicacion) AND ((dbo.getIdUbicacion(@continente, @pais, @region) = 0)) )
+			BEGIN
+				INSERT INTO Ubicacion (
+					continente, 
+					pais,
+					region )
+				VALUES (
+					 @continente,
+					 @pais,
+					 @region )
+			END
 */

@@ -45,6 +45,7 @@ GO
 
 /*
 Trigger para CentroHospitalario
+No permite que se ingrese un centroHospitalario donde la capacidadUci sea mayor a la capacidad (general)
 */
 CREATE TRIGGER triggerCentroHospitalario
 ON CentroHospitalario
