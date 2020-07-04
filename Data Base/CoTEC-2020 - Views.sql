@@ -128,11 +128,11 @@ GO
 
 
 /*
-Vista para Requerimiento de Software: Acumulado de casos confirmados
-Obtiene la siguiente información del Acumulado de casos confirmados
+Vista para Requerimiento de Software: Medidas de Contencion Tomadas
+Obtiene la siguiente información de las Medidas de Contencion Tomadas
 FechaInicio, Pais, y Nombre de Medida Contencion
 */
-CREATE VIEW viewAcumuladoCasos WITH ENCRYPTION AS
+CREATE VIEW viewMedidasContencionTomadas WITH ENCRYPTION AS
 	SELECT
 		umc.fechaInicio as FechaInicio,
 		u.pais as Pais,
@@ -147,7 +147,55 @@ GO
 Para correrlo para que cumpla lo establecido en especificación:
 SELECT FechaInicio, Nombre
 FROM viewAcumuladoCasos
-WHERE Pais='__pais_-'
+WHERE Pais='__pais__'
 ORDER BY FechaInicio
 */
 
+
+
+/*
+Vista para Requerimiento de Software: Acumulado de Casos Confirmados
+Obtiene la siguiente información de las Acumulado de Casos Confirmados
+Pais, Contagiados, Activos, Muertos y Recuperados
+*/
+CREATE VIEW viewAcumuladoCasosConfirmados WITH ENCRYPTION AS
+	SELECT a.pais as Pais, Contagiados, Activos, Muertos, Recuperados
+	FROM
+
+	(SELECT u.pais as pais, count(estado) as Contagiados
+	FROM Ubicacion as u
+		JOIN Persona as pe ON pe.idUbicacion = u.idUbicacion
+		JOIN Paciente as pa ON pa.cedula = pe.cedula
+		JOIN EstadoPaciente as ep ON pa.idEstadoPaciente = ep.idEstadoPaciente
+	GROUP BY u.pais) c
+	JOIN
+	(SELECT u.pais as pais, count(estado) as Activos
+	FROM Ubicacion as u
+		JOIN Persona as pe ON pe.idUbicacion = u.idUbicacion
+		JOIN Paciente as pa ON pa.cedula = pe.cedula
+		JOIN EstadoPaciente as ep ON pa.idEstadoPaciente = ep.idEstadoPaciente
+	WHERE estado = 'Activo - Contagiado'
+	GROUP BY u.pais) a ON c.pais = a.pais
+	JOIN
+	(SELECT u.pais as pais, count(estado) as Muertos
+	FROM Ubicacion as u
+		JOIN Persona as pe ON pe.idUbicacion = u.idUbicacion
+		JOIN Paciente as pa ON pa.cedula = pe.cedula
+		JOIN EstadoPaciente as ep ON pa.idEstadoPaciente = ep.idEstadoPaciente
+	WHERE estado = 'Muerto'
+	GROUP BY u.pais) m ON m.pais = a.pais
+	JOIN
+	(SELECT u.pais as pais, count(estado) as Recuperados
+	FROM Ubicacion as u
+		JOIN Persona as pe ON pe.idUbicacion = u.idUbicacion
+		JOIN Paciente as pa ON pa.cedula = pe.cedula
+		JOIN EstadoPaciente as ep ON pa.idEstadoPaciente = ep.idEstadoPaciente
+	WHERE estado = 'Recuperado'
+	GROUP BY u.pais) r ON m.pais = r.pais
+GO
+/*
+Para correrlo para que cumpla lo establecido en especificación:
+SELECT Pais, Contagiados, Activos, Muertos, Recuperados
+FROM viewAcumuladoCasosConfirmados
+WHERE Pais='__pais__'
+*/
