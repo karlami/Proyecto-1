@@ -18,7 +18,7 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                var listaCentroHospitalarios = db.Database.SqlQuery<vCentroHospitalario>("SELECT Ubicacion, Nombre," +
+                var listaCentroHospitalarios = db.Database.SqlQuery<vCentroHospitalario>("SELECT Pais, Region, Nombre," +
                     " Capacidad, CapacidadUCI, Director, Contacto, IdCentroHospitalario " +
                     "FROM viewCentroHospitalario").ToList();
 
@@ -32,7 +32,7 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                var centro = db.Database.SqlQuery<vCentroHospitalario>("SELECT Ubicacion, Nombre," +
+                var centro = db.Database.SqlQuery<vCentroHospitalario>("SELECT Pais, Region, Nombre," +
                     " Capacidad, CapacidadUCI, Director, Contacto, IdCentroHospitalario " +
                     "FROM viewCentroHospitalario " +
                     "WHERE idCentroHospitalario = " + id).FirstOrDefault();

@@ -36,7 +36,7 @@ namespace CoTEC_2020.Controllers
                 var contacto = db.Database.SqlQuery<Ubicacion>("SELECT idUbicacion, continente, " +
                     "pais, region " +
                     "FROM Ubicacion" +
-                    " WHERE idUbicacion = @id");
+                    " WHERE idUbicacion = '" + id).FirstOrDefault();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, contacto);
             }

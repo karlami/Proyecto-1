@@ -32,11 +32,10 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                SqlParameter parametro = new SqlParameter("@id", id);
                 var contacto = db.Database.SqlQuery<Patologia>("SELECT idPatologia, nombre, " +
                     "descripcion, sintomas, tratamiento " +
-                    "FROM Patologia" +
-                    "WHERE idPatologia = @id");
+                    "FROM Patologia " +
+                    "WHERE idPatologia = " + id).FirstOrDefault();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, contacto);
             }
@@ -80,10 +79,9 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                SqlParameter parametro = new SqlParameter("@id", id);
                 var status = db.Database.ExecuteSqlCommand("DELETE" +
                     " FROM Patologia " +
-                    " WHERE idPatologia = @id");
+                    " WHERE idPatologia = " + id);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }

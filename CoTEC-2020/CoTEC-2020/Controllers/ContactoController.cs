@@ -43,23 +43,23 @@ namespace CoTEC_2020.Controllers
 
         [HttpPost]
         [Route("api/PostContactos")]
-        public HttpResponseMessage Post()
+        public HttpResponseMessage Post([FromBody] pContacto value)
         {
 
             using (var db = new CoTECEntities())
             {
                 var status = db.Database.ExecuteSqlCommand("EXEC modifyContacto " +
-                    "@cedula = '" + "11111122" +
+                    "@cedula = '" + "1111111" +
                     "' ,@nombre = '" + "Ruben" +
-                    "' ,@primerApellido = '" + "Ruben" +
-                    "' ,@segundoApellido = '" + "Ruben" +
+                    "' ,@primerApellido = '" + "Cascodo" +
+                    "' ,@segundoApellido = '" + "Verno" +
                     "' ,@nacionalidad = '" + "117390700" +
                     "' ,@fechaNacimiento = '" + "2020-04-17" +
                     "' ,@idUbicacion = '" + 198 +
                     "' ,@idContacto = '" + 7 +
                     "' ,@correo = '" + "rubsalas@hotmail.com" +
                     "' ,@idPaciente = '" + 13 +
-                    "' ,@statementType = '" + "Insert" + "'; ");
+                    "' ,@statementType = '" + "Update" + "'; ");
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
@@ -67,7 +67,7 @@ namespace CoTEC_2020.Controllers
 
         [HttpPut]
         [Route("api/PutContactos/{cedula}")]
-        public HttpResponseMessage Put()
+        public HttpResponseMessage Put([FromBody] pContacto value)
         {
             using (var db = new CoTECEntities())
             {

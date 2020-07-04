@@ -23,7 +23,8 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                var listaPacientes = db.Database.SqlQuery<vPaciente>("SELECT *" +
+                var listaPacientes = db.Database.SqlQuery<vPaciente>("SELECT NombreCompleto, Cedula, Edad, " +
+                    "Nacionalidad, Region, Patologias, Estado, Medicamentos, Internado, UCI, IdPaciente " +
                     "FROM viewPaciente").ToList();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaPacientes);
@@ -42,11 +43,10 @@ namespace CoTEC_2020.Controllers
         {
             using (var db = new CoTECEntities())
             {
-                SqlParameter parametro = new SqlParameter("@id", id);
-                var paciente = db.Database.SqlQuery<Paciente>("SELECT idPaciente, " +
-                    "internado, uci, fechaIngreso, idCentroHospitalario, cedula " +
-                    "FROM Paciente" +
-                    " WHERE idPaciente = @id");
+                var paciente = db.Database.SqlQuery<vPaciente>("SELECT NombreCompleto, Cedula, Edad, " +
+                    "Nacionalidad, Region, Patologias, Estado, Medicamentos, Internado, UCI, IdPaciente " +
+                    "FROM viewPaciente" +
+                    " WHERE idPaciente = " + id).FirstOrDefault();
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, paciente);
             }
@@ -64,22 +64,25 @@ namespace CoTEC_2020.Controllers
 
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("EXEC modifyContacto" +
-                    "@cedula = '" + value.Cedula +
-                    "' ,@nombre = '" + "Ruben" +
-                    "' ,@primerApellido = '" + "117390700" +
-                    "' ,@segundoApellido = '" + "Ruben" +
-                    "' ,@nacionalidad = '" + "117390700" +
-                    "' ,@fechaNacimiento = '" + "2020-04-17" +
-                    "' ,@idUbicacion = '" + 69 +
-                    "' ,@idContacto = '" + "Ruben" +
-                    "' ,@correo = '" + "117390700" +
-                    "' ,@idPaciente = '" + "Ruben" +
-                    "' ,@statementType = '" + "117390700" 
+                var status = db.Database.ExecuteSqlCommand("EXEC modifyPaciente" +
+                    " @cedula = '" + value.cedula +
+                    "' ,@nombre = '" + value.nombre +
+                    "' ,@primerApellido = '" + value.primerApellido +
+                    "' ,@segundoApellido = '" + value.segundoApellido +
+                    "' ,@nacionalidad = '" + value.nacionalidad +
+                    "' ,@fechaNacimiento = '" + value.fechaNacimiento +
+                    "' ,@region = '" + value.region +
+                    "' ,@idPatologia = '" + value.patologias +
+                    "' ,@idPaciente = '" + value.idPaciente +
+                    "' ,@internado = '" + value.internado +
+                    "' ,@uci = '" + value.uci +
+                    "' ,@fechaIngreso = '" + value.fechaIngreso +
+                    "' ,@idEstadoPaciente = '" + value.estado +
+                    "' ,@idCentroHospitalario = '" + value.idCentroHospitalario +
+                    "' ,@idMedicamento = '" + value.medicacion +
+                    "' ,@statementType = '" + "Insert" + "'; ");
 
-);
-
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
         
@@ -91,19 +94,29 @@ namespace CoTEC_2020.Controllers
         */
         [HttpPut]
         [Route("api/PutPacientes")]
-        public HttpResponseMessage Put([FromBody] Paciente value)
+        public HttpResponseMessage Put([FromBody] pPaciente value)
         {
             using (var db = new CoTECEntities())
             {
-                db.Database.ExecuteSqlCommand("UPDATE Paciente" +
-                    " SET internado = " + value.internado +
-                    ", uci = " + value.uci +
-                    ", fechaIngreso = " + value.fechaIngreso +
-                    ", idCentroHospitalario = " + value.idCentroHospitalario +
-                    ", cedula = " + value.cedula +
-                    " WHERE idPaciente = " + value.idPaciente);
+                var status = db.Database.ExecuteSqlCommand("EXEC modifyPaciente" +
+                    " @cedula = '" + value.cedula +
+                    "' ,@nombre = '" + value.nombre +
+                    "' ,@primerApellido = '" + value.primerApellido +
+                    "' ,@segundoApellido = '" + value.segundoApellido +
+                    "' ,@nacionalidad = '" + value.nacionalidad +
+                    "' ,@fechaNacimiento = '" + value.fechaNacimiento +
+                    "' ,@region = '" + value.region +
+                    "' ,@idPatologia = '" + value.patologias +
+                    "' ,@idPaciente = '" + value.idPaciente +
+                    "' ,@internado = '" + value.internado +
+                    "' ,@uci = '" + value.uci +
+                    "' ,@fechaIngreso = '" + value.fechaIngreso +
+                    "' ,@idEstadoPaciente = '" + value.estado +
+                    "' ,@idCentroHospitalario = '" + value.idCentroHospitalario +
+                    "' ,@idMedicamento = '" + value.medicacion +
+                    "' ,@statementType = '" + "Update" + "'; ");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
 
@@ -114,16 +127,29 @@ namespace CoTEC_2020.Controllers
         */
         [HttpDelete]
         [Route("api/DeletePacientes/{id}")]
-        public HttpResponseMessage Delete(string id)
+        public HttpResponseMessage Delete(int id)
         {
             using (var db = new CoTECEntities())
             {
-                SqlParameter parametro = new SqlParameter("@id", id);
-                db.Database.ExecuteSqlCommand("DELETE" +
-                    " FROM Paciente " +
-                    " WHERE idPaciente = @id");
+                var status = db.Database.ExecuteSqlCommand("EXEC modifyPaciente" +
+                    " @cedula = '" + "" +
+                    "' ,@nombre = '" + "" +
+                    "' ,@primerApellido = '" + "" +
+                    "' ,@segundoApellido = '" + "" +
+                    "' ,@nacionalidad = '" + "" +
+                    "' ,@fechaNacimiento = '" + "" +
+                    "' ,@region = '" + "" +
+                    "' ,@idPatologia = '" + 0 +
+                    "' ,@idPaciente = '" + id +
+                    "' ,@internado = '" + "" +
+                    "' ,@uci = '" + "" +
+                    "' ,@fechaIngreso = '" + "" +
+                    "' ,@idEstadoPaciente = '" + "" +
+                    "' ,@idCentroHospitalario = '" + 0 +
+                    "' ,@idMedicamento = '" + 0 +
+                    "' ,@statementType = '" + "Delete" + "'; ");
 
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
 
 
