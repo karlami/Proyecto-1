@@ -52,14 +52,17 @@ Nombre Completo, Cédula, Edad, Nacionalidad, Ubicación, Patologías, Estado y Cor
 */
 CREATE VIEW viewContacto WITH ENCRYPTION AS
 	SELECT
-		dbo.getNombreCompleto(pr.cedula) AS NombreCompleto,
+		pr.nombre as Nombre,
+		pr.primerApellido as PrimerApellido,
+		pr.segundoApellido as SegundoApellido,
 		pr.cedula AS Cedula, 
 		dbo.getEdad(fechaNacimiento) AS Edad,
 		nacionalidad AS Nacionalidad,
-		dbo.getUbicacionCompleta(pr.idUbicacion) AS Ubicacion,
+		u.idUbicacion AS Ubicacion,
 		dbo.getPatologias(pr.cedula) AS Patologias,
 		correo as Correo,
-		c.idContacto as IdContacto
+		c.idContacto as IdContacto,
+		c.idContacto as IdPaciente
 	FROM 
 		Persona as pr
 		INNER JOIN Contacto as c ON c.cedula = pr.cedula
