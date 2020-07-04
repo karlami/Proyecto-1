@@ -7,18 +7,20 @@ namespace CoTEC_2020.Models
 {
     public class pPaciente
     {
-        public string NombreCompleto { get; set; }
+        public int idPaciente { get; set; }
+        public string cedula { get; set; }
+        public System.DateTime fechaNacimiento { get; set; }
+        public string region { get; set; }
+        public int medicacion { get; set; }
+        public int patologias { get; set; }
+        public string nacionalidad { get; set; }
+        public string nombre { get; set; }
         public string primerApellido { get; set; }
         public string segundoApellido { get; set; }
-        public string Cedula { get; set; }
-        public int Edad { get; set; }
-        public string Nacionalidad { get; set; }
-        public string Region { get; set; }
-        public string Patologias { get; set; }
-        public string Estado { get; set; }
-        public string Medicamentos { get; set; }
-        public string Internado { get; set; }
-        public string UCI { get; set; }
-        public int IdPaciente { get; set; }
+        public int estado { get; set; }
+        public string internado { get; set; }
+        public string uci { get; set; }
+        public System.DateTime fechaIngreso { get; set; }
+        public int idCentroHospitalario { get; set; }
     }
 }

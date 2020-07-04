@@ -7,15 +7,16 @@ namespace CoTEC_2020.Models
 {
     public class pContacto
     {
-        public string NombreCompleto { get; set; }
+        public int idContacto { get; set; }
+        public string cedula { get; set; }
+        public System.DateTime fechaNacimiento { get; set; }
+        public int idUbicacion { get; set; }
+        public int patologias { get; set; }
+        public string nacionalidad { get; set; }
+        public string nombre { get; set; }
         public string primerApellido { get; set; }
         public string segundoApellido { get; set; }
-        public string Cedula { get; set; }
-        public int Edad { get; set; }
-        public string Nacionalidad { get; set; }
-        public string Ubicacion { get; set; }
-        public string Patologias { get; set; }
-        public string Correo { get; set; }
-        public int IdContacto { get; set; }
+        public string correo { get; set; }
+        public int idPaciente { get; set; }
     }
 }
