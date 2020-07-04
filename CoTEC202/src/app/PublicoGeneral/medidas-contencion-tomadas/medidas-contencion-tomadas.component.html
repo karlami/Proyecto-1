@@ -5,39 +5,89 @@
   <h1 style="color:#54CA8F">Medidas de Contencion tomadas </h1>
 </div>
 
+
+<br><br>
+
+
+
+<agm-map [latitude]="lat" [longitude]="lng" [disableDefaultUI]="true" (mapReady)='updateMapPosition()'>
+  <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="drag" (dragEnd)='markerDragEnd($event)'></agm-marker>
+</agm-map>
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row justify-content-end">
+      <div class="col-lg-11">
+        <div class="row justify-content-end">
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box py-5">
+              <i class="icofont-simple-smile"></i>
+              <span data-toggle="counter-up">{{pais}}</span>
+              <p>País</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box py-5">
+              <i class="icofont-document-folder"></i>
+              <span data-toggle="counter-up">85</span>
+              <p>Personas recuperadas</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box pb-5 pt-0 pt-lg-5">
+              <i class="icofont-clock-time"></i>
+              <span data-toggle="counter-up">12</span>
+              <p>Personas Fallecidas</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box pb-5 pt-0 pt-lg-5">
+              <i class="icofont-award"></i>
+              <span data-toggle="counter-up">15</span>
+              <p>Personas Activas</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="count-box pb-5 pt-0 pt-lg-5">
+              <i class="icofont-clock-time"></i>
+              <span data-toggle="counter-up">12</span>
+              <p>Incremento diario</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<br><br><br>
+
+
 <br><br>
 
 <div class="table-responsive">
   <table class="table table-hover">
     <tr>
-      <th>Numero de medida</th>
+      <th>fecha Inicio</th>
       <th>Medida de contencion</th>
-      <th>Fecha</th>
-    </tr>
-
-    <tr>
-      <th>01</th>
-      <th>Restriccion vehicular a partir de las 6:00 p.m</th>
-      <th>09/06/2020</th>
-    </tr>
-      
-    <tr>
-      <th>02</th>
-      <th>Cierre de fronteras</th>
-      <th>09/06/2020</th>
     </tr>
 
 
 <!-- -->
-    <!--<tr *ngFor="let Paquete of service.paqueteList" >
-      <td>{{Paquete.trackingId}}</td>
-      <td>{{Paquete.idCliente}}</td>
-      <td>{{Paquete.idProducto}}</td>
-      <td>{{Paquete.descripcion}}</td>
-      <td>{{Paquete.fechaEstimada}}</td>
-      <td>{{Paquete.estado}}</td>
+    <tr *ngFor="let MedidaContencion of service.medidaContencionList" >
+      <td>{{Paquete.fechaInicio}}</td>
+      <td>{{Paquete.nombre}}</td>
 
     </tr>
--->
 
 <br><br><br>

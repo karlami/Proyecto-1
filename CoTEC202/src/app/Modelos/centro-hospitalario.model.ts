@@ -6,6 +6,5 @@ export class CentroHospitalario {
     nombre: string;
     region: string;
     pais: string;
-    capacidadUCI: number;
-
+    capacidadUci: number;
 }

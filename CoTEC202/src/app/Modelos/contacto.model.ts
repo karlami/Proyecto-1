@@ -1,12 +1,13 @@
 export class Contacto {
+    idContacto: number;
     cedula: number;
-    edad: number;
-    region: string;
-    patologias: string[];
+    fechaNacimiento: Date;
+    idUbicacion: number;
+    patologia: string;
     nacionalidad: string;
     nombre: string;
     primerApellido: string;
     segundoApellido: string;
     correo: string;
+    idPaciente: number;
 }
-

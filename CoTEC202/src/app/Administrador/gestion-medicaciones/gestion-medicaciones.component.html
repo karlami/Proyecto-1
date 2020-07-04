@@ -8,6 +8,121 @@
 
 <br><br>
 
+<div class="container">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ingresar nuevo medicamento</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+      <form #medicamentoForm = "ngForm" (ngSubmit)="onSubmit(medicamentoForm)">
+
+        <div class="form-group">
+
+          <div class="form-group">
+            <label>Nombre</label>
+            <input name="nombre"  #Nombre="ngModel" [(ngModel)]="medicamentoo.nombre" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Descripcion</label>
+            <input name="descripcion"  #Descripcion="ngModel" [(ngModel)]="medicamentoo.descripcion" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Casa Farmaceutica</label>
+            <input name="casaFarmaceutica"  #CasaFarmaceutica="ngModel" [(ngModel)]="medicamentoo.casaFarmaceutica" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+          </div>
+
+
+        
+        <div class = "form-group">
+          <div class = "col-md-4 col-md-offset-3">
+            <input class = "btn btn-primary" type = "submit" value = "Agregar" />
+          </div>
+        </div>
+      </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Ingresar</button>
+
+
+  <pre>{{ closeResult }}</pre>
+
+</div>
+
+
+
+<div class="container">
+  <ng-template #content1 let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Actualizar medicamento</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+      <form #updateForm = "ngForm" (ngSubmit)="onUpdate(updateForm)">
+
+        <div class="form-group">
+
+          <div class="form-group">
+            <label>Id Medicamento</label>
+            <input name="idMedicamento"  #IdMedicamento="ngModel" [(ngModel)]="medicamentoU.idMedicamento" [ngModelOptions]="{standalone: true}" type= "number" class="form-control" required>
+          </div>  
+  
+          <div class="form-group">
+            <label>Nombre</label>
+            <input name="nombre"  #Nombre="ngModel" [(ngModel)]="medicamentoU.nombre" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Descripcion</label>
+            <input name="descripcion"  #Descripcion="ngModel" [(ngModel)]="medicamentoU.descripcion" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Casa Farmaceutica</label>
+            <input name="casaFarmaceutica"  #CasaFarmaceutica="ngModel" [(ngModel)]="medicamentoU.casaFarmaceutica" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+          </div>
+
+
+        
+        <div class = "form-group">
+          <div class = "col-md-4 col-md-offset-3">
+            <input class = "btn btn-primary" type = "submit" value = "Actualizar" />
+          </div>
+        </div>
+      </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content1)">Actualizar</button>
+
+
+  <pre>{{ closeResult }}</pre>
+
+</div>
+
+
+
+
+
 <div class="table-responsive">
   <table class="table table-hover">
     <tr>
@@ -19,67 +134,18 @@
 
 
 <!-- -->
-    <!--<tr *ngFor="let Paquete of service.paqueteList" >
-      <td>{{Paquete.trackingId}}</td>
-      <td>{{Paquete.idCliente}}</td>
-      <td>{{Paquete.idProducto}}</td>
-      <td>{{Paquete.descripcion}}</td>
-      <td>{{Paquete.fechaEstimada}}</td>
-      <td>{{Paquete.estado}}</td>
+    <tr *ngFor="let Medicamento of service.medicamentoList" >
+      <td>{{Medicamento.idMedicamento}}</td>
+      <td>{{Medicamento.nombre}}</td>
+      <td>{{Medicamento.descripcion}}</td>
+      <td>{{Medicamento.casaFarmaceutica}}</td>
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target=" #updateForm" 
+      (click)="selectId(Medicamento)">Ed</button>
+      <td><button type="button" class="btn btn-danger" (click)="onDelete(Medicamento.idMedicamento)" 
+        >X<span class="glyphicon glyphicon-trash" ></span></button></td>
 
     </tr>
--->
-
-<br><br><br>
-
-<div class="container">
-  
-  <div class="starter-template">
-
-    <div class="row">       
-
-      <div class="col-md-12 mt-5">
-    
-      <form #medicamentoForm = "ngForm" (ngSubmit)="onSubmit(medicamentoForm)">
-
-            <div class="form-group">
-              <label>Id Medicamento</label>
-              <input name="idMedicamento"  #IdMedicamento="ngModel" [(ngModel)]="medicamentoo.idMedicamento" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>  
-
-            <div class="form-group">
-              <label>Nombre</label>
-              <input name="nombre"  #Nombre="ngModel" [(ngModel)]="medicamentoo.nombre" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Descripcion</label>
-              <input name="descripcion"  #Descripcion="ngModel" [(ngModel)]="medicamentoo.descripcion" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Casa Farmaceutica</label>
-              <input name="casaFarmaceutica"  #CasaFarmaceutica="ngModel" [(ngModel)]="medicamentoo.casaFarmaceutica" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-            
-
-            
-            <div class = "form-group">
-              <div class = "col-md-4 col-md-offset-3">
-                <input class = "btn btn-primary" type = "submit" value = "Agregar" />
-              </div>
-            </div>
-          
-              
-
-          </form>
-
-    </div>
-
-
-</div>
-
+  </table>
 </div>
 
 
-</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MedidaContencion } from 'src/app/Modelos/medida-contencion.model';
+import { MedidaContencionManagementService } from 'src/app/Servicios/medida-contencion-management.service';
 
 @Component({
   selector: 'app-medidas-contencion-tomadas',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedidasContencionTomadasComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: MedidaContencionManagementService) { }
 
   ngOnInit(): void {
+    this.service.getMedida();
   }
 
 }

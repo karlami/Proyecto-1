@@ -8,14 +8,98 @@
 
 <br><br>
 
+<div class="container">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title" style="color:#37997C">Ingresar nueva medida sanitaria por pais</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+      <form #medidapForm = "ngForm" (ngSubmit)="onSubmit(medidapForm)">
+
+        <div class="form-group">
+          <label>Pais</label>
+          <input name="pais"  #Pais="ngModel" [(ngModel)]="medidap.pais" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>  
+
+        <div class="form-group">
+          <label for="estado"> Estado</label>
+          <select name="estado"  #Estado="ngModel" [(ngModel)]="medidap.estado" [ngModelOptions]="{standalone: true}" class="form-control" required>
+            <option value="">Seleccionar</option>
+              <option value="Activa">Activa</option>
+              <option value="Inactiva">Inactiva</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="estado"> Medidas Sanitarias</label>
+          <select name="medidas"  #Medidas="ngModel" [(ngModel)]="medidap.medidas" [ngModelOptions]="{standalone: true}" class="form-control" required>
+            <option value="">Seleccionar</option>
+              <option *ngFor="let MedidaSanitaria of servicem.sanitariaList" [value]="MedidaSanitaria.idMedidaSanitaria">
+                <span>{{ MedidaSanitaria.nombre }}</span>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target=" #content let-modal" 
+                (click)="selectId(MedidaSanitaria)">Add</button>
+              </option>
+            
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fechaInicio">Fecha inicio</label>
+            <div class="input-group">
+              <input name="fechaInicio"  #FechaInicio="ngModel" [(ngModel)]="medidap.fechaInicio" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required  placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fechaFinal">Fecha final</label>
+            <div class="input-group">
+              <input name="fechaFinal"  #FechaFinal="ngModel" [(ngModel)]="medidap.fechaFinal" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required  placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+              </div>
+            </div>
+        </div>
+        
+
+
+        <div class = "form-group">
+          <div class = "col-md-4 col-md-offset-3">
+            <input class = "btn btn-primary" type = "submit" value = "Agregar" />
+          </div>
+        </div>
+      
+          
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+    </div>
+  </ng-template>
+
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Ingresar</button>
+
+  <hr>
+
+  <pre>{{ closeResult }}</pre>
+
+</div>
+
 <div class="table-responsive">
   <table class="table table-hover">
     <tr>
       <th>Pais</th>
       <th>Medidas sanitarias</th>
       <th>Estado</th>
-      <th>FechaInicio</th>
-      <th>FechaFin</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Final</th>
     </tr>
 
 
@@ -30,65 +114,3 @@
 
     </tr>
 -->
-
-<br><br><br>
-
-<div class="container">
-  
-  <div class="starter-template">
-
-    <div class="row">       
-
-      <div class="col-md-12 mt-5">
-    
-      <form #medidapForm = "ngForm" (ngSubmit)="onSubmit(medidapForm)">
-
-            <div class="form-group">
-              <label>Pais</label>
-              <input name="pais"  #Pais="ngModel" [(ngModel)]="medidap.pais" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>  
-
-            <div class="form-group">
-              <label>Medidas Sanitarias</label>
-              <input name="medidas"  #Medidas="ngModel" [(ngModel)]="medidap.medidas" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label for="estado"> Estado</label>
-              <select name="estado"  #Estado="ngModel" [(ngModel)]="medidap.estado" [ngModelOptions]="{standalone: true}" class="form-control" required>
-                <option value="">Seleccionar</option>
-                  <option value="En transito">Activa</option>
-                  <option value="En Aduanas">Inactiva</option>
-              </select>
-          </div>
-
-            <div class="form-group">
-              <label>Fecha Inicio</label>
-              <input name="fechaInicio"  #FechaInicio="ngModel" [(ngModel)]="medidap.fechaInicio" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-            
-            <div class="form-group">
-              <label>Fecha Final</label>
-              <input name="fechaFinal"  #FechaFinal="ngModel" [(ngModel)]="medidap.fechaFinal" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-
-            <div class = "form-group">
-              <div class = "col-md-4 col-md-offset-3">
-                <input class = "btn btn-primary" type = "submit" value = "Agregar" />
-              </div>
-            </div>
-          
-              
-
-          </form>
-
-    </div>
-
-
-</div>
-
-</div>
-
-
-</div>

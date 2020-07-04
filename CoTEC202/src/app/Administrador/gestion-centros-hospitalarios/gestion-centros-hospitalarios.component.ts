@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CentroHospitalario } from 'src/app/Modelos/centro-hospitalario.model';
+import { Centrohospitalariop } from 'src/app/Modelos/centrohospitalariop.model';
 import { CentroHospitalarioManagementService } from 'src/app/Servicios/centro-hospitalario-management.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -15,54 +17,101 @@ export class GestionCentrosHospitalariosComponent implements OnInit {
   hospitalForm: NgForm;
   updateForm: NgForm;
   submitted = false;
-  hospitall: CentroHospitalario;
+  hospitall: Centrohospitalariop;
   hospitalU: CentroHospitalario;
+  closeResult = '';
 
-  constructor(public service: CentroHospitalarioManagementService, private formBuilder: FormBuilder) { }
+  constructor(public service: CentroHospitalarioManagementService, private formBuilder: FormBuilder,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    // this.service.getPaquetes();
+    this.service.getCentroHospitalarios();
+    this.generateFormU();
     this.generateForm();
   }
 
-  generateForm(hospitalForm?: NgForm) {
+  generateFormU(hospitalForm?: NgForm) {
     if (hospitalForm != null) {
       hospitalForm.reset();
     }
-    this.hospitall = {
+    this.hospitalU = {
         idCentroHospitalario: 1,
         nombre: '',
         pais: '',
         region: '',
         capacidad: 1,
-        capacidadUCI: 1,
+        capacidadUci: 1,
         director: '',
         contacto: ''
     };
 
   }
 
+  generateForm(updateForm?: NgForm) {
+    if (updateForm != null) {
+      updateForm.reset();
+    }
+    this.hospitall = {
+        nombre: '',
+        pais: '',
+        region: '',
+        capacidad: 1,
+        capacidadUci: 1,
+        director: '',
+        contacto: ''
+    };
+
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
   onSubmit(hospitalForm: NgForm) {
     console.log('Ingresado');
-    // this.service.postPaquetes(this.paquetee);
+    console.log(this.service.postCentroHospitalarios(this.hospitall));
+    this.service.postCentroHospitalarios(this.hospitall);
+    this.service.getCentroHospitalarios();
+    this.generateFormU();
     this.generateForm();
   }
 
-}
 
-
-
-
-/*
-  onDelete(trackingId: string) {
-   console.log('Deleted');
-   this.service.deletePaquetes(trackingId);
+  onUpdate(updateForm: NgForm) {
+    console.log('Actualizado');
+    console.log(this.hospitalU);
+    this.service.putCentroHospitalarios(this.hospitalU);
+    this.service.getCentroHospitalarios();
+    this.generateFormU();
+    this.generateForm();
   }
 
-  selectId(paquete: Paquete) {
-    this.paqueteU = paquete;
-    console.log(this.paqueteU);
-    console.log(this.paquetee.trackingId);
+  onDelete(idCentroHospitalario: number) {
+    console.log('Deleted');
+    this.service.deleteCentroHospitalarios(idCentroHospitalario);
+    this.service.getCentroHospitalarios();
+    this.generateFormU();
+    this.generateForm();
+   }
+
+  selectId(hospital: CentroHospitalario) {
+    this.hospitalU = hospital;
+    console.log(this.hospitalU);
+    console.log(this.hospitalU.idCentroHospitalario);
   }
+
 }
-*/

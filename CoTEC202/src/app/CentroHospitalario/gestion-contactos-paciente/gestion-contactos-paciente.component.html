@@ -8,109 +8,218 @@
 
 <br><br>
 
+<div class="container">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ingresar nuevo contacto</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #contactoForm = "ngForm" (ngSubmit)="onSubmit(contactoForm)">
+    
+        <div class="form-group">
+          <label>Cedula</label>
+          <input name="cedula"  #Cedula="ngModel" [(ngModel)]="contactoo.cedula" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>  
+
+        <div class="form-group">
+          <label>FechaNacimiento</label>
+          <input name="fechaNacimiento"  #Fechan="ngModel" [(ngModel)]="contactoo.fechaNacimiento" [ngModelOptions]="{standalone: true}" type= "date" class="form-control" required>
+        </div> 
+
+        <div class="form-group">
+          <label>IdUbicacion</label>
+          <input name="idUbicacion"  #Ubi="ngModel" [(ngModel)]="contactoo.idUbicacion" [ngModelOptions]="{standalone: true}" type= "number" class="form-control" required>
+        </div> 
+
+        <div class="form-group">
+          <label>Patologias</label>
+          <input name="patologia"  #Patologias="ngModel" [(ngModel)]="contactoo.patologia" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Nacionalidad</label>
+          <input name="nacionalidad"  #Nacionalidad="ngModel" [(ngModel)]="contactoo.nacionalidad" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Nombre</label>
+          <input name="nombre"  #Nombre="ngModel" [(ngModel)]="contactoo.nombre" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Primer Apellido</label>
+          <input name="primerApellido"  #PrimerApellido="ngModel" [(ngModel)]="contactoo.primerApellido" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Segundo Apellido</label>
+          <input name="segundoApellido"  #SegundoApellido="ngModel" [(ngModel)]="contactoo.segundoApellido" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Correo</label>
+          <input name="correo"  #Correo="ngModel" [(ngModel)]="contactoo.correo" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>IdPaciente</label>
+          <input name="idPaciente"  #Pac="ngModel" [(ngModel)]="contactoo.idPaciente" [ngModelOptions]="{standalone: true}" type= "number" class="form-control" required>
+        </div>
+
+        
+        <div class = "form-group">
+          <div class = "col-md-4 col-md-offset-3">
+            <input class = "btn btn-primary" type = "submit" value = "Agregar" />
+          </div>
+        </div>
+      
+          
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Ingresar</button>
+
+  <hr>
+
+  <pre>{{ closeResult }}</pre>
+
+</div>
+
+
+
+
+<div class="container">
+  <ng-template #content1 let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Actualizar contacto</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #updateForm = "ngForm" (ngSubmit)="onUpdate(updateForm)">
+
+        <div class="form-group">
+          <label>Id Contacto</label>
+          <input name="idContacto"  #IdContacto="ngModel" [(ngModel)]="contactoU.idContacto" [ngModelOptions]="{standalone: true}" type= "number" class="form-control" required>
+        </div> 
+    
+        <div class="form-group">
+          <label>Cedula</label>
+          <input name="cedula"  #Cedula="ngModel" [(ngModel)]="contactoU.cedula" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>  
+
+        <div class="form-group">
+          <label>FechaNacimiento</label>
+          <input name="fechaNacimiento"  #Fechan="ngModel" [(ngModel)]="contactoU.fechaNacimiento" [ngModelOptions]="{standalone: true}" type= "date" class="form-control" required>
+        </div> 
+
+        <div class="form-group">
+          <label>IdUbicacion</label>
+          <input name="idUbicacion"  #Ubi="ngModel" [(ngModel)]="contactoU.idUbicacion" [ngModelOptions]="{standalone: true}" type= "number" class="form-control" required>
+        </div> 
+
+        <div class="form-group">
+          <label>Patologias</label>
+          <input name="patologia"  #Patologias="ngModel" [(ngModel)]="contactoU.patologia" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Nacionalidad</label>
+          <input name="nacionalidad"  #Nacionalidad="ngModel" [(ngModel)]="contactoU.nacionalidad" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Nombre</label>
+          <input name="nombre"  #Nombre="ngModel" [(ngModel)]="contactoU.nombre" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Primer Apellido</label>
+          <input name="primerApellido"  #PrimerApellido="ngModel" [(ngModel)]="contactoU.primerApellido" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Segundo Apellido</label>
+          <input name="segundoApellido"  #SegundoApellido="ngModel" [(ngModel)]="contactoU.segundoApellido" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Correo</label>
+          <input name="correo"  #Correo="ngModel" [(ngModel)]="contactoU.correo" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>IdPaciente</label>
+          <input name="idPaciente"  #Pac="ngModel" [(ngModel)]="contactoU.idPaciente" [ngModelOptions]="{standalone: true}" type= "number" class="form-control" required>
+        </div>
+
+        
+        <div class = "form-group">
+          <div class = "col-md-4 col-md-offset-3">
+            <input class = "btn btn-primary" type = "submit" value = "Agregar" />
+          </div>
+        </div>
+      
+          
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content1)">Actualizar</button>
+
+  <hr>
+
+  <pre>{{ closeResult }}</pre>
+
+</div>
+
+
+
+
+
 <div class="table-responsive">
   <table class="table table-hover">
     <tr>
+      <th>IdContacto</th>
       <th>Cedula</th>
-      <th>Nombre</th>
-      <th>Primer Apellido</th>
-      <th>Segundo Apellido</th>
-      <th>Edad</th>
+      <th>fechaNacimiento</th>
+      <th>idUbicacion</th>
+      <th>Patologia</th>
       <th>Nacionalidad</th>
-      <th>Direccion</th>
-      <th>Lista patologias</th>
+      <th>Nombre</th>
+      <th>PrimerApellido</th>
+      <th>SegundoApellido</th>
       <th>Email</th>
-
+      <th>idPaciente</th>
     </tr>
 
 
 
 <!-- -->
-    <!--<tr *ngFor="let Paquete of service.paqueteList" >
-      <td>{{Paquete.trackingId}}</td>
-      <td>{{Paquete.idCliente}}</td>
-      <td>{{Paquete.idProducto}}</td>
-      <td>{{Paquete.descripcion}}</td>
-      <td>{{Paquete.fechaEstimada}}</td>
-      <td>{{Paquete.estado}}</td>
+    <tr *ngFor="let Contacto of service.contactoList" >
+      <td>{{Contacto.idContacto}}</td>
+      <td>{{Contacto.cedula}}</td>
+      <td>{{Contacto.fechaNacimiento}}</td>
+      <td>{{Contacto.idUbicacion}}</td>
+      <td>{{Contacto.patologia}}</td>
+      <td>{{Contacto.nacionalidad}}</td>
+      <td>{{Contacto.nombre}}</td>
+      <td>{{Contacto.primerApellido}}</td>
+      <td>{{Contacto.segundoApellido}}</td>
+      <td>{{Contacto.email}}</td>
+      <td>{{Contacto.idPaciente}}</td>
 
     </tr>
--->
-
-<br><br><br>
-
-<div class="container">
-  
-  <div class="starter-template">
-
-    <div class="row">       
-
-      <div class="col-md-12 mt-5">
-    
-      <form #contactoForm = "ngForm" (ngSubmit)="onSubmit(contactoForm)">
-
-            <div class="form-group">
-              <label>Cedula</label>
-              <input name="cedula"  #Cedula="ngModel" [(ngModel)]="contactoo.cedula" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>  
-
-            <div class="form-group">
-              <label>Nombre</label>
-              <input name="nombre"  #Nombre="ngModel" [(ngModel)]="contactoo.nombre" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Primer Apellido</label>
-              <input name="primerApellido"  #PrimerApellido="ngModel" [(ngModel)]="contactoo.primerApellido" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Segundo Apellido</label>
-              <input name="segundoApellido"  #SegundoApellido="ngModel" [(ngModel)]="contactoo.segundoApellido" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-            
-            <div class="form-group">
-              <label>Edad</label>
-              <input name="edad"  #Edad="ngModel" [(ngModel)]="contactoo.edad" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Nacionalidad</label>
-              <input name="nacionalidad"  #Nacionalidad="ngModel" [(ngModel)]="contactoo.nacionalidad" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Region</label>
-              <input name="region"  #Region="ngModel" [(ngModel)]="contactoo.region" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Patologias</label>
-              <input name="patologias"  #Patologias="ngModel" [(ngModel)]="contactoo.patologias" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Correo</label>
-              <input name="correo"  #Correo="ngModel" [(ngModel)]="contactoo.correo" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            
-            <div class = "form-group">
-              <div class = "col-md-4 col-md-offset-3">
-                <input class = "btn btn-primary" type = "submit" value = "Agregar" />
-              </div>
-            </div>
-          
-              
-
-          </form>
-
-    </div>
-
-
-</div>
-
-</div>
-
-
-</div>

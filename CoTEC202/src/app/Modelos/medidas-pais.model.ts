@@ -1,4 +1,5 @@
 export class MedidasPais {
+    idMedidaPais: number;
     estado: string;
     pais: string;
     medidas: string;

@@ -1,15 +1,17 @@
 export class Paciente {
-    cedula: number;
-    edad: number;
+    idPaciente: number;
+    cedula: string;
+    fechaNacimiento: Date;
     region: string;
-    medicacion: number[];
-    patologias: string[];
+    medicacion: string;
+    patologia: string;
     nacionalidad: string;
     nombre: string;
     primerApellido: string;
     segundoApellido: string;
-    estado: string;
-    internado: boolean;
-    UCI: boolean;
+    estado: number;
+    internado: string;
+    uci: string;
     fechaIngreso: Date;
+    idCentroHospitalario: number;
 }

@@ -8,6 +8,126 @@
 
 <br><br>
 
+<div class="container">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ingresar nueva patologia</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #patologiaForm = "ngForm" (ngSubmit)="onSubmit(patologiaForm)"> 
+
+        <div class="form-group">
+          <label>Nombre</label>
+          <input name="nombre"  #Nombre="ngModel" [(ngModel)]="patt.nombre" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Descripcion</label>
+          <input name="descripcion"  #Descripcion="ngModel" [(ngModel)]="patt.descripcion" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Sintomas</label>
+          <input name="sintomas"  #Sintomas="ngModel" [(ngModel)]="patt.sintomas" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Tratamiento</label>
+          <input name="tratamiento"  #Tratamiento="ngModel" [(ngModel)]="patt.tratamiento" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        
+        <div class = "form-group">
+          <div class = "col-md-4 col-md-offset-3">
+            <input class = "btn btn-primary" type = "submit" value = "Agregar" />
+          </div>
+        </div>
+      
+          
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+    </div>
+  </ng-template>
+
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Ingresar</button>
+
+  <hr>
+
+  <pre>{{ closeResult }}</pre>
+
+</div>
+
+
+
+<div class="container">
+  <ng-template #content1 let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Actualizar patologia</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #updateForm = "ngForm" (ngSubmit)="onUpdate(updateForm)">
+
+        <div class="form-group">
+          <label>Id Patologia</label>
+          <input name="idPatologia"  #IdPatologia="ngModel" [(ngModel)]="pattU.idPatologia" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>  
+
+        <div class="form-group">
+          <label>Nombre</label>
+          <input name="nombre"  #Nombre="ngModel" [(ngModel)]="pattU.nombre" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Descripcion</label>
+          <input name="descripcion"  #Descripcion="ngModel" [(ngModel)]="pattU.descripcion" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label>Sintomas</label>
+          <input name="sintomas"  #Sintomas="ngModel" [(ngModel)]="pattU.sintomas" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Tratamiento</label>
+          <input name="tratamiento"  #Tratamiento="ngModel" [(ngModel)]="pattU.tratamiento" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
+        </div>
+
+        
+        <div class = "form-group">
+          <div class = "col-md-4 col-md-offset-3">
+            <input class = "btn btn-primary" type = "submit" value = "Modificar" />
+          </div>
+        </div>
+      
+          
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+    </div>
+  </ng-template>
+
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content1)">Actualizar</button>
+
+  <hr>
+
+  <pre>{{ closeResult }}</pre>
+
+</div>
+
+
+
+
 <div class="table-responsive">
   <table class="table table-hover">
     <tr>
@@ -19,72 +139,15 @@
     </tr>
 
 
-<!-- -->
-    <!--<tr *ngFor="let Paquete of service.paqueteList" >
-      <td>{{Paquete.trackingId}}</td>
-      <td>{{Paquete.idCliente}}</td>
-      <td>{{Paquete.idProducto}}</td>
-      <td>{{Paquete.descripcion}}</td>
-      <td>{{Paquete.fechaEstimada}}</td>
-      <td>{{Paquete.estado}}</td>
-
+<tr *ngFor="let Patologia of service.patologiaList" >
+      <td>{{Patologia.idPatologia}}</td>
+      <td>{{Patologia.nombre}}</td>
+      <td>{{Patologia.descripcion}}</td>
+      <td>{{Patologia.sintomas}}</td>
+      <td>{{Patologia.tratamiento}}</td>
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target=" #content let-modal" 
+      (click)="selectId(Patologia)">Ed</button>
+      <td><button type="button" class="btn btn-danger" (click)="onDelete(Patologia.idPatologia)" 
+        >X<span class="glyphicon glyphicon-trash" ></span></button></td>
     </tr>
--->
 
-<br><br><br>
-
-<div class="container">
-  
-  <div class="starter-template">
-
-    <div class="row">       
-
-      <div class="col-md-12 mt-5">
-    
-      <form #patologiaForm = "ngForm" (ngSubmit)="onSubmit(patologiaForm)">
-
-            <div class="form-group">
-              <label>Id Patologia</label>
-              <input name="idPatologia"  #IdPatologia="ngModel" [(ngModel)]="patt.idPatologia" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>  
-
-            <div class="form-group">
-              <label>Nombre</label>
-              <input name="nombre"  #Nombre="ngModel" [(ngModel)]="patt.nombre" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Descripcion</label>
-              <input name="descripcion"  #Descripcion="ngModel" [(ngModel)]="patt.descripcion" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label>Sintomas</label>
-              <input name="sintomas"  #Sintomas="ngModel" [(ngModel)]="patt.sintomas" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-            
-            <div class="form-group">
-              <label>Tratamiento</label>
-              <input name="tratamiento"  #Tratamiento="ngModel" [(ngModel)]="patt.tratamiento" [ngModelOptions]="{standalone: true}" type= "text" class="form-control" required>
-            </div>
-
-            
-            <div class = "form-group">
-              <div class = "col-md-4 col-md-offset-3">
-                <input class = "btn btn-primary" type = "submit" value = "Agregar" />
-              </div>
-            </div>
-          
-              
-
-          </form>
-
-    </div>
-
-
-</div>
-
-</div>
-
-
-</div>

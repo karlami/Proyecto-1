@@ -32,6 +32,8 @@ import { NavBarLoginComponent } from './Miscellanious/nav-bar-login/nav-bar-logi
 import { WelcomeAdministradorComponent } from './Miscellanious/welcome-administrador/welcome-administrador.component';
 import { WelcomeCentroComponent } from './Miscellanious/welcome-centro/welcome-centro.component';
 import { WelcomeLoginComponent } from './Miscellanious/welcome-login/welcome-login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FilterAcumuladoPipe } from './pipes/filter-acumulado.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { WelcomeLoginComponent } from './Miscellanious/welcome-login/welcome-log
     NavBarLoginComponent,
     WelcomeAdministradorComponent,
     WelcomeCentroComponent,
-    WelcomeLoginComponent
+    WelcomeLoginComponent,
+    FilterAcumuladoPipe
   ],
   imports: [
     BrowserModule,
@@ -69,13 +72,11 @@ import { WelcomeLoginComponent } from './Miscellanious/welcome-login/welcome-log
     HttpClientModule,
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCw10LwBHdJs05w-18z9Vb2kFIW__Mhf9Q',
-      libraries: ['places']
-    })
+      apiKey: 'AIzaSyCw10LwBHdJs05w-18z9Vb2kFIW__Mhf9Q'
+    }),
+    NgbModule
   ],
-  providers: [
-    GoogleMapsAPIWrapper
-  ],
+  providers: [GoogleMapsAPIWrapper],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
