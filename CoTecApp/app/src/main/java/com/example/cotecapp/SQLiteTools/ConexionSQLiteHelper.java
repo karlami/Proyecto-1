@@ -7,13 +7,19 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-
+/**
+ * Clase que controla la creación y actualización de la base de datos
+ */
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     public ConexionSQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-
+    /**
+     * Método que al momento de crear la Base de datos ejecuta las consultas para
+     * crear cada tabla
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Utilidades.TABLA_UBICACION);
@@ -31,6 +37,14 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.TABLA_MEDIDA_CONTENCION);
     }
 
+    /**
+     * Al momento de hacer upgrade de la base de datos define que se
+     * necesitan borrar las tablas de la version antigua, para crearlas
+     * de nuevo
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

@@ -2,7 +2,10 @@ package com.example.cotecapp.SQLiteTools;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
+/**
+ * Utilidades almacena todos los scripts de creación de tablas de tal
+ * forma que sea fácil de escalar y utilizar
+ */
 public class Utilidades extends AppCompatActivity {
 
     //Constantes para la tabla Ubicacion de la base de datos

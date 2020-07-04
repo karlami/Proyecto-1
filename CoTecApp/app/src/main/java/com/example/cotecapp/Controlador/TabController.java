@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+/**
+ * Controlador de las TabLayout donde se muestran las
+ * pestañas Contactos y Pacientes
+ */
 public class TabController extends FragmentPagerAdapter
 {
     int tabsNum;
@@ -14,6 +18,12 @@ public class TabController extends FragmentPagerAdapter
         this.tabsNum = behavior;
     }
 
+    /**
+     * Selecciona la vista a mostrar respecto a la posición de las
+     * pestañas.
+     * @param position
+     * @return
+     */
     @NonNull
     @Override
     public Fragment getItem(int position) {

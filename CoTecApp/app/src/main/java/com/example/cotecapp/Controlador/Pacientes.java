@@ -30,10 +30,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link Pacientes#newInstance} factory method to
- * create an instance of this fragment.
+ * Controlador del fragment pacientes
  */
 public class Pacientes extends Fragment {
 
@@ -73,10 +72,20 @@ public class Pacientes extends Fragment {
         }
 
     }
-
+    /**
+     * Método que permite la creación de la vista pacientes
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        /**
+         * Asignación de los elementos necesarios para el funcionamiento
+         * de la vista.
+         */
         conn = new ConexionSQLiteHelper(getContext(), "CoTec", null, 1);
         Vista = inflater.inflate(R.layout.fragment_pacientes, container, false);
         addPaciente = (FloatingActionButton) Vista.findViewById(R.id.addPaciente);
@@ -107,7 +116,10 @@ public class Pacientes extends Fragment {
 
         return Vista;
     }
-
+    /**
+     * Método que consulta a la base de datos de la lista de pacientes
+     * que se mostrarán en la vista.
+     */
     private void ConsultarListaPacientes() {
         SQLiteDatabase db = conn.getReadableDatabase();
         Paciente paciente = null;
@@ -128,6 +140,10 @@ public class Pacientes extends Fragment {
         db.close();
         ObtenerPacientes();
     }
+    /**
+     * Genera la lista de Strings que se le va a asignar al ListView donde
+     * se mostrarán los pacientes.
+     */
     public void ObtenerPacientes(){
         SQLiteDatabase db = conn.getReadableDatabase();
         listaPacientesDatos = new ArrayList<String>();
@@ -139,7 +155,7 @@ public class Pacientes extends Fragment {
                     Utilidades.NOMBRE_TABLA_PERSONA+" WHERE "+Utilidades.PERSONA_CAMPO_CEDULA+"='"+listPacientes.get(i).getCedula()+"'", null);
             cursor.moveToNext();
             listaPacientesDatos.add(listPacientes.get(i).getCedula()+"-"+
-                    cursor.getString(0)+"-"+cursor.getString(1)+"-"+
+                    cursor.getString(0)+" "+cursor.getString(1)+" "+
                     cursor.getString(2));
             cursor.close();
         }

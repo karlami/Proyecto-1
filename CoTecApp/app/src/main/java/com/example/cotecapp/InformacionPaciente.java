@@ -107,6 +107,10 @@ public class InformacionPaciente extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * Borra al paciente actual de la ventana informacion paciente
+     */
     public void borrarPaciente(){
         SQLiteDatabase db = conn.getWritableDatabase();
         String deletePaciente = "DELETE FROM "+Utilidades.NOMBRE_TABLA_PACIENTE+
@@ -118,6 +122,10 @@ public class InformacionPaciente extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * Muestra los contactos para este paciente
+     */
     public void MostrarContactos(){
         Intent intent = new Intent(this, ContactosDePaciente.class);
         Bundle bundle = new Bundle();
@@ -125,6 +133,10 @@ public class InformacionPaciente extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    /**
+     * Carga el formulario para editar la información del paciente
+     */
     public void editarinformacion(){
         Intent intent = new Intent(this, ActualizarPaciente.class);
         Bundle bundle = new Bundle();
@@ -133,12 +145,21 @@ public class InformacionPaciente extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    /**
+     * Permite volver a la ventana incial de la app
+     */
     public void volverAlMain(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
 
+    /**
+     * Asigna la medicacion para el paciente
+     * @param idPaciente se usa para consultar la medicacion
+     *                   de ese paciente
+     */
     private void setearMedicacion(int idPaciente) {
         SQLiteDatabase db = conn.getReadableDatabase();
         String consultaMedicamento = "SELECT "+Utilidades.MEDICAMENTO_CAMPO_NOMBRE+" FROM "+
@@ -161,6 +182,10 @@ public class InformacionPaciente extends AppCompatActivity {
         db.close();
     }
 
+    /**
+     * Coloca las patologias en la vista de información
+     * @param cedula se usa para realizar la consulta
+     */
     private void setearPatologias(String cedula) {
         SQLiteDatabase db = conn.getReadableDatabase();
         String consultaMedicamento = "SELECT "+Utilidades.PATOLOGIA_CAMPO_NOMBRE+" FROM "+
@@ -182,7 +207,10 @@ public class InformacionPaciente extends AppCompatActivity {
         db.close();
     }
 
-
+    /**
+     * Asigna el estado del paciente en la vista de información
+     * @param idEstado estado del paciente
+     */
     private void setearEstado(Integer idEstado) {
         SQLiteDatabase db = conn.getReadableDatabase();
         String consultaEstado = "SELECT "+Utilidades.ESTADO_PACIENTE_CAMPO_ESTADO+" FROM "
@@ -196,6 +224,10 @@ public class InformacionPaciente extends AppCompatActivity {
         }
     }
 
+    /**
+     * asigna el centro hospitalario del paciente a la vista de informacion
+     * @param idHospital se usa para identificar el hospital que se debe asignar
+     */
     private void setearCentroHospitalario(int idHospital) {
         SQLiteDatabase db = conn.getReadableDatabase();
         HospitalActual = new Hospital();
@@ -213,6 +245,11 @@ public class InformacionPaciente extends AppCompatActivity {
         db.close();
     }
 
+    /**
+     * A partir de la cedula genera la consulta para traer todos los datos de
+     * la persona y asignarlos a la vista de información
+     * @param cedula del paciente para identificarlo
+     */
     private void setearDatosPersonales(String cedula) {
         PersonaActual = new Persona();
         SQLiteDatabase db = conn.getReadableDatabase();
@@ -241,6 +278,10 @@ public class InformacionPaciente extends AppCompatActivity {
         db.close();
     }
 
+    /**
+     * Asigna la ubicacion donde se encuentra el paciente
+     * @param idUbicacion se usa para identificar cual es la ubicacion
+     */
     private void setearUbicacion(String idUbicacion) {
         SQLiteDatabase db = conn.getReadableDatabase();
         String consultaUbicacion = "SELECT * FROM "+ Utilidades.NOMBRE_TABLA_UBICACION +

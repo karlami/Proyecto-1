@@ -28,7 +28,13 @@ import com.example.cotecapp.SQLiteTools.Utilidades;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * Clase que controla la actividad de Actualizar un Contacto
+ */
 public class ActualizarContacto extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+    /**
+     * Creacion de las variables necesarias para el funcionamiento
+     */
     private Boolean patologiaCambio;
     private Contacto contactoActual;
     private Paciente pacienteActual;
@@ -47,6 +53,9 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actualizar_contacto);
+        /**
+         * Asignación de las variables necesarias para el funcionamiento
+         */
         U = new Utilidades();
         patologiaCambio = false;
         listaPatologiasContacto = new ArrayList<>();
@@ -126,6 +135,12 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
             setearPatologias(contactoActual.getCedula());
         }
     }
+
+    /**
+     * A partir de una cedula, asigna la data de persona al formulario
+     * de actualizar paciente
+     * @param cedula
+     */
     private void setearDatosPersonales(String cedula) {
         personaActual = new Persona();
         SQLiteDatabase db = conn.getReadableDatabase();
@@ -152,6 +167,10 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
         db.close();
     }
 
+    /**
+     * Recopila la información ingresada por el Usuario y ejecuta
+     * los scripts para actualizar el contacto en base a esa información
+     */
     public void actualizarContacto(){
 
         SQLiteDatabase db = conn.getWritableDatabase();
@@ -182,6 +201,10 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
         }
         db.close();
     }
+
+    /**
+     * Permite borrar las patologias del contacto para luego colocarle nuevas
+     */
     public void borrarPatologias(){
         String deletePatologias = "DELETE FROM "+U.NOMBRE_TABLA_PERSONA_PATOLOGIA
                 +" WHERE "+U.TABLA_PERSONA_PATOLOGIA_CAMPO_CEDULA+"='"
@@ -191,6 +214,10 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
         db.execSQL(deletePatologias);
         db.close();
     }
+
+    /**
+     * Guarda la patologia seleccionada en el Spinner de patologias
+     */
     public void agregarPatologias(){
         SQLiteDatabase db = conn.getWritableDatabase();
         for(int i = 0; i < listaPatologiasContacto.size(); i++){
@@ -203,6 +230,12 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
         }
         db.close();
     }
+
+    /**
+     * En base al idUbicacion que recibe asigna el valor en el formulario
+     * para su posterior actualización
+     * @param idUbicacion
+     */
     public void setearUbicacion(Integer idUbicacion){
         for(int i = 0; i < listaUbicaciones.size(); i++){
             if(listaUbicaciones.get(i).getId().equals(idUbicacion)){
@@ -210,6 +243,12 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
             }
         }
     }
+
+    /**
+     * En base a la cedula recibida consulta las patologías de la persona
+     * y se las asigna en el formulario
+     * @param cedula
+     */
     public void setearPatologias(String cedula){
         SQLiteDatabase db = conn.getReadableDatabase();
         String consulta = "SELECT "+Utilidades.PATOLOGIA_CAMPO_NOMBRE+"," +
@@ -235,6 +274,11 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
 
         db.close();
     }
+
+    /**
+     * Consulta todas las patologías y las almacena en un ArrayList
+     * para su posterior uso
+     */
     public void ConsultarPatologias(){
         listaPatologias = new ArrayList<>();
         SQLiteDatabase db = conn.getWritableDatabase();
@@ -252,6 +296,10 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
         db.close();
         obtenerListaPatologias();
     }
+
+    /**
+     * Asigna los strings para el spinner de patologías
+     */
     public void obtenerListaPatologias(){
         PatologiasData = new ArrayList<>();
         PatologiasData.add("Patologías");
@@ -262,6 +310,11 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
 
         }
     }
+
+    /**
+     * Consulta todas las ubicaciones y las almacena en un ArrayList
+     * para su posterior uso
+     */
     public void ConsultarUbicaciones(){
         SQLiteDatabase db = conn.getReadableDatabase();
         Ubicacion ubicacion = null;
@@ -279,7 +332,9 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
         db.close();
         ObtenerListaUbicaciones();
     }
-
+    /**
+     * Asigna los strings para el spinner de ubicaciones
+     */
     public void ObtenerListaUbicaciones(){
         listaUbi = new ArrayList<String>();
         listaUbi.add("Seleccione la Ubicación");
@@ -289,6 +344,9 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
         }
     }
 
+    /**
+     * Guarda la patología seleccionada del Spinner de patologias
+     */
     public void GuadarPatologia(){
         int pospatologia = comboPatologia.getSelectedItemPosition() - 1;
         if(pospatologia >= 0){
@@ -311,6 +369,13 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
             toast.show();
         }
     }
+
+    /**
+     * En base a la posicion de la patología define si ya ha sido
+     * contemplada para esa persona
+     * @param posPatologia
+     * @return
+     */
     public boolean ComprobarPatologia(int posPatologia){
         for(int i = 0; i < listaPatologiasContacto.size(); i++){
             int idPatologia = listaPatologiasContacto.get(i).getIdPatologia();
@@ -326,6 +391,12 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
         return false;
     }
 
+    /**
+     * Valida que todos los campos estén correctos y si es así
+     * responde true, en caso contrario responde false
+     * @return
+     * También muestra un mensaje de error en caso de que no sean correctos
+     */
     public boolean validarCampos(){
         boolean retorno = true;
         if(nombre.getText().toString().isEmpty()){
@@ -363,6 +434,10 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
 
         return retorno;
     }
+
+    /**
+     * Muestra el calendario para seleccionar fechas
+     */
     public void showDatePickerDialog(){
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
@@ -373,6 +448,13 @@ public class ActualizarContacto extends AppCompatActivity implements DatePickerD
         datePickerDialog.show();
     }
 
+    /**
+     * Cuando se selecciona una fecha se asigna en el EditText
+     * @param view
+     * @param year
+     * @param month
+     * @param dayOfMonth
+     */
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date = year + "-" + month + "-" + dayOfMonth ;

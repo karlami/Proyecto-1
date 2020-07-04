@@ -16,9 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.cotecapp.Entidades.Contacto;
-import com.example.cotecapp.Entidades.Paciente;
 import com.example.cotecapp.InformacionContacto;
-import com.example.cotecapp.InformacionPaciente;
 import com.example.cotecapp.R;
 import com.example.cotecapp.SQLiteTools.ConexionSQLiteHelper;
 import com.example.cotecapp.SQLiteTools.Utilidades;
@@ -26,9 +24,7 @@ import com.example.cotecapp.SQLiteTools.Utilidades;
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link Pacientes#newInstance} factory method to
- * create an instance of this fragment.
+ * Controlador del fragment Contactos
  */
 public class Contactos extends Fragment {
 
@@ -68,13 +64,25 @@ public class Contactos extends Fragment {
 
     }
 
+    /**
+     * Método que permite la creación de la vista contactos
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        /**
+         * Asignación de los elementos necesarios para el funcionamiento
+         * de la vista.
+         */
         conn = new ConexionSQLiteHelper(getContext(), "CoTec", null, 1);
         Vista = inflater.inflate(R.layout.fragment_contactos, container, false);
         listaContactos = (ListView) Vista.findViewById(R.id.listaContactos);
         listaContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Contacto contacto = listContactos.get(position);
@@ -94,6 +102,10 @@ public class Contactos extends Fragment {
         return Vista;
     }
 
+    /**
+     * Método que consulta a la base de datos de la lista de contactos
+     * que se mostrarán en la vista.
+     */
     private void ConsultarListaContactos() {
         SQLiteDatabase db = conn.getReadableDatabase();
         Contacto contacto = null;
@@ -111,6 +123,11 @@ public class Contactos extends Fragment {
         db.close();
         ObtenerContactos();
     }
+
+    /**
+     * Genera la lista de Strings que se le va a asignar al ListView donde
+     * se mostrarán los contactos.
+     */
     public void ObtenerContactos(){
         SQLiteDatabase db = conn.getReadableDatabase();
         listaContactosDatos = new ArrayList<String>();
@@ -122,7 +139,7 @@ public class Contactos extends Fragment {
                     Utilidades.NOMBRE_TABLA_PERSONA+" WHERE "+Utilidades.PERSONA_CAMPO_CEDULA+"='"+listContactos.get(i).getCedula()+"'", null);
             cursor.moveToNext();
             listaContactosDatos.add(listContactos.get(i).getCedula()+"-"+
-                    cursor.getString(0)+"-"+cursor.getString(1)+"-"+
+                    cursor.getString(0)+" "+cursor.getString(1)+" "+
                     cursor.getString(2));
             cursor.close();
         }

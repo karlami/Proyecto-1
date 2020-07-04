@@ -112,6 +112,10 @@ public class RegistroContacto extends AppCompatActivity implements DatePickerDia
         });
 
     }
+
+    /**
+     * Registra a un Contacto ejecutando los scripst de sql necesarios
+     */
     public void registrarContacto(){
         SQLiteDatabase db = conn.getWritableDatabase();
         int posidUbi = comboUbi.getSelectedItemPosition() - 1;
@@ -161,6 +165,9 @@ public class RegistroContacto extends AppCompatActivity implements DatePickerDia
 
     }
 
+    /**
+     * Agrega las patologías de la persona en la base de datos
+     */
     public void agregarPatologias(){
         SQLiteDatabase db = conn.getWritableDatabase();
         for(int i = 0; i < listaPatologiasContacto.size(); i++){
@@ -174,6 +181,11 @@ public class RegistroContacto extends AppCompatActivity implements DatePickerDia
         db.close();
     }
 
+    /**
+     * Valida que los campos hayan sido completados de manera correcta
+     * @return true si son validos todos los campos y false
+     * si no se cumple al menos 1
+     */
     public boolean validarCampos(){
         boolean retorno = true;
         if(nombre.getText().toString().isEmpty()){
@@ -211,6 +223,10 @@ public class RegistroContacto extends AppCompatActivity implements DatePickerDia
 
         return retorno;
     }
+
+    /**
+     * Consulta todas las patologias para añadirlas al spinner de patologias
+     */
     public void ConsultarPatologias(){
         listaPatologias = new ArrayList<>();
         SQLiteDatabase db = conn.getWritableDatabase();
@@ -228,6 +244,10 @@ public class RegistroContacto extends AppCompatActivity implements DatePickerDia
         db.close();
         obtenerListaPatologias();
     }
+
+    /**
+     * Obtiene el array de strings que se le asigna al spinner de patologias
+     */
     public void obtenerListaPatologias(){
         PatologiasData = new ArrayList<>();
         PatologiasData.add("Patologías");
@@ -238,6 +258,10 @@ public class RegistroContacto extends AppCompatActivity implements DatePickerDia
 
         }
     }
+
+    /**
+     * guarda la patologia seleccionada
+     */
     public void GuadarPatologia(){
         int pospatologia = comboPatologia.getSelectedItemPosition() - 1;
         if(pospatologia >= 0){
@@ -260,6 +284,12 @@ public class RegistroContacto extends AppCompatActivity implements DatePickerDia
             toast.show();
         }
     }
+
+    /**
+     * Comprueba que la patología que se va a guardar no esté asignada ya
+     * @param posPatologia se usa para identificar la posición de la patología en la lista
+     * @return true si la encuentra en la lista y false si no la encuentra
+     */
     public boolean ComprobarPatologia(int posPatologia){
         for(int i = 0; i < listaPatologiasContacto.size(); i++){
             int idPatologia = listaPatologiasContacto.get(i).getIdPatologia();
@@ -301,6 +331,9 @@ public class RegistroContacto extends AppCompatActivity implements DatePickerDia
         }
     }
 
+    /**
+     * Muestra el calendario para seleccionar la fecha
+     */
     public void showDatePickerDialog(){
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
@@ -310,7 +343,13 @@ public class RegistroContacto extends AppCompatActivity implements DatePickerDia
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
-
+    /**
+     * cuando se selecciona una fecha la asigna al textView
+     * @param view
+     * @param year
+     * @param month
+     * @param dayOfMonth
+     */
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date = year + "-" + month + "-" + dayOfMonth ;

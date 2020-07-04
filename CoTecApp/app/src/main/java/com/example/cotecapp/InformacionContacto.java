@@ -79,6 +79,10 @@ public class InformacionContacto extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * Ejecuta los scripts necesarios para borrar el contacto
+     */
     public void borrarContacto(){
         SQLiteDatabase db = conn.getWritableDatabase();
         String deleteContacto = "DELETE FROM "+Utilidades.NOMBRE_TABLA_CONTACTO+
@@ -88,6 +92,11 @@ public class InformacionContacto extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * Asigna el paciente asociado al contacto
+     * @param idPaciente que se usa para identificar el paciente asociado
+     */
     public void setearPaciente(Integer idPaciente){
         SQLiteDatabase db = conn.getWritableDatabase();
         String consultarPaciente = "SELECT "+Utilidades.PERSONA_CAMPO_NOMBRE+"," +
@@ -103,6 +112,11 @@ public class InformacionContacto extends AppCompatActivity {
         pacienteActual.setCedula(cursor.getString(1));
         db.close();
     }
+
+    /**
+     * Consulta las patologías del contacto y las asigna a la informacion
+     * @param cedula se usa para identificar la persona
+     */
     private void setearPatologias(String cedula) {
         SQLiteDatabase db = conn.getReadableDatabase();
         String consultaMedicamento = "SELECT "+Utilidades.PATOLOGIA_CAMPO_NOMBRE+" FROM "+
@@ -123,6 +137,11 @@ public class InformacionContacto extends AppCompatActivity {
         this.patologias.setText(patologias);
         db.close();
     }
+
+    /**
+     * Asigna los datos personales del contacto a la vista de información
+     * @param cedula con la que consulta los datos personales del contacto
+     */
     private void setearDatosPersonales(String cedula) {
         personaActual = new Persona();
         SQLiteDatabase db = conn.getReadableDatabase();
@@ -149,6 +168,11 @@ public class InformacionContacto extends AppCompatActivity {
 
         db.close();
     }
+
+    /**
+     * Asigna la ubicacion en la que se encuentra el contacto
+     * @param idUbicacion lo usa para distinguir cual ubicacion es
+     */
     private void setearUbicacion(String idUbicacion) {
         SQLiteDatabase db = conn.getReadableDatabase();
         String consultaUbicacion = "SELECT * FROM "+ Utilidades.NOMBRE_TABLA_UBICACION +

@@ -198,7 +198,9 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
             EstadosData.add(Estado);
         }
     }
-
+    /**
+     * Consulta todas las patologias para añadirlas al spinner de patologias
+     */
     public void ConsultarPatologias(){
         listaPatologias = new ArrayList<>();
         SQLiteDatabase db = conn.getWritableDatabase();
@@ -216,6 +218,10 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
         db.close();
         obtenerListaPatologias();
     }
+
+    /**
+     * Obtiene el array de strings que se le asigna al spinner de patologias
+     */
     public void obtenerListaPatologias(){
         PatologiasData = new ArrayList<>();
         PatologiasData.add("Patologías");
@@ -271,7 +277,11 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
             toast.show();
         }
     }
-
+    /**
+     * Comprueba que la patología que se va a guardar no esté asignada ya
+     * @param posPatologia se usa para identificar la posición de la patología en la lista
+     * @return true si la encuentra en la lista y false si no la encuentra
+     */
     public boolean ComprobarPatologia(int posPatologia){
         for(int i = 0; i < listaPatologiasPaciente.size(); i++){
             int idPatologia = listaPatologiasPaciente.get(i).getIdPatologia();
@@ -287,7 +297,11 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
         return false;
     }
 
-
+    /**
+     * Comprueba que el medicamento que se va a guardar no esté asignada ya
+     * @param posMedicamento se usa para identificar la posición del medicamento en la lista
+     * @return true si la encuentra en la lista y false si no la encuentra
+     */
     public boolean ComprobarMedicamento(int posMedicamento){
         for(int i = 0; i < listaMedicamentosPaciente.size(); i++){
             int idMedicamento = listaMedicamentosPaciente.get(i).getIdMedicamento();
@@ -302,6 +316,10 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
         }
         return false;
     }
+
+    /**
+     * Muestra el calendario para seleccionar la fecha
+     */
     public void showDatePickerDialog(){
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
@@ -312,6 +330,13 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
         datePickerDialog.show();
     }
 
+    /**
+     * cuando se selecciona una fecha la asigna al textView
+     * @param view
+     * @param year
+     * @param month
+     * @param dayOfMonth
+     */
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date = year + "-" + month + "-" + dayOfMonth ;
@@ -417,11 +442,16 @@ public class RegistroPacientes extends AppCompatActivity implements DatePickerDi
         }
 
     }
+
     public void volverAlMain(){
          Intent intent = new Intent(this, MainActivity.class);
          startActivity(intent);
     }
-
+    /**
+     * Valida que los campos hayan sido completados de manera correcta
+     * @return true si son validos todos los campos y false
+     * si no se cumple al menos 1
+     */
     public boolean validarCampos(){
         boolean retorno = true;
         if(Nombre.getText().toString().isEmpty()){

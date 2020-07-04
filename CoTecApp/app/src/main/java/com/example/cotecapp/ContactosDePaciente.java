@@ -73,6 +73,9 @@ public class ContactosDePaciente extends AppCompatActivity {
         });
     }
 
+    /**
+     * Consulta la lista de contactos de un paciente recibido
+     */
     private void ConsultarListaContactos() {
 
         SQLiteDatabase db = conn.getReadableDatabase();
@@ -92,6 +95,9 @@ public class ContactosDePaciente extends AppCompatActivity {
         ObtenerListaContactos();
     }
 
+    /**
+     * Obtiene los string que se van a agregar al ListView
+     */
     private void ObtenerListaContactos() {
         SQLiteDatabase db = conn.getReadableDatabase();
         listaContactosDatos = new ArrayList<String>();

@@ -13,15 +13,12 @@
         <activity android:name=".InformacionContacto" />
         <activity android:name=".RegistroContacto" />
         <activity android:name=".ContactosDePaciente" />
-        <activity android:name=".Contactos" />
         <activity android:name=".ActualizarPaciente" />
-        <activity android:name=".Activitys.ActualizarPaciente" />
         <activity android:name=".InformacionPaciente" />
         <activity
             android:name=".RegistroPacientes"
             android:label="@string/title_activity_registro_pacientes"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Controlador.RegistroPacientes" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

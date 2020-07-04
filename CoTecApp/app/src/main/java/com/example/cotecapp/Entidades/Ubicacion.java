@@ -1,8 +1,13 @@
 package com.example.cotecapp.Entidades;
 
 import java.io.Serializable;
-
+/**
+ * Clase que modela la entidad Ubicacion de la base de datos SQLite
+ */
 public class Ubicacion implements Serializable {
+    /**
+     * Atributos de la entidad Ubicacion
+     */
     private Integer id;
     private String Continente;
     private String Pais;

@@ -207,6 +207,12 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         }
 
     }
+
+    /**
+     * En base a una cedula coloca las patologias de la persona en el
+     * form
+     * @param cedula
+     */
     public void setearPatologias(String cedula){
         SQLiteDatabase db = conn.getReadableDatabase();
         String consulta = "SELECT "+Utilidades.PATOLOGIA_CAMPO_NOMBRE+"," +
@@ -232,6 +238,11 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
 
         db.close();
     }
+
+    /**
+     * En base a un id de paciente coloca la medicación del paciente
+     * @param idPaciente
+     */
     public void setearMedicacion(Integer idPaciente){
         SQLiteDatabase db = conn.getReadableDatabase();
         String consultaMedicamento = "SELECT "+Utilidades.MEDICAMENTO_CAMPO_NOMBRE+", " +
@@ -256,6 +267,11 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         medicamentosPaciente.setText(medicamentos);
         db.close();
     }
+
+    /**
+     * Con el id del estado del paciente le asigna en el estado en el form
+     * @param idEstado
+     */
     public void setearEstado(Integer idEstado){
         for(int i = 0; i < listaEstados.size(); i++){
             if(listaEstados.get(i).getIdEstado().equals(idEstado)){
@@ -263,6 +279,12 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
             }
         }
     }
+
+    /**
+     * En base al idHospital que recibe asigna el hospital del paciente
+     * en el formulario
+     * @param idHospi
+     */
     public void setearHospital(Integer idHospi){
         for(int i = 0; i < listaHospitales.size(); i++){
             if(listaHospitales.get(i).getIdCentroHospitalario().equals(idHospi)){
@@ -270,6 +292,11 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
             }
         }
     }
+    /**
+     * En base al idUbicacion que recibe asigna la ubicacion del paciente
+     * en el formulario
+     * @param idUbicacion
+     */
     public void setearUbicacion(Integer idUbicacion){
         for(int i = 0; i < listaUbicaciones.size(); i++){
             if(listaUbicaciones.get(i).getId().equals(idUbicacion)){
@@ -278,6 +305,9 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         }
     }
 
+    /**
+     * Consulta todos los estados posibles de un paciente
+     */
     public void ConsultarEstados(){
         listaEstados = new ArrayList<>();
         SQLiteDatabase db = conn.getWritableDatabase();
@@ -293,6 +323,9 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         obtenerListaEstados();
     }
 
+    /**
+     * Asigna los Strings de estados para el Spinner de estados
+     */
     public void obtenerListaEstados(){
         EstadosData = new ArrayList<>();
         EstadosData.add("Estado");
@@ -302,7 +335,10 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
             EstadosData.add(Estado);
         }
     }
-
+    /**
+     * Consulta todas las patologías y las almacena en un ArrayList
+     * para su posterior uso
+     */
     public void ConsultarPatologias(){
         listaPatologias = new ArrayList<>();
         SQLiteDatabase db = conn.getWritableDatabase();
@@ -320,6 +356,9 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         db.close();
         obtenerListaPatologias();
     }
+    /**
+     * Asigna los strings para el spinner de patologías
+     */
     public void obtenerListaPatologias(){
         PatologiasData = new ArrayList<>();
         PatologiasData.add("Patologías");
@@ -330,7 +369,9 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
 
         }
     }
-
+    /**
+     * Guarda la patología seleccionada del Spinner de patologias
+     */
     public void GuadarPatologia(){
         int pospatologia = comboPatologia.getSelectedItemPosition() - 1;
         if(pospatologia >= 0){
@@ -353,6 +394,9 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
             toast.show();
         }
     }
+    /**
+     * Guarda el medicamento seleccionada del Spinner de medicamentos
+     */
     public void Guadarmedicamento(){
         int posMedicamento = Id_Medicamento_Combo.getSelectedItemPosition() - 1;
         if(posMedicamento >= 0){
@@ -375,7 +419,12 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
             toast.show();
         }
     }
-
+    /**
+     * En base a la posicion de la patología define si ya ha sido
+     * contemplada para esa persona
+     * @param posPatologia
+     * @return
+     */
     public boolean ComprobarPatologia(int posPatologia){
         for(int i = 0; i < listaPatologiasPaciente.size(); i++){
             int idPatologia = listaPatologiasPaciente.get(i).getIdPatologia();
@@ -391,7 +440,11 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         return false;
     }
 
-
+    /**
+     * Comprueba si el medicamento está contemplado para este paciente
+     * @param posMedicamento
+     * @return
+     */
     public boolean ComprobarMedicamento(int posMedicamento){
         for(int i = 0; i < listaMedicamentosPaciente.size(); i++){
             int idMedicamento = listaMedicamentosPaciente.get(i).getIdMedicamento();
@@ -406,6 +459,10 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         }
         return false;
     }
+
+    /**
+     * Muestra el calendario para seleccionar la fecha
+     */
     public void showDatePickerDialog(){
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
@@ -416,17 +473,32 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         datePickerDialog.show();
     }
 
+    /**
+     * Cuando se selecciona una fecha, esta fecha se asigna al campo de texto
+     * fecha
+     * @param view
+     * @param year
+     * @param month
+     * @param dayOfMonth
+     */
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date = year + "-" + month + "-" + dayOfMonth ;
         actualFecha.setText(date);
     }
 
+    /**
+     * Dispara el update de pacientes si de validan todos los campos
+     */
     public void EjecutarUpdate(){
         if(validarCampos()){
             actualizarPaciente();
         }
     }
+
+    /**
+     * Ejecuta los scripts necesarios para la actualización del paciente
+     */
     public void actualizarPaciente(){
         String internadoCheck = "'false'";
         String uciCheck = "'false'";
@@ -474,6 +546,11 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
 
         db.close();
     }
+
+    /**
+     * Borra las patologías y medicamentos de un paciente
+     * @param idPaciente
+     */
     public void borrarPatologiasMedicamentos(Integer idPaciente){
         String deletePatologias = "DELETE FROM "+U.NOMBRE_TABLA_PERSONA_PATOLOGIA
                 +" WHERE "+U.TABLA_PERSONA_PATOLOGIA_CAMPO_CEDULA+"='"
@@ -514,7 +591,12 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
+    /**
+     * Valida que todos los campos estén correctos y si es así
+     * responde true, en caso contrario responde false
+     * @return
+     * También muestra un mensaje de error en caso de que no sean correctos
+     */
     public boolean validarCampos(){
         boolean retorno = true;
         if(Nombre.getText().toString().isEmpty()){
@@ -577,7 +659,10 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
 
         return retorno;
     }
-
+    /**
+     * Consulta todas las ubicaciones y las almacena en un ArrayList
+     * para su posterior uso
+     */
     public void ConsultarUbicaciones(){
         SQLiteDatabase db = conn.getReadableDatabase();
         Ubicacion ubicacion = null;
@@ -595,7 +680,9 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         db.close();
         ObtenerListaUbicaciones();
     }
-
+    /**
+     * Asigna los strings para el spinner de ubicaciones
+     */
     public void ObtenerListaUbicaciones(){
         listaUbi = new ArrayList<String>();
         listaUbi.add("Seleccione la Ubicación");
@@ -605,6 +692,9 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         }
     }
 
+    /**
+     * Consulta los hospitales y los almacena en un array
+     */
     public void ConsultarHospitales(){
         SQLiteDatabase db = conn.getReadableDatabase();
         Hospital hospi = null;
@@ -626,7 +716,9 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         db.close();
         ObtenerListaHospitales();
     }
-
+    /**
+     * genera la lista de string de hospitales para el spinner de hospitales
+     */
     public void ObtenerListaHospitales(){
         listaHospi = new ArrayList<String>();
         listaHospi.add("Seleccione el Hospital");
@@ -636,6 +728,9 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         }
     }
 
+    /**
+     * consulta la lista de medicamentos
+     */
     private void ConsultarMedicamentos() {
         SQLiteDatabase db = conn.getReadableDatabase();
         Medicamento medi = null;
@@ -654,6 +749,10 @@ public class ActualizarPaciente extends AppCompatActivity implements DatePickerD
         db.close();
         ObtenerMedicamentos();
     }
+
+    /**
+     * Genera la lista de strings para el spinner de medicamentos
+     */
     public void ObtenerMedicamentos(){
         listMedi = new ArrayList<String>();
         listMedi.add("Seleccione el Medicamento");

@@ -1,8 +1,13 @@
 package com.example.cotecapp.Entidades;
 
 import java.io.Serializable;
-
+/**
+ * Clase que modela la entidad Paciente de la base de datos SQLite
+ */
 public class Paciente implements Serializable {
+    /**
+     * Atributos de la entidad Paciente
+     */
     private Integer idPaciente;
     private String internado;
     private String uci;
