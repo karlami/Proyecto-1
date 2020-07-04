@@ -32,6 +32,7 @@ CREATE VIEW viewPaciente WITH ENCRYPTION AS
 		region AS Region,
 		dbo.getPatologias(pr.cedula) AS Patologias,
 		estado as Estado,
+		idCentroHospitalario as CentroHospitalario,
 		dbo.getMedicamentos(pa.idPaciente) as Medicamentos,
 		internado as Internado,
 		uci as UCI,

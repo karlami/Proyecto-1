@@ -25,7 +25,7 @@ Obtiene el nombre completo de una persona al ingresar su cedula.
 param: cedula INT
 return: nombre completo concatenado
 */
-CREATE FUNCTION getNombreCompleto(@cedula INT) RETURNS VARCHAR(60)
+CREATE FUNCTION getNombreCompleto(@cedula VARCHAR(30)) RETURNS VARCHAR(60)
 AS
 BEGIN
 	DECLARE @NombreCompleto VARCHAR(50)
@@ -58,7 +58,7 @@ Obtiene la lista de patologias que presenta la persona al ingresar su cedula
 param: cedula INT
 return: lista con patologias
 */
-CREATE FUNCTION getPatologias(@cedula INT) RETURNS VARCHAR(1000)
+CREATE FUNCTION getPatologias(@cedula VARCHAR(30)) RETURNS VARCHAR(1000)
 AS
 BEGIN
 DECLARE @patologias VarChar(1000)

@@ -128,7 +128,7 @@ CREATE PROCEDURE  modifyPaciente(
 	-- Atributos de Ubicacion
 	@region VARCHAR(75),
 	-- Atributos PersonaPatologia
-	@idPatologia INT,
+	@patologia VARCHAR(100),
 	-- Atributos de Paciente
 	@idPaciente INT,
 	@internado VARCHAR(10),
@@ -137,7 +137,7 @@ CREATE PROCEDURE  modifyPaciente(
 	@idEstadoPaciente INT,
 	@idCentroHospitalario INT,
 	-- Atributos PacienteMedicacion
-	@idMedicamento INT,
+	@medicamento VARCHAR(100),
 	-- Atributo para tipo de declaracion
 	@statementType VARCHAR(20) )
 AS
@@ -183,7 +183,7 @@ BEGIN
 				idPatologia )
 			VALUES (
 				@cedula,
-				@idPatologia )
+				dbo.getIdPatologia(@patologia) )
 
 			-- Genera un Paciente solo si no esta ya antes creado
 			IF NOT (@cedula IN (SELECT cedula FROM Paciente WHERE cedula = @cedula) )
@@ -219,7 +219,7 @@ BEGIN
 						idMedicamento,
 						idPaciente )
 					VALUES (
-						@idMedicamento,
+						dbo.getIdMedicamento(@medicamento),
 						@idPaciente )
 
 		END
@@ -238,7 +238,7 @@ BEGIN
 
 			--Actualiza los datos de PersonaPatologia
 			UPDATE PersonaPatologia
-			SET idPatologia = @idpatologia
+			SET idPatologia = dbo.getIdPatologia(@patologia)
 			WHERE cedula =  @cedula
 
 			--Verifica que la persona exista
@@ -256,7 +256,7 @@ BEGIN
 
 			--Actualiza los datos de PacienteMedicamento
 			UPDATE PacienteMedicamento
-			SET idMedicamento = @idMedicamento
+			SET idMedicamento = dbo.getIdMedicamento(@medicamento)
 			WHERE idPaciente =  @idPaciente
 
 			--Verifica que el paciente exista
@@ -297,7 +297,7 @@ EXEC modifyPaciente
 -- Atributos de Ubicacion
 @region = 'Paris',
 --Atributos PersonaPatologia
-@idPatologia = 9,
+@patologia = 'Patologia1',
 --Atributos de Paciente
 @idPaciente = 935,
 @internado = 'false',
@@ -305,8 +305,8 @@ EXEC modifyPaciente
 @fechaIngreso = '2020-04-17',
 @idEstadoPaciente = 3,
 @idCentroHospitalario = 42,
--- Atributos PacienteMedicacion
-@idMedicamento = 35,
+-- Atributos PacienteMedicamento
+@medicamento = 'Medicamento1',
 -- Atributo para tipo de declaracion
 @statementType = 'Delete';
 */
@@ -330,7 +330,8 @@ CREATE PROCEDURE modifyContacto(
 	@fechaNacimiento DATE,
 	@idUbicacion INT,
 	-- Atributos PersonaPatologia
-	@idPatologia INT,
+	--@idPatologia INT,
+	@patologia VARCHAR(100),
 	-- Atributos de Contacto
 	@idContacto INT,
 	@correo	varchar(100),
@@ -379,7 +380,7 @@ BEGIN
 				idPatologia )
 			VALUES (
 				@cedula,
-				@idPatologia )
+				dbo.getIdPatologia(@patologia) )
 
 			---- Genera un Contacto solo si no esta ya antes creado
 			--IF NOT (@cedula IN (SELECT cedula FROM Contacto WHERE cedula = @cedula) )
@@ -411,7 +412,7 @@ BEGIN
 
 			--Actualiza los datos de PersonaPatologia
 			UPDATE PersonaPatologia
-			SET idPatologia = @idpatologia
+			SET idPatologia = dbo.getIdPatologia(@patologia)
 			WHERE cedula =  @cedula
 
 			--Verifica que la persona exista
@@ -458,7 +459,7 @@ EXEC modifyContacto
 @fechaNacimiento = '1999-03-29',
 @idUbicacion = 69,
 --Atributos PersonaPatologia
-@idPatologia = 9,
+@patologia = 'Patologia1',
 --Atributos de Contacto
 @idContacto = 5,
 @correo = 'rubsalas@hotmail.com',
